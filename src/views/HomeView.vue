@@ -1,5 +1,14 @@
-<script setup lang="ts"></script>
-
 <template>
-  <h1>This is the home page</h1>
+  <main class="home">
+    <h1>Home view</h1>
+  </main>
 </template>
+
+<style scoped lang="scss">
+.home {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
