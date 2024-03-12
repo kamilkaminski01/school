@@ -1,9 +1,9 @@
-<script setup lang="ts">
-import AppHeader from '@/components/AppHeader.vue'
-import HomeView from '@/views/HomeView.vue'
-</script>
-
 <template>
-  <AppHeader />
-  <HomeView />
+  <SharedLayout>
+    <RouterView />
+  </SharedLayout>
 </template>
+
+<script setup lang="ts">
+import SharedLayout from './layouts/SharedLayout.vue'
+</script>

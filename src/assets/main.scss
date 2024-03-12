@@ -1,6 +1,7 @@
 @import './base.scss';
 
 #app {
-  max-width: 1536px;
-  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
