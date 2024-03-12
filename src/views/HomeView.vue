@@ -1,14 +1,23 @@
 <template>
-  <main class="home">
-    <h1>Home view</h1>
+  <main class="home-page">
+    <LandingSection />
+    <BlogSection />
   </main>
 </template>
 
+<script setup lang="ts">
+import LandingSection from '@/components/LandingSection.vue'
+import BlogSection from '@/components/BlogSection.vue'
+</script>
+
 <style lang="scss">
-.home {
-  flex: 1;
+.home-page {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+
+  section {
+    width: 100%;
+    max-width: 72rem;
+  }
 }
 </style>

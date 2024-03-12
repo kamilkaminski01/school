@@ -6,4 +6,8 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to) => {
+  document.title = typeof to.meta?.title === 'string' ? to.meta.title : 'School | Kamil Kamiński'
+})
+
 export default router
