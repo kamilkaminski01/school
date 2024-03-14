@@ -8,15 +8,27 @@ export const routes: Array<RouteRecordRaw> = [
     component: HomeView
   },
   {
+    path: '/projects',
+    name: 'projects',
+    meta: { title: 'Projects | Kamil Kamiński' },
+    component: () => import('../views/ProjectsView.vue')
+  },
+  {
     path: '/blog',
     name: 'blog',
     meta: { title: 'Blog | Kamil Kamiński' },
     component: () => import('../views/BlogView.vue')
   },
   {
-    path: '/projects',
-    name: 'projects',
-    meta: { title: 'Projects | Kamil Kamiński' },
-    component: () => import('../views/ProjectsView.vue')
+    path: '/blog/about',
+    name: 'about',
+    meta: { title: 'About | Kamil Kamiński' },
+    component: () => import('../blogs/AboutMe.vue')
+  },
+  {
+    path: '/blog/django-react-chat',
+    name: 'django-react-chat',
+    meta: { title: 'Chat in Django & React' },
+    component: () => import('../blogs/DjangoReactChat.vue')
   }
 ]

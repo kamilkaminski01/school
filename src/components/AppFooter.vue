@@ -17,7 +17,7 @@
         <div class="top-right__item">
           <h3 class="top-right__item-title">School Kamil Kamiński</h3>
           <RouterLink :to="{ name: 'blog' }" class="top-right__item-link">Blog</RouterLink>
-          <span class="top-right__item-link">About</span>
+          <RouterLink :to="{ name: 'about' }" class="top-right__item-link">About</RouterLink>
         </div>
         <div class="top-right__item">
           <h3 class="top-right__item-title">Social Links</h3>

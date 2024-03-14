@@ -2,10 +2,15 @@
   <section class="blog-section">
     <h1 class="blog-section__title">Modern, well-explained, and high-quality tutorials</h1>
     <p class="blog-section__desc">
-      Discover a wide range of topics and enhance your skills with comprehensive tutorials
+      Discover a wide range of topics and enhance your skills with comprehensive resources
     </p>
+    <FeaturedTutorial />
   </section>
 </template>
+
+<script setup lang="ts">
+import FeaturedTutorial from '@/components/FeaturedTutorial.vue'
+</script>
 
 <style lang="scss">
 .blog-section {

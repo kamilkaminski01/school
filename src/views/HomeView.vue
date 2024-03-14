@@ -2,12 +2,14 @@
   <main class="home-page">
     <LandingSection />
     <BlogSection />
+    <ProjectsSection />
   </main>
 </template>
 
 <script setup lang="ts">
 import LandingSection from '@/components/LandingSection.vue'
 import BlogSection from '@/components/BlogSection.vue'
+import ProjectsSection from '@/components/ProjectsSection.vue'
 </script>
 
 <style lang="scss">
