@@ -1,10 +1,4 @@
 export const blogs = {
-  about: {
-    link: 'about',
-    sections: [],
-    title: 'About me - Kamil Kamiński',
-    date: 'Mon Jan 28 2024'
-  },
   djangoReactChat: {
     link: 'django-react-chat',
     title: 'Chat in Django & React',
@@ -35,5 +29,20 @@ export const blogs = {
         desc: 'Frontend interface enabling users to interact seamlessly.'
       }
     ]
+  },
+  about: {
+    link: 'about',
+    sections: [],
+    title: 'About me - Kamil Kamiński',
+    date: 'Mon Jan 28 2024'
+  }
+}
+
+export const projects = {
+  monitoringSystem: {
+    link: 'monitoring-system',
+    thumbnail: '/src/assets/images/',
+    title: 'Monitoring System',
+    desc: 'A premium app designed for couples'
   }
 }

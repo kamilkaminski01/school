@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { blogs } from '@/blogs'
+import { blogs } from '@/utils/consts'
 </script>
 
 <style lang="scss">
@@ -44,6 +44,7 @@ import { blogs } from '@/blogs'
     gap: 1.25rem;
 
     .content__tutorial {
+      line-height: 1.5;
       width: fit-content;
 
       .content__tutorial-title {

@@ -14,6 +14,12 @@ export const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/ProjectsView.vue')
   },
   {
+    path: '/projects/monitoring-system',
+    name: 'monitoring-system',
+    meta: { title: 'Monitoring System' },
+    component: () => import('../projects/MonitoringSystem.vue')
+  },
+  {
     path: '/blog',
     name: 'blog',
     meta: { title: 'Blog | Kamil Kamiński' },

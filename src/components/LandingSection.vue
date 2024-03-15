@@ -1,5 +1,5 @@
 <template>
-  <section class="landing-section">
+  <section class="landing-section" ref="landing">
     <div class="landing-section__item">
       <div class="landing-section__item-notification">
         <span class="vertical-grid-line left" />
@@ -28,14 +28,31 @@
     <div class="landing-section__item">
       <div class="landing-section__item-btns">
         <span class="vertical-grid-line left" />
-        <button class="landing-section__item-btn btn--highlight">Get started</button>
-        <button class="landing-section__item-btn btn--outline">Learn more</button>
+        <button class="landing-section__item-btn btn--highlight" @click="openBlogPage">
+          Get started
+        </button>
+        <button class="landing-section__item-btn btn--outline" @click="scrollToBlogSection">
+          Learn more
+        </button>
         <span class="vertical-grid-line right" />
       </div>
       <span class="horizontal-grid-line bottom" />
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import router from '@/router'
+
+const openBlogPage = () => {
+  router.push({ name: 'blog' })
+}
+
+const scrollToBlogSection = () => {
+  const blogSection = document.getElementById('blog')
+  if (blogSection) blogSection.scrollIntoView()
+}
+</script>
 
 <style lang="scss">
 .landing-section {

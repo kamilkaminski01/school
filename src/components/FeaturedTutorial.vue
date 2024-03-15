@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import DjangoIcon from '@/components/icons/DjangoIcon.vue'
 import ReactIcon from '@/components/icons/ReactIcon.vue'
-import { blogs } from '@/blogs'
+import { blogs } from '@/utils/consts'
 </script>
 
 <style lang="scss">
