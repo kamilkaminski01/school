@@ -1,18 +1,18 @@
 <template>
-  <main class="blog">
-    <div class="blog__content">
-      <h1>Chat in Django & React</h1>
+  <main class="project">
+    <div class="project__content">
+      <h1>Project View</h1>
     </div>
   </main>
 </template>
 
 <style lang="scss">
-.blog {
+.project {
   display: flex;
   justify-content: center;
   width: 100%;
 
-  .blog__content {
+  .project__content {
     width: 100%;
     max-width: 48rem;
   }

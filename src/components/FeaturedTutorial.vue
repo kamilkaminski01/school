@@ -92,8 +92,8 @@ import { blogs } from '@/utils/consts'
     background-color: hsla(0, 0%, 100%, 0.05);
 
     transition:
-      0.3s transform ease,
-      0.3s border-radius ease;
+      0.2s transform ease,
+      0.2s border-radius ease;
 
     .profile-img {
       position: absolute;

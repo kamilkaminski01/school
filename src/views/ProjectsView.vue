@@ -1,19 +1,35 @@
 <template>
   <main class="projects-page">
-    <div class="projects__header">
+    <div class="projects-page__header">
       <h1 class="header__title">Projects</h1>
       <p class="header__desc">
         Collection of projects, each showcases commitment to elegant coding practices.
       </p>
     </div>
+    <div class="projects-page__content">
+      <ProjectCard
+        v-for="(project, index) in projects"
+        :key="index"
+        :link="project.link"
+        :thumbnail="project.thumbnail"
+        :title="project.title"
+        :desc="project.desc"
+        :date="project.date" />
+    </div>
+    <p class="projects-page__info">More coming soon...</p>
   </main>
 </template>
+
+<script setup lang="ts">
+import ProjectCard from '@/components/ProjectCard.vue'
+import { projects } from '@/utils/consts'
+</script>
 
 <style lang="scss">
 .projects-page {
   margin: 0 8em;
 
-  .projects__header {
+  .projects-page__header {
     margin: 3rem 0;
 
     .header__title {
@@ -24,6 +40,18 @@
       font-size: 1.5em;
       color: $auro-metal-saurus;
     }
+  }
+
+  .projects-page__content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .projects-page__info {
+    text-align: center;
+    margin: 1.5rem 0;
+    color: $slate-gray;
   }
 }
 </style>

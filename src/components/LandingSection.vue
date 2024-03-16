@@ -50,7 +50,7 @@ const openBlogPage = () => {
 
 const scrollToBlogSection = () => {
   const blogSection = document.getElementById('blog')
-  if (blogSection) blogSection.scrollIntoView()
+  if (blogSection) blogSection.scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 

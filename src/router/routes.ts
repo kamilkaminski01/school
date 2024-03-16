@@ -14,27 +14,45 @@ export const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/ProjectsView.vue')
   },
   {
+    path: '/projects/job-board',
+    name: 'job-board',
+    meta: { title: 'Job Board' },
+    component: () => import('../views/ProjectView.vue')
+  },
+  {
     path: '/projects/monitoring-system',
     name: 'monitoring-system',
     meta: { title: 'Monitoring System' },
-    component: () => import('../projects/MonitoringSystem.vue')
+    component: () => import('../views/ProjectView.vue')
+  },
+  {
+    path: '/projects/development-forum',
+    name: 'development-forum',
+    meta: { title: 'Development Forum' },
+    component: () => import('../views/ProjectView.vue')
+  },
+  {
+    path: '/projects/recommendations-system',
+    name: 'recommendations-system',
+    meta: { title: 'Recommendations System' },
+    component: () => import('../views/ProjectView.vue')
   },
   {
     path: '/blog',
     name: 'blog',
     meta: { title: 'Blog | Kamil Kamiński' },
-    component: () => import('../views/BlogView.vue')
+    component: () => import('../views/BlogsView.vue')
   },
   {
     path: '/blog/about',
     name: 'about',
     meta: { title: 'About | Kamil Kamiński' },
-    component: () => import('../blogs/AboutMe.vue')
+    component: () => import('../views/BlogView.vue')
   },
   {
     path: '/blog/django-react-chat',
     name: 'django-react-chat',
     meta: { title: 'Chat in Django & React' },
-    component: () => import('../blogs/DjangoReactChat.vue')
+    component: () => import('../views/BlogView.vue')
   }
 ]

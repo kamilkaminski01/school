@@ -2,7 +2,7 @@
   <section class="blog-section" id="blog">
     <h1 class="blog-section__title">Modern, well-explained, and high-quality tutorials</h1>
     <p class="blog-section__desc">
-      Discover a wide range of topics and enhance your skills with comprehensive resources
+      Discover a wide range of topics and enhance your skills with extensive resources
     </p>
     <FeaturedTutorial />
   </section>

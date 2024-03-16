@@ -39,10 +39,36 @@ export const blogs = {
 }
 
 export const projects = {
+  jobBoard: {
+    feature: true,
+    date: 'Oct 7, 2023',
+    link: 'job-board',
+    thumbnail: '/src/assets/images/',
+    title: 'IT Recruitment Platform',
+    desc: 'Search for candidates and apply for jobs'
+  },
+  developmentForum: {
+    feature: true,
+    date: 'Mar 9, 2023',
+    link: 'development-forum',
+    thumbnail: '/src/assets/images/',
+    title: 'Forum about development topics',
+    desc: 'Create topics, rooms and help others'
+  },
   monitoringSystem: {
+    feature: true,
+    date: 'Nov 27, 2022',
     link: 'monitoring-system',
     thumbnail: '/src/assets/images/',
-    title: 'Monitoring System',
-    desc: 'A premium app designed for couples'
+    title: 'Web apps with real-time monitoring',
+    desc: 'Whiteboard, Tic Tac Toe, Bingo and more'
+  },
+  recommendationsSystem: {
+    feature: false,
+    date: 'Oct 13, 2022',
+    link: 'recommendations-system',
+    thumbnail: '/src/assets/images/',
+    title: 'Campaign platform for recruitment',
+    desc: 'Recommend potential candidates for prizes'
   }
 }

@@ -1,9 +1,10 @@
 <template>
-  <RouterLink :to="{ name: link }" class="projects-section__card">
+  <RouterLink :to="{ name: link }" class="project__card">
     <div class="card__img-wrapper">
       <img :src="thumbnail" alt="project thumbnail" class="card__img" />
     </div>
     <div class="card__info">
+      <p v-if="date" class="card__info-date">{{ date }}</p>
       <h3 class="card__info-title">{{ title }}</h3>
       <p class="card__info-desc">{{ desc }}</p>
     </div>
@@ -11,25 +12,30 @@
 </template>
 
 <script setup lang="ts">
-interface ProjectsSectionCardProps {
+interface ProjectCardProps {
   link: string
   thumbnail: string
   title: string
   desc: string
+  date?: string
 }
 
-defineProps<ProjectsSectionCardProps>()
+defineProps<ProjectCardProps>()
 </script>
 
 <style lang="scss">
-.projects-section__card {
+.project__card {
   background-color: hsla(0, 0%, 100%, 0.05);
   border-radius: 2em;
   border: 1px solid hsla(0, 0%, 100%, 0.05);
 
-  transition: 0.3s transform ease;
+  transition:
+    0.1s transform ease,
+    0.2s background-color ease;
 
   .card__img-wrapper {
+    aspect-ratio: 16 / 9;
+
     .card__img {
       width: 100%;
       height: 100%;
@@ -43,7 +49,12 @@ defineProps<ProjectsSectionCardProps>()
   .card__info {
     text-align: center;
     line-height: 1.5;
-    padding: 1.25rem;
+    padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+
+    .card__info-date {
+      color: $auro-metal-saurus;
+      font-size: 12px;
+    }
 
     .card__info-title {
       font-size: inherit;
@@ -59,8 +70,12 @@ defineProps<ProjectsSectionCardProps>()
     }
   }
 
-  &:hover {
+  .projects-section__cards > &:hover {
     transform: scale(1.05);
+  }
+
+  .projects-page__content > &:hover {
+    background-color: rgba(248, 250, 252, 0.1);
   }
 }
 </style>
