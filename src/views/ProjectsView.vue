@@ -1,10 +1,8 @@
 <template>
   <main class="projects-page">
-    <div class="projects-page__header">
+    <div class="content-page__header">
       <h1 class="header__title">Projects</h1>
-      <p class="header__desc">
-        Collection of projects, each showcases commitment to elegant coding practices.
-      </p>
+      <p class="header__desc">Each showcases commitment to elegant coding practices.</p>
     </div>
     <div class="projects-page__content">
       <ProjectCard
@@ -27,20 +25,7 @@ import { projects } from '@/utils/consts'
 
 <style lang="scss">
 .projects-page {
-  margin: 0 8em;
-
-  .projects-page__header {
-    margin: 3rem 0;
-
-    .header__title {
-      @include title;
-    }
-
-    .header__desc {
-      font-size: 1.5em;
-      color: $auro-metal-saurus;
-    }
-  }
+  @include content-page;
 
   .projects-page__content {
     display: grid;

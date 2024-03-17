@@ -1,10 +1,10 @@
 <template>
-  <main class="blog-page">
-    <div class="blog__header">
+  <main class="blogs-page">
+    <div class="content-page__header">
       <h1 class="header__title">Blog</h1>
       <p class="header__desc">Read my thoughts on software engineering, and more.</p>
     </div>
-    <div class="blog__content">
+    <div class="blogs-page__content">
       <RouterLink
         v-for="(tutorial, index) in blogs"
         :key="index"
@@ -22,23 +22,10 @@ import { blogs } from '@/utils/consts'
 </script>
 
 <style lang="scss">
-.blog-page {
-  margin: 0 8em;
+.blogs-page {
+  @include content-page;
 
-  .blog__header {
-    margin: 3rem 0;
-
-    .header__title {
-      @include title;
-    }
-
-    .header__desc {
-      font-size: 1.5em;
-      color: $auro-metal-saurus;
-    }
-  }
-
-  .blog__content {
+  .blogs-page__content {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;

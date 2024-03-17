@@ -29,3 +29,31 @@
   background: -webkit-linear-gradient($white, $auro-metal-saurus);
   -webkit-background-clip: text;
 }
+
+@mixin content-page {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 72rem;
+
+  .content-page__header {
+    margin: 3rem 0;
+    line-height: 1.5;
+
+    .header__title {
+      @include title;
+    }
+
+    .header__desc {
+      font-size: 1.5em;
+      color: $auro-metal-saurus;
+
+      @include for-tablet {
+        font-size: 1.125em;
+      }
+    }
+
+    @include for-tablet {
+      text-align: center;
+    }
+  }
+}
