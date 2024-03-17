@@ -1,46 +1,30 @@
-# school
+<div align="center">
+  <img alt="Logo" src="https://raw.githubusercontent.com/kamilkaminski01/school/main/public/favicon-512x512.png" width="100" />
+</div>
+<h1 align="center">school.kamilkaminski.pl</h1>
 
-This template should help get you started developing with Vue 3 in Vite.
+<p align="center">
+  The first version of <a href="https://school.kamilkaminski.pl" target="_blank">school.kamilkaminski.pl</a> built with TypeScript in <a href="https://vuejs.org/" target="_blank">Vue</a> and deployed with <a href="https://vercel.com/" target="_blank">Vercel</a>
+</p>
 
-## Recommended IDE Setup
+![demo](https://raw.githubusercontent.com/kamilkaminski01/school/main/src/assets/images/demo.png)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Running from sources
 
 ```sh
+git clone https://github.com/kamilkaminski01/school.git
+cd school/
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+The site will be running at `http://localhost:5173`
 
-```sh
-npm run build
-```
+## Code quality standards
 
-### Lint with [ESLint](https://eslint.org/)
+### Frontend
 
-```sh
-npm run lint
-```
+All frontend code is formatted and verified by the `prettier`,
+`eslint` and `tsc` tools. Pre-commit hooks can be set up with `husky`.
+CSS class names are defined according to the
+[BEM](http://getbem.com/introduction/) methodology.
