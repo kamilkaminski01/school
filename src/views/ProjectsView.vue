@@ -46,6 +46,14 @@ import { projects } from '@/utils/consts'
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2rem;
+
+    @include for-desktop {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include for-tablet {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
   }
 
   .projects-page__info {

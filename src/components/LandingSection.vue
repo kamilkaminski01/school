@@ -2,12 +2,12 @@
   <section class="landing-section" ref="landing">
     <div class="landing-section__item">
       <div class="landing-section__item-notification">
-        <span class="vertical-grid-line left" />
+        <span v-if="!isTablet" class="vertical-grid-line left" />
         <div class="item-notification__wrapper">
           <span class="item-notification__status" />
           <p class="item-notification__msg">Check out the Django & React chat tutorial</p>
         </div>
-        <span class="vertical-grid-line right" />
+        <span v-if="!isTablet" class="vertical-grid-line right" />
       </div>
     </div>
     <span class="vertical-grid-line left" />
@@ -27,14 +27,14 @@
     </div>
     <div class="landing-section__item">
       <div class="landing-section__item-btns">
-        <span class="vertical-grid-line left" />
+        <span v-if="!isTablet" class="vertical-grid-line left" />
         <button class="landing-section__item-btn btn--highlight" @click="openBlogPage">
           Get started
         </button>
         <button class="landing-section__item-btn btn--outline" @click="scrollToBlogSection">
           Learn more
         </button>
-        <span class="vertical-grid-line right" />
+        <span v-if="!isTablet" class="vertical-grid-line right" />
       </div>
       <span class="horizontal-grid-line bottom" />
     </div>
@@ -43,6 +43,9 @@
 
 <script setup lang="ts">
 import router from '@/router'
+import { useIsTablet } from '@/composables/tablet'
+
+const { isTablet } = useIsTablet()
 
 const openBlogPage = () => {
   router.push({ name: 'blog' })
@@ -69,12 +72,25 @@ const scrollToBlogSection = () => {
     .landing-section__item-title {
       @include title;
       text-align: center;
-      max-width: 570px;
+      max-width: 55%;
+
+      @include for-large-tablet {
+        max-width: 400px;
+      }
     }
 
     .landing-section__desc {
       font-size: 1.125em;
       color: $slate-gray;
+
+      @include for-desktop {
+        text-align: center;
+        font-size: inherit;
+      }
+
+      @include for-tablet {
+        max-width: 405px;
+      }
     }
 
     .landing-section__item-notification {
@@ -94,7 +110,6 @@ const scrollToBlogSection = () => {
         border: 1px solid hsla(0, 0%, 100%, 0.05);
 
         .item-notification__status {
-          display: block;
           width: 0.5rem;
           height: 0.5rem;
           border-radius: 50%;
@@ -154,6 +169,12 @@ const scrollToBlogSection = () => {
           background-color: $yankees-blue;
         }
       }
+
+      @include for-tablet {
+        display: flex;
+        flex-direction: column;
+        max-width: unset;
+      }
     }
 
     &:first-child {
@@ -211,6 +232,10 @@ const scrollToBlogSection = () => {
 
   .left {
     left: 0;
+  }
+
+  @include for-tablet {
+    margin-top: unset;
   }
 }
 </style>

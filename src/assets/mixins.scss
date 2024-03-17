@@ -1,5 +1,29 @@
+@mixin for-desktop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin for-large-tablet {
+  @media (max-width: 800px) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin for-phone {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
 @mixin title {
-  font-size: 3.75em;
+  font-size: clamp(40px, 5vw, 60px);
   font-weight: 700;
   color: transparent;
   background: -webkit-linear-gradient($white, $auro-metal-saurus);

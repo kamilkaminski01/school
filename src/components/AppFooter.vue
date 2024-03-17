@@ -121,7 +121,23 @@ footer {
             opacity: 1;
           }
         }
+
+        @include for-large-tablet {
+          margin-bottom: 1.5rem;
+        }
       }
+
+      @include for-large-tablet {
+        justify-content: unset;
+        flex-wrap: wrap;
+        gap: 5%;
+        margin-right: unset;
+      }
+    }
+
+    @include for-large-tablet {
+      flex-direction: column;
+      gap: 3rem;
     }
   }
 

@@ -1,7 +1,7 @@
 <template>
   <div class="featured-tutorial">
     <div class="featured-tutorial__sections">
-      <h5 class="featured-tutorial__title">Feature Tutorial</h5>
+      <h5 class="featured-tutorial__title">Featured Tutorial</h5>
       <RouterLink
         v-for="(section, index) in blogs.djangoReactChat.sections"
         :key="index"
@@ -132,6 +132,10 @@ import { blogs } from '@/utils/consts'
       border-radius: 0.9rem;
       transform: scale(1.05);
     }
+  }
+
+  @include for-tablet {
+    margin: 0 auto;
   }
 }
 </style>

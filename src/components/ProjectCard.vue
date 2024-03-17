@@ -47,9 +47,10 @@ defineProps<ProjectCardProps>()
   }
 
   .card__info {
+    padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+
     text-align: center;
     line-height: 1.5;
-    padding: 0.5rem 1.25rem 1.25rem 1.25rem;
 
     .card__info-date {
       color: $auro-metal-saurus;
@@ -59,6 +60,9 @@ defineProps<ProjectCardProps>()
     .card__info-title {
       font-size: inherit;
       font-weight: 600;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       color: $platinum;
     }
 
@@ -70,8 +74,10 @@ defineProps<ProjectCardProps>()
     }
   }
 
-  .projects-section__cards > &:hover {
-    transform: scale(1.05);
+  @media (min-width: 769px) {
+    .projects-section__cards > &:hover {
+      transform: scale(1.05);
+    }
   }
 
   .projects-page__content > &:hover {

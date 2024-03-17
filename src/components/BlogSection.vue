@@ -4,7 +4,9 @@
     <p class="blog-section__desc">
       Discover a wide range of topics and enhance your skills with extensive resources
     </p>
-    <FeaturedTutorial />
+    <div class="blog-section__featured">
+      <FeaturedTutorial />
+    </div>
   </section>
 </template>
 
@@ -21,13 +23,33 @@ import FeaturedTutorial from '@/components/FeaturedTutorial.vue'
     @include title;
     padding: 0.25rem;
     max-width: 479px;
-    font-size: 3em;
+    font-size: clamp(30px, 5vw, 48px);
     line-height: 1;
+
+    @include for-tablet {
+      text-align: center;
+    }
   }
 
   .blog-section__desc {
     margin: 1.5rem 0;
     color: $slate-gray;
+
+    @include for-tablet {
+      max-width: 350px;
+      text-align: center;
+    }
+  }
+
+  .blog-section__featured {
+    overflow: scroll;
+    width: 100%;
+  }
+
+  @include for-tablet {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 }
 </style>
