@@ -1,17 +1,29 @@
 <template>
   <svg
-    fill="#ffffff"
     :width="width"
     :height="height"
-    viewBox="0 0 24.00 24.00"
+    viewBox="-2.4 -2.4 28.80 28.80"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    stroke="#ffffff"
-    stroke-width="0.00024000000000000003">
-    <g id="SVGRepo_bgCarrier" stroke-width="0" />
+    stroke="#ffffff">
+    <g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)">
+      <rect
+        x="-2.4"
+        y="-2.4"
+        width="28.80"
+        height="28.80"
+        rx="5.76"
+        fill="#1e293b"
+        stroke-width="0" />
+    </g>
     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
     <g id="SVGRepo_iconCarrier">
       <path
-        d="M1.293,11.293l4-4A1,1,0,1,1,6.707,8.707L3.414,12l3.293,3.293a1,1,0,1,1-1.414,1.414l-4-4A1,1,0,0,1,1.293,11.293Zm17.414-4a1,1,0,1,0-1.414,1.414L20.586,12l-3.293,3.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414ZM13.039,4.726l-4,14a1,1,0,0,0,.686,1.236A1.053,1.053,0,0,0,10,20a1,1,0,0,0,.961-.726l4-14a1,1,0,1,0-1.922-.548Z" />
+        d="M7 8L3 11.6923L7 16M17 8L21 11.6923L17 16M14 4L10 20"
+        stroke="#ffffff"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round" />
     </g>
   </svg>
 </template>
