@@ -21,7 +21,7 @@ import AppFooter from '@/components/AppFooter.vue'
   width: 100%;
   padding: 0 1em;
 
-  main {
+  main:not(.tutorial) {
     flex: 1;
     padding-top: 5rem;
   }

@@ -1,5 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import { blogs, projects } from '@/utils/consts'
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -16,26 +17,26 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/projects/job-board',
     name: 'job-board',
-    meta: { title: 'Job Board' },
-    component: () => import('../views/ProjectView.vue')
+    meta: { title: 'Job Board', tutorial: projects.jobBoard.tutorial },
+    component: () => import('../views/TutorialView.vue')
   },
   {
     path: '/projects/monitoring-system',
     name: 'monitoring-system',
-    meta: { title: 'Monitoring System' },
-    component: () => import('../views/ProjectView.vue')
+    meta: { title: 'Monitoring System', tutorial: projects.monitoringSystem.tutorial },
+    component: () => import('../views/TutorialView.vue')
   },
   {
     path: '/projects/development-forum',
     name: 'development-forum',
-    meta: { title: 'Development Forum' },
-    component: () => import('../views/ProjectView.vue')
+    meta: { title: 'Development Forum', tutorial: projects.developmentForum.tutorial },
+    component: () => import('../views/TutorialView.vue')
   },
   {
     path: '/projects/recommendations-system',
     name: 'recommendations-system',
-    meta: { title: 'Recommendations System' },
-    component: () => import('../views/ProjectView.vue')
+    meta: { title: 'Recommendations System', tutorial: projects.recommendationsSystem.tutorial },
+    component: () => import('../views/TutorialView.vue')
   },
   {
     path: '/blog',
@@ -46,13 +47,13 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/blog/about',
     name: 'about',
-    meta: { title: 'About | Kamil Kamiński' },
-    component: () => import('../views/BlogView.vue')
+    meta: { title: 'About | Kamil Kamiński', tutorial: blogs.about.tutorial },
+    component: () => import('../views/TutorialView.vue')
   },
   {
     path: '/blog/django-react-chat',
     name: 'django-react-chat',
-    meta: { title: 'Chat in Django & React' },
-    component: () => import('../views/BlogView.vue')
+    meta: { title: 'Chat in Django & React', tutorial: blogs.djangoReactChat.tutorial },
+    component: () => import('../views/TutorialView.vue')
   }
 ]
