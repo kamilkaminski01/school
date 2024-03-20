@@ -19,10 +19,10 @@
 
 <script setup lang="ts">
 import ProjectCard from '@/components/ProjectCard.vue'
-import { projects } from '@/utils/consts'
+import { PROJECTS } from '@/utils/consts'
 import { computed } from 'vue'
 
-const projectsArray = Object.values(projects)
+const projectsArray = Object.values(PROJECTS)
 
 const featuredProjects = computed(() => {
   return projectsArray.filter((project) => project.feature)

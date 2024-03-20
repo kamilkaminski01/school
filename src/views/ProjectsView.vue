@@ -6,7 +6,7 @@
     </div>
     <div class="projects-page__content">
       <ProjectCard
-        v-for="(project, index) in projects"
+        v-for="(project, index) in PROJECTS"
         :key="index"
         :link="project.link"
         :thumbnail="project.thumbnail"
@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import ProjectCard from '@/components/ProjectCard.vue'
-import { projects } from '@/utils/consts'
+import { PROJECTS } from '@/utils/consts'
 </script>
 
 <style lang="scss">

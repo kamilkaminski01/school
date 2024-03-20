@@ -6,7 +6,15 @@
     <div class="tutorial__header">
       <p class="tutorial__header-date">{{ tutorial.header.date }}</p>
       <h1 class="tutorial__header-title">{{ tutorial.header.title }}</h1>
-      <img :src="tutorial.header.demo" alt="tutorial demo" class="tutorial__header-demo" />
+      <div class="tutorial__header-author">
+        <img src="@/assets/images/kamil-kaminski.jpg" alt="Kamil Kamiński" class="author__img" />
+        Kamil Kamiński
+      </div>
+      <img
+        v-if="tutorial.header.demo"
+        :src="tutorial.header.demo"
+        alt="tutorial demo"
+        class="tutorial__header-demo" />
     </div>
     <div class="tutorial__content">
       <template v-for="(content, index) in tutorial.content">
@@ -63,10 +71,21 @@ const tutorial = computed(() => {
       margin: 0.75rem 0 1.5rem;
     }
 
+    .tutorial__header-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0.75rem 0 1.5rem;
+
+      .author__img {
+        @include profile-img;
+      }
+    }
+
     .tutorial__header-demo {
       width: 100%;
       height: 100%;
-      aspect-ratio: 16 / 9;
+      object-fit: contain;
     }
   }
 

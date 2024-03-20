@@ -6,19 +6,19 @@
     </div>
     <div class="blogs-page__content">
       <RouterLink
-        v-for="(tutorial, index) in blogs"
+        v-for="(blog, index) in BLOGS"
         :key="index"
-        :to="{ name: tutorial.link }"
-        class="content__tutorial">
-        <h3 class="content__tutorial-title">{{ tutorial.title }}</h3>
-        <p class="content__tutorial-date">{{ tutorial.date }}</p>
+        :to="{ name: blog.link }"
+        class="content__blog">
+        <h3 class="content__blog-title">{{ blog.title }}</h3>
+        <p class="content__blog-date">{{ blog.date }}</p>
       </RouterLink>
     </div>
   </main>
 </template>
 
 <script setup lang="ts">
-import { blogs } from '@/utils/consts'
+import { BLOGS } from '@/utils/consts'
 </script>
 
 <style lang="scss">
@@ -30,11 +30,11 @@ import { blogs } from '@/utils/consts'
     flex-direction: column;
     gap: 1.25rem;
 
-    .content__tutorial {
+    .content__blog {
       line-height: 1.5;
       width: fit-content;
 
-      .content__tutorial-title {
+      .content__blog-title {
         font-weight: normal;
         font-size: inherit;
         color: $platinum;
@@ -44,7 +44,7 @@ import { blogs } from '@/utils/consts'
         }
       }
 
-      .content__tutorial-date {
+      .content__blog-date {
         font-size: 0.875em;
         color: $slate-gray;
       }

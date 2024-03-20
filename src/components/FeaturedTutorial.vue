@@ -3,9 +3,9 @@
     <div class="featured-tutorial__sections">
       <h5 class="featured-tutorial__title">Featured Tutorial</h5>
       <RouterLink
-        v-for="(section, index) in blogs.djangoReactChat.sections"
+        v-for="(section, index) in BLOGS.djangoReactChat.sections"
         :key="index"
-        :to="{ name: blogs.djangoReactChat.link }"
+        :to="{ name: BLOGS.djangoReactChat.link }"
         class="featured-tutorial__section">
         <h3 class="section__title">{{ section.title }}</h3>
         <p class="section__desc">{{ section.desc }}</p>
@@ -17,7 +17,7 @@
         <DjangoIcon />
         <ReactIcon />
       </div>
-      <h3 class="featured-tutorial__info-title">{{ blogs.djangoReactChat.title }}</h3>
+      <h3 class="featured-tutorial__info-title">{{ BLOGS.djangoReactChat.title }}</h3>
     </RouterLink>
   </div>
 </template>
@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import DjangoIcon from '@/components/icons/DjangoIcon.vue'
 import ReactIcon from '@/components/icons/ReactIcon.vue'
-import { blogs } from '@/utils/consts'
+import { BLOGS } from '@/utils/consts'
 </script>
 
 <style lang="scss">
@@ -96,12 +96,10 @@ import { blogs } from '@/utils/consts'
       0.2s border-radius ease;
 
     .profile-img {
+      @include profile-img;
       position: absolute;
       top: 3px;
       right: 3px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
     }
 
     .featured-tutorial__info-img {

@@ -1,4 +1,9 @@
-export const blogs = {
+import MonitoringSystemThumbnail from '@/assets/images/1.svg'
+import DevelopmentForumThumbnail from '@/assets/images/2.svg'
+import JobBoardThumbnail from '@/assets/images/3.svg'
+import RecommendationsSystemThumbnail from '@/assets/images/4.svg'
+
+export const BLOGS = {
   djangoReactChat: {
     link: 'django-react-chat',
     title: 'Chat in Django & React',
@@ -33,7 +38,7 @@ export const blogs = {
       header: {
         date: 'Apr 26, 2024',
         title: 'Job Board',
-        demo: '/src/assets/images/3.svg'
+        demo: ''
       }
     }
   },
@@ -46,25 +51,25 @@ export const blogs = {
       header: {
         date: 'Mar 28, 2024',
         title: 'Job Board',
-        demo: '/src/assets/images/3.svg'
+        demo: ''
       }
     }
   }
 }
 
-export const projects = {
+export const PROJECTS = {
   jobBoard: {
     feature: true,
     date: 'Oct 7, 2023',
     link: 'job-board',
-    thumbnail: '/src/assets/images/3.svg',
+    thumbnail: JobBoardThumbnail,
     title: 'IT Recruitment Platform',
     desc: 'Search for candidates and apply for jobs',
     tutorial: {
       header: {
         date: 'Oct 7, 2023',
         title: 'Job Board',
-        demo: '/src/assets/images/3.svg'
+        demo: 'https://raw.githubusercontent.com/kamilkaminski01/job-board/main/frontend/src/assets/images/demo1.png'
       },
       content: [
         { type: 'title', text: 'Hello there!' },
@@ -79,14 +84,14 @@ export const projects = {
     feature: true,
     date: 'Mar 9, 2023',
     link: 'development-forum',
-    thumbnail: '/src/assets/images/2.svg',
+    thumbnail: DevelopmentForumThumbnail,
     title: 'Forum about development topics',
     desc: 'Create topics, rooms and help others',
     tutorial: {
       header: {
         date: 'Mar 9, 2023',
         title: 'Development Forum',
-        demo: '/src/assets/images/2.svg'
+        demo: 'https://raw.githubusercontent.com/kamilkaminski01/development-forum/main/app/static/images/demo1.png'
       },
       content: [
         { type: 'title', text: 'Welcome!' },
@@ -101,14 +106,14 @@ export const projects = {
     feature: true,
     date: 'Nov 27, 2022',
     link: 'monitoring-system',
-    thumbnail: '/src/assets/images/1.svg',
+    thumbnail: MonitoringSystemThumbnail,
     title: 'Web apps with real-time monitoring',
     desc: 'Whiteboard, Tic Tac Toe, Bingo and more',
     tutorial: {
       header: {
         date: 'Nov 27, 2022',
         title: 'Monitoring System',
-        demo: '/src/assets/images/1.svg'
+        demo: 'https://raw.githubusercontent.com/kamilkaminski01/monitoring-system/master/frontend/src/assets/images/demo.png'
       },
       content: [
         { type: 'title', text: 'Welcome back!' },
@@ -123,14 +128,14 @@ export const projects = {
     feature: false,
     date: 'Oct 13, 2022',
     link: 'recommendations-system',
-    thumbnail: '/src/assets/images/4.svg',
+    thumbnail: RecommendationsSystemThumbnail,
     title: 'Campaign platform for recruitment',
     desc: 'Recommend potential candidates for prizes',
     tutorial: {
       header: {
         date: 'Oct 13, 2022',
         title: 'Recommendations System',
-        demo: '/src/assets/images/4.svg'
+        demo: 'https://raw.githubusercontent.com/kamilkaminski01/recommendations-system/main/frontend/src/assets/images/demo1.png'
       },
       content: [
         { type: 'title', text: 'Hi there' },
