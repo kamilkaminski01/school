@@ -37,9 +37,15 @@ export const BLOGS = {
     tutorial: {
       header: {
         date: 'Apr 26, 2024',
-        title: 'Job Board',
+        title: 'Chat in Django & React',
         demo: ''
-      }
+      },
+      content: [
+        {
+          type: 'paragraph',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        }
+      ]
     }
   },
   about: {
@@ -50,9 +56,15 @@ export const BLOGS = {
     tutorial: {
       header: {
         date: 'Mar 28, 2024',
-        title: 'Job Board',
+        title: "Hi 👋, I'm Kamil",
         demo: ''
-      }
+      },
+      content: [
+        {
+          type: 'paragraph',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        }
+      ]
     }
   }
 }

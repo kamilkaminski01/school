@@ -10,11 +10,14 @@
         <img src="@/assets/images/kamil-kaminski.jpg" alt="Kamil Kamiński" class="author__img" />
         Kamil Kamiński
       </div>
-      <img
-        v-if="tutorial.header.demo"
-        :src="tutorial.header.demo"
-        alt="tutorial demo"
-        class="tutorial__header-demo" />
+      <div v-if="tutorial.header.demo" class="tutorial__header-demo">
+        <AppSpinner :isLoading="isImageLoading" />
+        <img
+          :src="tutorial.header.demo"
+          @load="onImageLoad"
+          alt="tutorial demo"
+          class="demo__img" />
+      </div>
     </div>
     <div class="tutorial__content">
       <template v-for="(content, index) in tutorial.content">
@@ -30,13 +33,20 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import LeftArrowIcon from '@/components/icons/LeftArrowIcon.vue'
 import type { ITutorial } from '@/models/tutorial'
+import AppSpinner from '@/components/AppSpinner.vue'
 
 const route = useRoute()
 const returnLink = route.path.includes('projects') ? 'projects' : 'blog'
+
+const isImageLoading = ref(true)
+
+const onImageLoad = () => {
+  isImageLoading.value = false
+}
 
 const tutorial = computed(() => {
   return route.meta.tutorial as ITutorial
@@ -83,9 +93,15 @@ const tutorial = computed(() => {
     }
 
     .tutorial__header-demo {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      position: relative;
+
+      .demo__img {
+        width: 100%;
+        height: 100%;
+        min-height: 25em;
+        object-fit: contain;
+        border-radius: 0.25em;
+      }
     }
   }
 
