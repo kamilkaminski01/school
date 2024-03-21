@@ -3,21 +3,15 @@
     <RouterLink :to="{ name: returnLink }" class="tutorial__return-link">
       <LeftArrowIcon /> Back
     </RouterLink>
-    <div class="tutorial__header">
-      <p class="tutorial__header-date">{{ tutorial.header.date }}</p>
-      <h1 class="tutorial__header-title">{{ tutorial.header.title }}</h1>
-      <div class="tutorial__header-author">
-        <img src="@/assets/images/kamil-kaminski.jpg" alt="Kamil Kamiński" class="author__img" />
-        Kamil Kamiński
-      </div>
-      <div v-if="tutorial.header.demo" class="tutorial__header-demo">
-        <AppSpinner :isLoading="isImageLoading" />
-        <img
-          :src="tutorial.header.demo"
-          @load="onImageLoad"
-          alt="tutorial demo"
-          class="demo__img" />
-      </div>
+    <p class="tutorial__date">{{ tutorial.header.date }}</p>
+    <h1 class="tutorial__title">{{ tutorial.header.title }}</h1>
+    <div class="tutorial__author">
+      <img src="@/assets/images/kamil-kaminski.jpg" alt="Kamil Kamiński" class="author__img" />
+      Kamil Kamiński
+    </div>
+    <div v-if="tutorial.header.demo" class="tutorial__demo">
+      <AppSpinner :isLoading="isImageLoading" />
+      <img :src="tutorial.header.demo" @load="onImageLoad" alt="tutorial demo" class="demo__img" />
     </div>
     <div class="tutorial__content">
       <template v-for="(content, index) in tutorial.content">
@@ -67,41 +61,62 @@ const tutorial = computed(() => {
   }
 
   .tutorial__return-link {
-    @include return-link;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+    color: $vivid-cerulean;
+
+    svg {
+      transition: 0.1s transform ease-in-out;
+    }
+
+    &:hover {
+      svg {
+        transform: translateX(-5px);
+      }
+    }
+
+    @include for-desktop {
+      position: relative;
+      display: flex;
+      margin: 0 auto 0.85rem;
+      transform: translateX(-2px);
+    }
   }
 
-  .tutorial__header {
-    .tutorial__header-date {
-      font-size: 14px;
-      color: $slate-gray;
+  .tutorial__date {
+    font-size: 14px;
+    color: $slate-gray;
+  }
+
+  .tutorial__title {
+    font-size: 1.875em;
+    margin: 0.75rem auto 1.5rem;
+  }
+
+  .tutorial__author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.75rem auto 1.5rem;
+
+    .author__img {
+      @include profile-img;
     }
+  }
 
-    .tutorial__header-title {
-      font-size: 1.875em;
-      margin: 0.75rem 0 1.5rem;
-    }
+  .tutorial__demo {
+    position: relative;
 
-    .tutorial__header-author {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin: 0.75rem 0 1.5rem;
-
-      .author__img {
-        @include profile-img;
-      }
-    }
-
-    .tutorial__header-demo {
-      position: relative;
-
-      .demo__img {
-        width: 100%;
-        height: 100%;
-        min-height: 25em;
-        object-fit: contain;
-        border-radius: 0.25em;
-      }
+    .demo__img {
+      width: 100%;
+      height: 100%;
+      min-height: 22.5vh;
+      object-fit: contain;
+      border-radius: 0.25em;
     }
   }
 
@@ -116,6 +131,10 @@ const tutorial = computed(() => {
       line-height: 1.75;
       margin-top: 1.25rem;
     }
+  }
+
+  @include for-desktop {
+    margin: 5rem auto 0;
   }
 }
 </style>

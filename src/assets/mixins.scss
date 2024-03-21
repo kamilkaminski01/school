@@ -22,32 +22,18 @@
   }
 }
 
+@mixin for-small-phone {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+
 @mixin title {
   font-size: clamp(40px, 5vw, 60px);
   font-weight: 700;
   color: transparent;
   background: -webkit-linear-gradient($white, $auro-metal-saurus);
   -webkit-background-clip: text;
-}
-
-@mixin return-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.25em;
-  color: $vivid-cerulean;
-
-  svg {
-    transition: 0.1s transform ease-in-out;
-  }
-
-  &:hover {
-    svg {
-      transform: translateX(-5px);
-    }
-  }
 }
 
 @mixin profile-img {
@@ -79,7 +65,7 @@
     }
 
     @include for-tablet {
-      text-align: center;
+      margin: 1rem 0 3rem;
     }
   }
 }

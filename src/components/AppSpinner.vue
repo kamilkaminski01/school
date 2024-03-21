@@ -13,16 +13,24 @@ defineProps<AppSpinnerProps>()
 <style lang="scss">
 .spinner {
   position: absolute;
-  top: 47%;
-  left: 47%;
+  top: 50%;
+  left: 50%;
+
   transform: translate(-50%, -50%);
-  border: 5px solid $platinum;
-  border-top: 5px solid $vivid-cerulean;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
   z-index: 1;
-  animation: spin 1s linear infinite;
+
+  &:after {
+    display: block;
+    width: 3.75em;
+    height: 3.75em;
+    content: ' ';
+
+    border-radius: 50%;
+    border: 5px solid $platinum;
+    border-top: 5px solid $vivid-cerulean;
+
+    animation: spin 1s linear infinite;
+  }
 }
 
 @keyframes spin {

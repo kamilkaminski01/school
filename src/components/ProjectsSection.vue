@@ -1,10 +1,12 @@
 <template>
   <section class="projects-section">
-    <h1 class="projects-section__title">Explore my collection of latest projects</h1>
-    <p class="projects-section__desc">
-      Dive into my latest projects including fully functional solutions and comprehensive web apps
-      available live on the web
-    </p>
+    <div class="projects-section__header">
+      <h1 class="projects-section__title">Explore my collection of latest projects</h1>
+      <p class="projects-section__desc">
+        Dive into my latest projects including fully functional solutions and comprehensive web apps
+        available live on the web
+      </p>
+    </div>
     <div class="projects-section__cards">
       <ProjectCard
         v-for="(project, index) in featuredProjects"
@@ -38,23 +40,29 @@ const featuredProjects = computed(() => {
   padding-top: 5em;
   text-align: right;
 
-  .projects-section__title {
-    @include title;
-    padding: 0.25rem;
-    max-width: 525px;
-    font-size: clamp(30px, 5vw, 48px);
-    line-height: 1;
+  .projects-section__header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
-    @include for-tablet {
-      max-width: 450px;
+    .projects-section__title {
+      @include title;
+      padding: 0.25rem;
+      max-width: 525px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1;
+
+      @include for-tablet {
+        max-width: 390px;
+      }
     }
-  }
 
-  .projects-section__desc {
-    max-width: 450px;
-    margin: 1.5rem 0;
-    color: $slate-gray;
-    line-height: 1.5;
+    .projects-section__desc {
+      max-width: 450px;
+      margin: 1.5rem 0;
+      color: $slate-gray;
+      line-height: 1.5;
+    }
   }
 
   .projects-section__cards {
@@ -72,6 +80,7 @@ const featuredProjects = computed(() => {
   }
 
   @include for-tablet {
+    display: unset;
     justify-content: center;
     align-items: center;
     text-align: center;
