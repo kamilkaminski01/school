@@ -7,7 +7,13 @@
     <h1 class="tutorial__title">{{ tutorial.header.title }}</h1>
     <div class="tutorial__author">
       <img src="@/assets/images/kamil-kaminski.jpg" alt="Kamil Kamiński" class="author__img" />
-      Kamil Kamiński
+      <a
+        href="https://www.linkedin.com/in/kamilkaminski01/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="author__link">
+        Kamil Kamiński
+      </a>
     </div>
     <div v-if="tutorial.header.demo" class="tutorial__demo">
       <AppSpinner :isLoading="isImageLoading" />
@@ -21,6 +27,7 @@
         <p v-if="content.type === 'paragraph'" :key="index" class="tutorial__content-paragraph">
           {{ content.text }}
         </p>
+        <pre v-if="content.type === 'code'" :key="index"><code>{{ content.text }}</code></pre>
       </template>
     </div>
   </main>
@@ -106,6 +113,14 @@ const tutorial = computed(() => {
     .author__img {
       @include profile-img;
     }
+
+    .author__link {
+      color: $platinum;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .tutorial__demo {
@@ -114,9 +129,14 @@ const tutorial = computed(() => {
     .demo__img {
       width: 100%;
       height: 100%;
-      min-height: 22.5vh;
+      min-height: 20em;
+      max-width: 45em;
       object-fit: contain;
       border-radius: 0.25em;
+
+      @include for-phone {
+        min-height: 10em;
+      }
     }
   }
 

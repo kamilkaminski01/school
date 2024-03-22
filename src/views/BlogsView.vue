@@ -5,14 +5,12 @@
       <p class="header__desc">Read my thoughts on software engineering, and more.</p>
     </div>
     <div class="blogs-page__content">
-      <RouterLink
-        v-for="(blog, index) in BLOGS"
-        :key="index"
-        :to="{ name: blog.link }"
-        class="content__blog">
-        <h3 class="content__blog-title">{{ blog.title }}</h3>
+      <div v-for="(blog, index) in BLOGS" :key="index" class="content__blog">
+        <RouterLink :to="{ name: blog.link }" class="content__blog-link">
+          {{ blog.title }}
+        </RouterLink>
         <p class="content__blog-date">{{ blog.date }}</p>
-      </RouterLink>
+      </div>
     </div>
   </main>
 </template>
@@ -34,9 +32,7 @@ import { BLOGS } from '@/utils/consts'
       line-height: 1.5;
       width: fit-content;
 
-      .content__blog-title {
-        font-weight: normal;
-        font-size: inherit;
+      .content__blog-link {
         color: $platinum;
 
         &:hover {

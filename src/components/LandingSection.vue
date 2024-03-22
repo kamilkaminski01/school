@@ -140,6 +140,7 @@ const scrollToBlogSection = () => {
         font-size: 1rem;
         font-family: inherit;
         font-weight: 500;
+        color: $rich-black;
 
         border-radius: 0.375rem;
       }
