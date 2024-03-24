@@ -26,6 +26,11 @@
           :key="contentIndex"
           class="tutorial__content-title"
           v-html="content.text" />
+        <h4
+          v-if="content.type === 'subtitle'"
+          :key="contentIndex"
+          class="tutorial__content-subtitle"
+          v-html="content.text" />
         <p
           v-if="content.type === 'paragraph'"
           :key="contentIndex"
@@ -45,7 +50,12 @@
         </div>
       </template>
       <p class="tutorial__content-return">
-        Go back to <RouterLink :to="{ name: 'projects' }">Projects</RouterLink>
+        <template v-if="returnLink === 'projects'">
+          Go back to <RouterLink :to="{ name: 'projects' }">Projects</RouterLink>
+        </template>
+        <template v-else>
+          Go back to <RouterLink :to="{ name: 'blog' }">Blog</RouterLink>
+        </template>
       </p>
     </div>
   </main>
@@ -161,7 +171,8 @@ const tutorial = computed(() => {
   .tutorial__content {
     color: $columbia-blue;
 
-    .tutorial__content-title {
+    .tutorial__content-title,
+    .tutorial__content-subtitle {
       margin-top: 1.5rem;
     }
 
@@ -201,9 +212,12 @@ const tutorial = computed(() => {
 
     .tutorial__content-return {
       margin-top: 2rem;
+    }
 
-      a {
-        color: $vivid-cerulean;
+    a {
+      color: $vivid-cerulean;
+
+      &:hover {
         border-bottom: 1px solid $vivid-cerulean;
       }
     }

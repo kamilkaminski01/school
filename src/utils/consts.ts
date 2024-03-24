@@ -52,7 +52,7 @@ export const BLOGS = {
   about: {
     link: 'about',
     title: 'About me - Kamil Kamiński',
-    date: 'Mar 28, 2024',
+    date: 'Mar 25, 2024',
     sections: [],
     tutorial: {
       header: {
@@ -63,7 +63,83 @@ export const BLOGS = {
       content: [
         {
           type: 'paragraph',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          text:
+            'When I was 19 years old I decided to pursue a degree in computer science. During my first semesters I was ' +
+            'able to gain knowledge of basic concepts in programming and computer science. The first programming language ' +
+            'that I had contact with was C followed by C++.'
+        },
+        {
+          type: 'paragraph',
+          text:
+            'During next semesters I was introduced to a language called Python which ' +
+            'quickly became my go-to language for tackling various projects. Its extensive libraries and ' +
+            'frameworks (specifically Django) provided me the tools needed to bring my ideas to life.'
+        },
+        {
+          type: 'paragraph',
+          text:
+            "I graduated from college in 2020 with a Bachelor's degree and in the same year I undertook a Master's degree " +
+            'which I am completing to this day. During this time I did apprenticeships and was offered an internship. ' +
+            'After some time I received my first job.'
+        },
+        {
+          type: 'title',
+          text: 'Development Experience'
+        },
+        {
+          type: 'paragraph',
+          text:
+            'You can read more about my experience on my ' +
+            '<a href="https://kamilkaminski.pl" target="_blank" rel="noopener noreferrer" class="tutorial__content-link">website</a>.'
+        },
+        {
+          type: 'paragraph',
+          text:
+            'I recently started a <a href="/blog">blog</a>. The goal is to share some of my experiences throughout my journey as a ' +
+            'Software Engineer and provide coding examples on various topics. It also allows me to showcase chunks of my projects and ' +
+            'improve my writing skills. 😁'
+        },
+        {
+          type: 'title',
+          text: 'Development Tools'
+        },
+        {
+          type: 'subtitle',
+          text: 'Backend'
+        },
+        {
+          type: 'paragraph',
+          text:
+            'Like I said before, my main language is Python, framework Django, libraries Django REST Framework and Django Channels. ' +
+            'I also have experience with Flask, SQLAlchemy, Event Sourcing and DDD (domain-driven design).'
+        },
+        {
+          type: 'subtitle',
+          text: 'Frontend'
+        },
+        {
+          type: 'paragraph',
+          text:
+            'My favourite framework is React written in TypeScript. Aside React I also utilize my projects using Vue and for styling ' +
+            'CSS and SASS. For smaller projects I usually use JavaScript.'
+        },
+        {
+          type: 'subtitle',
+          text: 'Databases and DevOps'
+        },
+        {
+          type: 'paragraph',
+          text:
+            'For relational databases I use PostgreSQL or MySQL and containerize my projects with Docker. For deployment I use AWS ' +
+            "and Vercel. K8's is also a tool that I use quite often."
+        },
+        {
+          type: 'paragraph',
+          text: 'Thanks for reading. 🙏'
+        },
+        {
+          type: 'paragraph',
+          text: '<strong>"In real open source, you have the right to control your own destiny"</strong> | Linus Torvalds'
         }
       ]
     }
