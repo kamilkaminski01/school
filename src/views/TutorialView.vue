@@ -20,15 +20,33 @@
       <img :src="tutorial.header.demo" @load="onImageLoad" alt="tutorial demo" class="demo__img" />
     </div>
     <div class="tutorial__content">
-      <template v-for="(content, index) in tutorial.content">
-        <h2 v-if="content.type === 'title'" :key="index" class="tutorial__content-title">
-          {{ content.text }}
-        </h2>
-        <p v-if="content.type === 'paragraph'" :key="index" class="tutorial__content-paragraph">
-          {{ content.text }}
-        </p>
-        <pre v-if="content.type === 'code'" :key="index"><code>{{ content.text }}</code></pre>
+      <template v-for="(content, contentIndex) in tutorial.content">
+        <h2
+          v-if="content.type === 'title'"
+          :key="contentIndex"
+          class="tutorial__content-title"
+          v-html="content.text" />
+        <p
+          v-if="content.type === 'paragraph'"
+          :key="contentIndex"
+          class="tutorial__content-paragraph"
+          v-html="content.text" />
+        <pre
+          v-if="content.type === 'code'"
+          :key="contentIndex"
+          class="tutorial__content-code"><code :class="content.lang">{{ content.text }}</code></pre>
+        <ul v-if="content.type === 'list'" :key="contentIndex" class="tutorial__content-list">
+          <li v-for="(item, listIndex) in content.items" :key="listIndex" v-html="item" />
+        </ul>
+        <div v-if="content.type === 'icons'" :key="contentIndex" class="tutorial__content-icons">
+          <div class="tutorial__content-icon">
+            {{ content.text }}
+          </div>
+        </div>
       </template>
+      <p class="tutorial__content-return">
+        Go back to <RouterLink :to="{ name: 'projects' }">Projects</RouterLink>
+      </p>
     </div>
   </main>
 </template>
@@ -150,6 +168,44 @@ const tutorial = computed(() => {
     .tutorial__content-paragraph {
       line-height: 1.75;
       margin-top: 1.25rem;
+    }
+
+    .tutorial__content-code {
+      font-size: 14px;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background-color: $github-dark-dimmed;
+      border-radius: 0.5rem;
+    }
+
+    .tutorial__content-list {
+      margin: 1.5rem 0 1.5rem 1.5rem;
+      padding: 0;
+
+      li {
+        margin-top: 0.5rem;
+      }
+    }
+
+    .tutorial__content-icons {
+      display: flex;
+      gap: 0.75rem;
+
+      .tutorial__content-icon {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+      }
+    }
+
+    .tutorial__content-return {
+      margin-top: 2rem;
+
+      a {
+        color: $vivid-cerulean;
+        border-bottom: 1px solid $vivid-cerulean;
+      }
     }
   }
 

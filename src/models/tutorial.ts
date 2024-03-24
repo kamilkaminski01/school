@@ -5,7 +5,10 @@ export interface ITutorial {
     demo: string
   }
   content: {
-    type: 'title' | 'paragraph' | 'code'
-    text: string
+    type: 'title' | 'paragraph' | 'code' | 'list' | 'icons'
+    text?: string
+    lang?: string
+    items?: string[]
+    icon?: string
   }[]
 }
