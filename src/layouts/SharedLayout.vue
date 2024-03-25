@@ -1,7 +1,7 @@
 <template>
   <div class="shared-layout">
     <AppHeader />
-    <slot />
+    <RouterView />
     <AppFooter />
   </div>
 </template>

@@ -1,10 +1,10 @@
 <template>
-  <main class="blogs-page">
+  <main class="blog-page">
     <div class="content-page__header">
       <h1 class="header__title">Blog</h1>
       <p class="header__desc">Read my thoughts on software engineering, and more.</p>
     </div>
-    <div class="blogs-page__content">
+    <div class="blog-page__content">
       <div v-for="(blog, index) in BLOGS" :key="index" class="content__blog">
         <RouterLink :to="{ name: blog.link }" class="content__blog-link">
           {{ blog.title }}
@@ -20,10 +20,10 @@ import { BLOGS } from '@/utils/consts'
 </script>
 
 <style lang="scss">
-.blogs-page {
+.blog-page {
   @include content-page;
 
-  .blogs-page__content {
+  .blog-page__content {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
