@@ -2,7 +2,9 @@ import MonitoringSystemThumbnail from '@/assets/images/1.svg'
 import DevelopmentForumThumbnail from '@/assets/images/2.svg'
 import JobBoardThumbnail from '@/assets/images/3.svg'
 import RecommendationsSystemThumbnail from '@/assets/images/4.svg'
-import { jobBoard } from './code'
+import { jobBoard, recommendationsSystem } from './code'
+import GitHubIcon from '@/components/icons/GitHubIcon.vue'
+import MonitorIcon from '@/components/icons/MonitorIcon.vue'
 
 export const BLOGS = {
   djangoReactChat: {
@@ -56,7 +58,8 @@ export const BLOGS = {
     sections: [],
     tutorial: {
       header: {
-        date: 'Mar 28, 2024',
+        date: 'Mar 25, 2024',
+        read: '1 min read',
         title: "Hi 👋, I'm Kamil",
         demo: ''
       },
@@ -187,7 +190,16 @@ export const PROJECTS = {
           text: jobBoard[0].code
         },
         { type: 'title', text: 'Links' },
-        { type: 'icons', icon: '', text: 'GitHub' }
+        {
+          type: 'icons',
+          icons: [
+            {
+              icon: GitHubIcon,
+              text: 'GitHub',
+              link: 'https://github.com/kamilkaminski01/job-board'
+            }
+          ]
+        }
       ]
     }
   },
@@ -209,6 +221,17 @@ export const PROJECTS = {
         {
           type: 'paragraph',
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+        },
+        { type: 'title', text: 'Links' },
+        {
+          type: 'icons',
+          icons: [
+            {
+              icon: GitHubIcon,
+              text: 'GitHub',
+              link: 'https://github.com/kamilkaminski01/development-forum'
+            }
+          ]
         }
       ]
     }
@@ -231,6 +254,22 @@ export const PROJECTS = {
         {
           type: 'paragraph',
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+        },
+        { type: 'title', text: 'Links' },
+        {
+          type: 'icons',
+          icons: [
+            {
+              icon: GitHubIcon,
+              text: 'GitHub',
+              link: 'https://github.com/kamilkaminski01/monitoring-system'
+            },
+            {
+              icon: MonitorIcon,
+              text: 'Live',
+              link: 'https://monitoring-system.app/'
+            }
+          ]
         }
       ]
     }
@@ -245,14 +284,91 @@ export const PROJECTS = {
     tutorial: {
       header: {
         date: 'Oct 13, 2022',
+        read: '2 min read',
         title: 'Recommendations System',
         demo: 'https://raw.githubusercontent.com/kamilkaminski01/recommendations-system/main/frontend/src/assets/images/demo1.png'
       },
       content: [
-        { type: 'title', text: 'Hi there' },
+        { type: 'title', text: 'Hello friend! 👋' },
         {
           type: 'paragraph',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+          text:
+            '<strong>Recommendations System</strong> is a project based on recruitment and advertisement for companies. Companies can ' +
+            'log in to the Django admin panel and publish their offers.'
+        },
+        {
+          type: 'paragraph',
+          text:
+            'On the other hand, users can register, log in to the site, ' +
+            'browse offers and recommend candidates in recruitment offers or advertise commercial offers for potential clients. ' +
+            'When the company hires a referred candidate or sells a product for a customer that has been recommended, the referrer ' +
+            'receives points declared in the offer as a reward. 🎁'
+        },
+        {
+          type: 'paragraph',
+          text:
+            'Thanks to this feature, the recommender can spend their points in a shop ' +
+            "that's available on the site. Products in the shop are added and maintained by the owner of the site."
+        },
+        { type: 'title', text: 'Technology' },
+        {
+          type: 'list',
+          items: [
+            '<strong>The backend side</strong> is built with Python, <a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer">Django</a> and ' +
+              '<a href="https://www.django-rest-framework.org/" target="_blank" rel="noopener noreferrer">Django REST Framework</a>.',
+            '<strong>The frontend side</strong> is built with JavaScript, <a href="https://react.dev/" target="_blank" rel="noopener noreferrer">React.js</a> and ' +
+              '<a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">SCSS</a>.',
+            '<strong>The database</strong> is handled by <a href="https://www.postgresql.org.pl/" target="_blank" rel="noopener noreferrer">Postgres</a> in a ' +
+              '<a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">Docker</a> container.'
+          ]
+        },
+        { type: 'title', text: 'Running the app' },
+        {
+          type: 'paragraph',
+          text: 'Docker Compose setup:'
+        },
+        {
+          type: 'code',
+          lang: recommendationsSystem[0].lang,
+          text: recommendationsSystem[0].code
+        },
+        {
+          type: 'warning',
+          text:
+            'Note that you need <a href="https://docs.docker.com/compose/migrate/" target="_blank" rel="noopener noreferrer">Compose V2</a> ' +
+            'in order to run these Docker commands successfully'
+        },
+        {
+          type: 'paragraph',
+          text: 'If <code class="inline-code">make</code> is not supported you can use the following Docker Compose commands:'
+        },
+        {
+          type: 'code',
+          lang: recommendationsSystem[1].lang,
+          text: recommendationsSystem[1].code
+        },
+        {
+          type: 'title',
+          text: 'Application setup'
+        },
+        {
+          type: 'paragraph',
+          text:
+            'After running the app, you can set up the database with mocked data thanks to the ' +
+            '<code class="inline-code">make initial-data</code> command. More information about what data will populate the database ' +
+            'is available 👉 ' +
+            '<a href="https://github.com/kamilkaminski01/recommendations-system?tab=readme-ov-file#application-setup" target="_blank" rel="noopener noreferrer">here</a>.'
+        },
+        { type: 'title', text: 'Links' },
+        {
+          type: 'icons',
+          icons: [
+            {
+              icon: GitHubIcon,
+              text: 'GitHub',
+              link: 'https://github.com/kamilkaminski01/recommendations-system'
+            }
+          ]
         }
       ]
     }

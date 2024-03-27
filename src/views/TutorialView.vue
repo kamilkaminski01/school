@@ -3,7 +3,10 @@
     <RouterLink :to="{ name: returnLink }" class="tutorial__return-link">
       <LeftArrowIcon /> Back
     </RouterLink>
-    <p class="tutorial__date">{{ tutorial.header.date }}</p>
+    <div class="tutorial__info">
+      <p class="tutorial__info-date">{{ tutorial.header.date }}</p>
+      <p class="tutorial__info-read">{{ tutorial.header.read }}</p>
+    </div>
     <h1 class="tutorial__title">{{ tutorial.header.title }}</h1>
     <div class="tutorial__author">
       <img src="@/assets/images/kamil-kaminski.jpg" alt="Kamil Kamiński" class="author__img" />
@@ -43,10 +46,22 @@
         <ul v-if="content.type === 'list'" :key="contentIndex" class="tutorial__content-list">
           <li v-for="(item, listIndex) in content.items" :key="listIndex" v-html="item" />
         </ul>
+        <div
+          v-if="content.type === 'warning'"
+          :key="contentIndex"
+          class="tutorial__content-warning"
+          v-html="content.text" />
         <div v-if="content.type === 'icons'" :key="contentIndex" class="tutorial__content-icons">
-          <div class="tutorial__content-icon">
-            {{ content.text }}
-          </div>
+          <a
+            v-for="(icon, iconIndex) in content.icons"
+            :key="iconIndex"
+            :href="icon.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="tutorial__content-icon"
+            :class="{ github: icon.text === 'GitHub', live: icon.text === 'Live' }">
+            <component :is="icon.icon" /> {{ icon.text }}
+          </a>
         </div>
       </template>
       <p class="tutorial__content-return">
@@ -122,9 +137,15 @@ const tutorial = computed(() => {
     }
   }
 
-  .tutorial__date {
-    font-size: 14px;
-    color: $slate-gray;
+  .tutorial__info {
+    display: flex;
+    justify-content: space-between;
+
+    .tutorial__info-date,
+    .tutorial__info-read {
+      font-size: 14px;
+      color: $slate-gray;
+    }
   }
 
   .tutorial__title {
@@ -187,6 +208,8 @@ const tutorial = computed(() => {
       padding: 1rem;
       background-color: $github-dark-dimmed;
       border-radius: 0.5rem;
+
+      overflow-x: auto;
     }
 
     .tutorial__content-list {
@@ -198,6 +221,13 @@ const tutorial = computed(() => {
       }
     }
 
+    .tutorial__content-warning {
+      margin: 2rem 0;
+      padding: 1.35rem 1.5rem;
+      border-radius: 0.5rem;
+      background-color: rgba(133, 77, 14, 0.2);
+    }
+
     .tutorial__content-icons {
       display: flex;
       gap: 0.75rem;
@@ -205,16 +235,51 @@ const tutorial = computed(() => {
       .tutorial__content-icon {
         display: flex;
         align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
         padding: 0.5rem 1rem;
         border-radius: 0.375rem;
+        font-size: 0.875em;
+
+        transition:
+          color ease-in-out 0.1s,
+          background-color ease-in-out 0.1s;
       }
+
+      .github {
+        color: $rich-black;
+        background-color: $white;
+
+        &:hover {
+          color: $anti-flash-white;
+          background-color: $yankees-blue;
+        }
+      }
+
+      .live {
+        color: $anti-flash-white;
+        border: 1px solid $yankees-blue;
+
+        &:hover {
+          background-color: $yankees-blue;
+        }
+      }
+    }
+
+    .inline-code {
+      display: inline-block;
+      padding: 0.1rem 0.3rem;
+      font-size: 14px;
+      color: #94a3b8;
+      border-radius: 0.25rem;
+      background-color: $github-dark-dimmed;
     }
 
     .tutorial__content-return {
       margin-top: 2rem;
     }
 
-    a {
+    a:not(.tutorial__content-icon) {
       color: $vivid-cerulean;
 
       &:hover {
