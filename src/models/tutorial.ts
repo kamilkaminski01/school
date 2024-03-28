@@ -1,3 +1,15 @@
+export enum CONTENT_TYPE {
+  title = 'title',
+  subtitle = 'subtitle',
+  paragraph = 'paragraph',
+  code = 'code',
+  list = 'list',
+  quote = 'quote',
+  note = 'note',
+  warning = 'warning',
+  icons = 'icons'
+}
+
 export interface ITutorial {
   header: {
     date: string
@@ -6,7 +18,7 @@ export interface ITutorial {
     demo: string
   }
   content: {
-    type: 'title' | 'subtitle' | 'paragraph' | 'code' | 'list' | 'warning' | 'icons'
+    type: CONTENT_TYPE
     text?: string
     lang?: string
     items?: string[]

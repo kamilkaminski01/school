@@ -8,6 +8,16 @@ docker compose up`
   }
 ]
 
+export const monitoringSystem = [
+  {
+    lang: 'language-bash',
+    code: `git clone https://github.com/kamilkaminski01/monitoring-system.git
+cd monitoring-system/
+make build
+make run`
+  }
+]
+
 export const recommendationsSystem = [
   {
     lang: 'language-bash',

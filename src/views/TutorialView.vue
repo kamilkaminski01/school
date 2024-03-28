@@ -25,33 +25,48 @@
     <div class="tutorial__content">
       <template v-for="(content, contentIndex) in tutorial.content">
         <h2
-          v-if="content.type === 'title'"
+          v-if="content.type === CONTENT_TYPE.title"
           :key="contentIndex"
           class="tutorial__content-title"
           v-html="content.text" />
         <h4
-          v-if="content.type === 'subtitle'"
+          v-if="content.type === CONTENT_TYPE.subtitle"
           :key="contentIndex"
           class="tutorial__content-subtitle"
           v-html="content.text" />
         <p
-          v-if="content.type === 'paragraph'"
+          v-if="content.type === CONTENT_TYPE.paragraph"
           :key="contentIndex"
           class="tutorial__content-paragraph"
           v-html="content.text" />
         <pre
-          v-if="content.type === 'code'"
+          v-if="content.type === CONTENT_TYPE.code"
           :key="contentIndex"
           class="tutorial__content-code"><code :class="content.lang">{{ content.text }}</code></pre>
-        <ul v-if="content.type === 'list'" :key="contentIndex" class="tutorial__content-list">
+        <ul
+          v-if="content.type === CONTENT_TYPE.list"
+          :key="contentIndex"
+          class="tutorial__content-list">
           <li v-for="(item, listIndex) in content.items" :key="listIndex" v-html="item" />
         </ul>
-        <div
-          v-if="content.type === 'warning'"
+        <blockquote
+          v-if="content.type === CONTENT_TYPE.quote"
           :key="contentIndex"
-          class="tutorial__content-warning"
+          class="tutorial__content-quote"
           v-html="content.text" />
-        <div v-if="content.type === 'icons'" :key="contentIndex" class="tutorial__content-icons">
+        <div
+          v-if="content.type === CONTENT_TYPE.note || content.type === CONTENT_TYPE.warning"
+          :key="contentIndex"
+          class="tutorial__content-note"
+          :class="{
+            note: content.type === CONTENT_TYPE.note,
+            warning: content.type === CONTENT_TYPE.warning
+          }"
+          v-html="content.text" />
+        <div
+          v-if="content.type === CONTENT_TYPE.icons"
+          :key="contentIndex"
+          class="tutorial__content-icons">
           <a
             v-for="(icon, iconIndex) in content.icons"
             :key="iconIndex"
@@ -80,7 +95,7 @@
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import LeftArrowIcon from '@/components/icons/LeftArrowIcon.vue'
-import type { ITutorial } from '@/models/tutorial'
+import { CONTENT_TYPE, type ITutorial } from '@/models/tutorial'
 import AppSpinner from '@/components/AppSpinner.vue'
 
 const route = useRoute()
@@ -221,10 +236,26 @@ const tutorial = computed(() => {
       }
     }
 
-    .tutorial__content-warning {
+    .tutorial__content-quote {
+      display: block;
+      margin-top: 1.5rem;
+      padding-left: 0.75rem;
+      line-height: 1.75rem;
+      border: 0 solid $yankees-blue;
+      border-left-width: 2px;
+    }
+
+    .tutorial__content-note {
       margin: 2rem 0;
       padding: 1.35rem 1.5rem;
       border-radius: 0.5rem;
+    }
+
+    .note {
+      background-color: rgba(34, 197, 94, 0.05);
+    }
+
+    .warning {
       background-color: rgba(133, 77, 14, 0.2);
     }
 
