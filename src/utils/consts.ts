@@ -3,7 +3,7 @@ import DevelopmentForumThumbnail from '@/assets/images/2.svg'
 import JobBoardThumbnail from '@/assets/images/3.svg'
 import RecommendationsSystemThumbnail from '@/assets/images/4.svg'
 import { CONTENT_TYPE } from '@/models/tutorial'
-import { jobBoard, monitoringSystem, recommendationsSystem } from './code'
+import { developmentForum, jobBoard, monitoringSystem, recommendationsSystem } from './code'
 import GitHubIcon from '@/components/icons/GitHubIcon.vue'
 import MonitorIcon from '@/components/icons/MonitorIcon.vue'
 
@@ -214,14 +214,93 @@ export const PROJECTS = {
     tutorial: {
       header: {
         date: 'Mar 9, 2023',
+        read: '2 min read',
         title: 'Development Forum',
         demo: 'https://raw.githubusercontent.com/kamilkaminski01/development-forum/main/app/static/images/demo1.png'
       },
       content: [
-        { type: CONTENT_TYPE.title, text: 'Welcome!' },
+        { type: CONTENT_TYPE.title, text: 'Hi friend 👋🏼' },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+          text:
+            'This project is a question-and-answer/forum website for developers similar to ' +
+            '<a href="https://stackoverflow.com/" target="_blank" rel="noopener noreferrer">Stack Overflow</a>. Users can public ' +
+            'a question in a self-made topic or an existing one. The site is not narrowed down to just questions because users can ' +
+            'also discuss on computer programming topics and its surroundings.'
+        },
+        { type: CONTENT_TYPE.title, text: 'Key features' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'CRUD operations, authentication and searching are all included, but in details:'
+        },
+        {
+          type: CONTENT_TYPE.list,
+          items: [
+            'Session based authentication',
+            'User profile personalization',
+            'User functions such as moderators and superusers',
+            'CRUD operations on topics, rooms, replies and users',
+            'Ability to search for rooms of interest'
+          ]
+        },
+        { type: CONTENT_TYPE.title, text: 'Technology' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            '<strong>Development Forum</strong> leverages <a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer">Django</a> ' +
+            'for the web server framework and HTML/CSS for the frontend side. Additional requirements can be found in the ' +
+            '<a href="https://github.com/kamilkaminski01/development-forum/blob/main/requirements.txt" target="_blank" rel="noopener noreferrer">requirements.txt</a> file, ' +
+            "but it's nothing major."
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'Additionally, there is a <a href="https://github.com/kamilkaminski01/development-forum/blob/main/Dockerfile" target="_blank" rel="noopener noreferrer">Dockerfile</a> ' +
+            'because in the past I pushed this project into production on <a href="https://railway.app/" target="_blank" rel="noopener noreferrer">Railway</a>. To find some Docker commands ' +
+            'that can be used for this application, head over to the <a href="https://github.com/kamilkaminski01/development-forum/blob/main/Makefile" target="_blank" rel="noopener noreferrer">Makefile</a>.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'Static files such as profile avatars can be hosted on <a href="https://aws.amazon.com/s3/" target="_blank" rel="noopener noreferrer">AWS S3</a> and this project is ready for just that. ' +
+            'Environment variables are set in the <code class="inline-code">app/.env</code> file.'
+        },
+        { type: CONTENT_TYPE.title, text: 'Running the app' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Clone the repo and create a virtual environment:'
+        },
+        { type: CONTENT_TYPE.code, lang: developmentForum[0].lang, text: developmentForum[0].code },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Install the dependencies and initialize the database with migrations:'
+        },
+        { type: CONTENT_TYPE.code, lang: developmentForum[1].lang, text: developmentForum[1].code },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Finally, run the app ⚡️:'
+        },
+        { type: CONTENT_TYPE.code, lang: developmentForum[2].lang, text: developmentForum[2].code },
+        { type: CONTENT_TYPE.title, text: 'Application setup' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'The database can be initialized with mocked data. More information on what data will populate the database can be found 👉🏼 ' +
+            '<a href="https://github.com/kamilkaminski01/development-forum?tab=readme-ov-file#application-setup" target="_blank" rel="noopener noreferrer">here</a>. ' +
+            'Thanks to this custom command you can dive straight into work without wasting any time. Here are the required steps:'
+        },
+        { type: CONTENT_TYPE.code, lang: developmentForum[3].lang, text: developmentForum[3].code },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "If your machine doesn't support <code class='inline-code'>make</code>, cd in to the <code class='inline-code'>app/</code> directory and run this:"
+        },
+        { type: CONTENT_TYPE.code, lang: developmentForum[4].lang, text: developmentForum[4].code },
+        { type: CONTENT_TYPE.title, text: 'Credits' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'This project was forked from Dennis Ivy&apos;s <a href="https://github.com/divanov11/StudyBud/" target="_blank" rel="noopener noreferrer">Study Bud</a>. Check ' +
+            'out his free <a href="https://www.youtube.com/watch?v=PtQiiknWUcI" target="_blank" rel="noopener noreferrer">course</a> on how he created it.'
         },
         { type: CONTENT_TYPE.title, text: 'Links' },
         {
@@ -345,7 +424,9 @@ export const PROJECTS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'Environment variables can be found in the <code class="inline-code">.envs/</code> directory.'
+          text:
+            'Environment variables can be found in the <code class="inline-code">.envs/</code> directory. In order to use production based docker compose commands use the ' +
+            '<code class="inline-code">env=prod</code> flag, for example: <code class="inline-code">make build env=prod</code>'
         },
         { type: CONTENT_TYPE.title, text: 'Conclusion' },
         {

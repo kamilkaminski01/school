@@ -1,20 +1,19 @@
 <template>
   <svg
-    width="150px"
-    height="150px"
-    viewBox="0 0 32 32"
     xmlns="http://www.w3.org/2000/svg"
+    aria-label="Django"
+    role="img"
+    viewBox="0 0 512 512"
+    width="200px"
+    height="228px"
     fill="#000000">
-    <g id="SVGRepo_bgCarrier" stroke-width="0" />
-    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
     <g id="SVGRepo_iconCarrier">
+      <rect width="512" height="512" rx="15%" fill="#113228"></rect>
       <path
-        d="M14.135,4H18.1V22.169a26.218,26.218,0,0,1-5.143.535c-4.842-.005-7.362-2.168-7.362-6.322,0-4,2.673-6.6,6.816-6.6a6.448,6.448,0,0,1,1.724.2V4Zm0,9.142a3.992,3.992,0,0,0-1.337-.2c-2,0-3.163,1.223-3.163,3.366,0,2.087,1.107,3.239,3.138,3.239a9.355,9.355,0,0,0,1.362-.1v-6.3Z"
-        style="fill: #44b78b" />
-      <path
-        d="M24.4,10.059v9.1c0,3.133-.235,4.639-.923,5.938A6.316,6.316,0,0,1,20.237,28l-3.678-1.733A5.708,5.708,0,0,0,19.7,23.638c.566-1.121.745-2.42.745-5.837V10.059Z"
-        style="fill: #44b78b" />
-      <rect x="20.441" y="4.02" width="3.964" height="4.028" style="fill: #44b78b" />
+        fill="#ffffff"
+        d="M227 101h56v257c-29 5-50 8-73 8-69 0-104-31-104-90 0-57 37-93 96-93 9 0 16 0 25 2zm0 129c-7-2-12-3-19-3-29 0-45 18-45 48s15 46 44 46c6 0 11 0 20-2zm145-44v129c0 45-3 66-13 84-9 18-21 29-46 42l-52-25c25-11 37-22 44-37 8-16 11-34 11-83V186zm-56-85h56v57h-56z"></path>
     </g>
   </svg>
 </template>

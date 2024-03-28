@@ -112,12 +112,8 @@ import { BLOGS } from '@/utils/consts'
       svg {
         position: absolute;
 
-        &:first-child {
-          transform: translate(-45px, -15px) rotate(25deg);
-        }
-
         &:last-child {
-          transform: translate(25px, 100px) rotate(-15deg);
+          transform: translate(67px, 152px);
         }
       }
     }
