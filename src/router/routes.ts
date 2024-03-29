@@ -2,6 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import { BLOGS, PROJECTS } from '@/utils/consts'
 import SharedLayout from '@/layouts/SharedLayout.vue'
+import ThumbnailView from '@/views/ThumbnailView.vue'
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -71,5 +72,10 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/TutorialView.vue')
       }
     ]
+  },
+  {
+    path: '/thumbnail',
+    name: 'thumbnail',
+    component: ThumbnailView
   }
 ]

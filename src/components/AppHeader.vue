@@ -5,6 +5,7 @@
         <LogoIcon width="24" height="24" />School Kamil Kamiński
       </RouterLink>
       <div class="header__links">
+        <RouterLink :to="{ name: 'thumbnail' }" class="header__link">Thumbnail</RouterLink>
         <RouterLink :to="{ name: 'blog' }" class="header__link">Blog</RouterLink>
         <RouterLink :to="{ name: 'projects' }" class="header__link">Projects</RouterLink>
       </div>
