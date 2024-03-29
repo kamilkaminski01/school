@@ -1,7 +1,7 @@
-import MonitoringSystemThumbnail from '@/assets/images/monitoring-system.jpg'
-import DevelopmentForumThumbnail from '@/assets/images/development-forum.jpg'
-import JobBoardThumbnail from '@/assets/images/job-board.jpg'
-import RecommendationsSystemThumbnail from '@/assets/images/recommendations-system.jpg'
+import MonitoringSystemThumbnail from '@/assets/images/monitoring-system.png'
+import DevelopmentForumThumbnail from '@/assets/images/development-forum.png'
+import JobBoardThumbnail from '@/assets/images/job-board.png'
+import RecommendationsSystemThumbnail from '@/assets/images/recommendations-system.png'
 import { CONTENT_TYPE } from '@/models/tutorial'
 import { developmentForum, jobBoard, monitoringSystem, recommendationsSystem } from './code'
 import GitHubIcon from '@/components/icons/GitHubIcon.vue'
@@ -326,7 +326,7 @@ export const PROJECTS = {
     tutorial: {
       header: {
         date: 'Nov 27, 2022',
-        read: '5 min read',
+        read: '3 min read',
         title: 'Monitoring System',
         demo: 'https://raw.githubusercontent.com/kamilkaminski01/monitoring-system/master/frontend/src/assets/images/demo.png'
       },
