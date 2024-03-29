@@ -1,7 +1,7 @@
-import MonitoringSystemThumbnail from '@/assets/images/1.svg'
-import DevelopmentForumThumbnail from '@/assets/images/2.svg'
-import JobBoardThumbnail from '@/assets/images/3.svg'
-import RecommendationsSystemThumbnail from '@/assets/images/4.svg'
+import MonitoringSystemThumbnail from '@/assets/images/monitoring-system.jpg'
+import DevelopmentForumThumbnail from '@/assets/images/development-forum.jpg'
+import JobBoardThumbnail from '@/assets/images/job-board.jpg'
+import RecommendationsSystemThumbnail from '@/assets/images/recommendations-system.jpg'
 import { CONTENT_TYPE } from '@/models/tutorial'
 import { developmentForum, jobBoard, monitoringSystem, recommendationsSystem } from './code'
 import GitHubIcon from '@/components/icons/GitHubIcon.vue'
@@ -209,7 +209,7 @@ export const PROJECTS = {
     date: 'Mar 9, 2023',
     link: 'development-forum',
     thumbnail: DevelopmentForumThumbnail,
-    title: 'Forum about development topics',
+    title: 'Forum for software topics',
     desc: 'Create topics, rooms and help others',
     tutorial: {
       header: {
