@@ -45,8 +45,8 @@
       top: calc(#{$offset} / 2 * -1);
       background: linear-gradient(
         to bottom,
-        hsla(0, 0%, 100%, 0.25),
-        hsla(0, 0%, 100%, 0.25) 45%,
+        hsla(0, 0%, 100%, 0.4),
+        hsla(0, 0%, 100%, 0.4) 45%,
         // odstęp między liniami
         transparent 0
       );
@@ -62,8 +62,8 @@
       left: calc(#{$offset} / 2 * -1);
       background: linear-gradient(
         to right,
-        hsla(0, 0%, 100%, 0.25),
-        hsla(0, 0%, 100%, 0.25) 45%,
+        hsla(0, 0%, 100%, 0.4),
+        hsla(0, 0%, 100%, 0.4) 45%,
         // odstęp między liniami
         transparent 0
       );
