@@ -235,7 +235,7 @@ export const PROJECTS = {
         },
         {
           type: CONTENT_TYPE.warning,
-          text: 'Note that for using AWS SES or social OAuth you need additional configurations on their sites'
+          text: 'Note that to use AWS SES or social OAuth you need additional configurations on their sites'
         },
         { type: CONTENT_TYPE.title, text: 'Project Setup' },
         {
