@@ -44,11 +44,17 @@
           :key="contentIndex"
           class="tutorial__content-code"><code :class="content.lang">{{ content.text }}</code></pre>
         <ul
-          v-if="content.type === CONTENT_TYPE.list"
+          v-if="content.type === CONTENT_TYPE.unorderedList"
           :key="contentIndex"
           class="tutorial__content-list">
           <li v-for="(item, listIndex) in content.items" :key="listIndex" v-html="item" />
         </ul>
+        <ol
+          v-if="content.type === CONTENT_TYPE.orderedList"
+          :key="contentIndex"
+          class="tutorial__content-list">
+          <li v-for="(item, listIndex) in content.items" :key="listIndex" v-html="item" />
+        </ol>
         <blockquote
           v-if="content.type === CONTENT_TYPE.quote"
           :key="contentIndex"

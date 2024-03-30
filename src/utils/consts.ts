@@ -161,6 +161,7 @@ export const PROJECTS = {
     tutorial: {
       header: {
         date: 'Oct 7, 2023',
+        read: '3 min read',
         title: 'Job Board',
         demo: 'https://raw.githubusercontent.com/kamilkaminski01/job-board/main/frontend/src/assets/images/demo1.png'
       },
@@ -169,26 +170,111 @@ export const PROJECTS = {
         {
           type: CONTENT_TYPE.paragraph,
           text:
-            'Job Board is a web application designed to streamline the job search process for both job seekers and ' +
-            'employers. This project aims to provide a user-friendly platform where job seekers can search for relevant ' +
-            'job listings and apply for positions, while employers can efficiently post job openings and manage applications.'
+            '<strong>Job Board</strong> is a web application designed to streamline the job search process for both jobseekers and ' +
+            'employers. This project aims to provide a platform where people can search for relevant ' +
+            'jobs in the IT industry and apply for positions, while employers can post job offers and manage their candidates.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'Creating this project I was inspired by the <a href="https://justjoin.it/" target="_blank" rel="noopener noreferrer">Just Join IT</a> platform and ' +
+            'while searching for my first job this was my go-to website. In my opinion their UX/UI design is very user-friendly, so I challenged myself to ' +
+            'create something similar. 😎'
+        },
+        { type: CONTENT_TYPE.title, text: 'Technologies' },
+        {
+          type: CONTENT_TYPE.unorderedList,
+          items: [
+            '<a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer">Django</a> for the server side application aside with ' +
+              '<a href="https://www.django-rest-framework.org/" target="_blank" rel="noopener noreferrer">Django REST Framework</a> for the REST API',
+            '<a href="https://react.dev/" target="_blank" rel="noopener noreferrer">React</a> written in TypeScript for the user interface',
+            '<a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">SASS</a> for styling',
+            '<a href="https://www.postgresql.org.pl/" target="_blank" rel="noopener noreferrer">Postgres</a> for the database',
+            '<a href="https://python-rq.org/" target="_blank" rel="noopener noreferrer">RQ</a> for an asynchronous worker for time-consuming tasks such as sending emails.',
+            'Everything running in a <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">Docker</a> environment'
+          ]
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'More technical details can be found in the ' +
+            '<a href="https://github.com/kamilkaminski01/job-board#readme" target="_blank" rel="noopener noreferrer">README</a> project.'
         },
         { type: CONTENT_TYPE.title, text: 'Key Features' },
         {
-          type: CONTENT_TYPE.list,
-          items: [
-            '<strong>OAuth (Open Authentication)</strong> is an open standard for access delegation'
-          ]
+          type: CONTENT_TYPE.quote,
+          text:
+            '<strong>Social authentication</strong> - users can register and login through Google OAuth 2.0 or GitHub OAuth. Users can dive into the site ' +
+            'using their existing Google or GitHub account, eliminating the need to create or remember additional credentials.'
+        },
+        {
+          type: CONTENT_TYPE.quote,
+          text:
+            '<strong>Emailing</strong> - when applying for a job offer, a candidate as well as the employer receive notifications in a form of an email. This ' +
+            'feature is handled by <a href="https://aws.amazon.com/ses/" target="_blank" rel="noopener noreferrer">AWS SES</a>.'
+        },
+        {
+          type: CONTENT_TYPE.quote,
+          text: '<strong>Pagination</strong> - jobs are listed 20 per page which provides optimization during searching.'
+        },
+        {
+          type: CONTENT_TYPE.quote,
+          text: '<strong>Filters</strong> - offers can be filtered by newest, minimal or maximal salary or by the salary range of an offer.'
+        },
+        {
+          type: CONTENT_TYPE.quote,
+          text:
+            '<strong>Global colors customization</strong> - main, secondary and details like hover colors can be modified through the Django admin panel by the ' +
+            'maintainer of the site.'
+        },
+        {
+          type: CONTENT_TYPE.quote,
+          text:
+            '<strong>Skeletons</strong> - during loading job offers instead of a blank space, skeletons mimic the structure and layout of the content that is being loaded, ' +
+            'indicating that the page is actively fetching data.'
+        },
+        {
+          type: CONTENT_TYPE.warning,
+          text: 'Note that for using AWS SES or social OAuth you need additional configurations on their sites'
         },
         { type: CONTENT_TYPE.title, text: 'Project Setup' },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'Docker Compose'
+          text: 'Make sure you have <a href="https://docs.docker.com/compose/migrate/" target="_blank" rel="noopener noreferrer">Compose V2</a> installed:'
         },
         {
           type: CONTENT_TYPE.code,
           lang: jobBoard[0].lang,
           text: jobBoard[0].code
+        },
+        { type: CONTENT_TYPE.title, text: 'Application setup' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'The database can be initialized with mocked data thanks to the <code class="inline-code">make initial-data</code> command. ' +
+            'More information on what data will populate the database can be found ' +
+            '<a href="https://github.com/kamilkaminski01/job-board?tab=readme-ov-file#application-setup" target="_blank" rel="noopener noreferrer">here</a>.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'If <code class="inline-code">make</code> is not supported, you can use <code class="inline-code">python manage.py initialize_data</code>'
+        },
+        { type: CONTENT_TYPE.title, text: 'Usage workflow' },
+        {
+          type: CONTENT_TYPE.orderedList,
+          items: [
+            'A maintainer of the site registers companies through the admin panel',
+            'The company representative logs into the admin panel and creates jobs offers',
+            'A user registers on the site and updates his profile with additional information',
+            'The user seeks, finds a job offer and then applies',
+            'Both candidate and company receive emails notifying that the application has had place',
+            'Companies representatives manages candidates applications for their job offers',
+            'The user can see his applications history on his profile'
+          ]
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Additionally the owner/maintainer of the site can modify global colors of the frontend app, send emails to users/companies and more. 👨🏽‍💻'
         },
         { type: CONTENT_TYPE.title, text: 'Links' },
         {
@@ -234,7 +320,7 @@ export const PROJECTS = {
           text: 'CRUD operations, authentication and searching are all included, but in details:'
         },
         {
-          type: CONTENT_TYPE.list,
+          type: CONTENT_TYPE.unorderedList,
           items: [
             'Session based authentication',
             'User profile personalization',
@@ -391,7 +477,7 @@ export const PROJECTS = {
             'In terms of libraries and building tools: '
         },
         {
-          type: CONTENT_TYPE.list,
+          type: CONTENT_TYPE.unorderedList,
           items: [
             '<a href="https://github.com/django/daphne" target="_blank" rel="noopener noreferrer">Daphne</a>',
             '<a href="https://www.django-rest-framework.org/" target="_blank" rel="noopener noreferrer">Django REST Framework</a>',
@@ -416,7 +502,7 @@ export const PROJECTS = {
           text: 'This is a production ready project, therefore you can find two docker compose yaml files:'
         },
         {
-          type: CONTENT_TYPE.list,
+          type: CONTENT_TYPE.unorderedList,
           items: [
             '<code class="inline-code">docker-compose.yml</code> is designed for development purposes.',
             '<code class="inline-code">docker-compose-prod.yml</code> is designed for production purposes.'
@@ -493,7 +579,7 @@ export const PROJECTS = {
         },
         { type: CONTENT_TYPE.title, text: 'Technology' },
         {
-          type: CONTENT_TYPE.list,
+          type: CONTENT_TYPE.unorderedList,
           items: [
             '<strong>The backend side</strong> is built with Python, <a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer">Django</a> and ' +
               '<a href="https://www.django-rest-framework.org/" target="_blank" rel="noopener noreferrer">Django REST Framework</a>.',
