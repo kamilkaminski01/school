@@ -39,10 +39,19 @@
           :key="contentIndex"
           class="tutorial__content-paragraph"
           v-html="content.text" />
-        <pre
+        <div
+          class="tutorial__content-code-items"
           v-if="content.type === CONTENT_TYPE.code"
-          :key="contentIndex"
-          class="tutorial__content-code"><code :class="content.lang">{{ content.text }}</code></pre>
+          :key="contentIndex">
+          <pre
+            class="tutorial__content-code"><code :class="content.lang">{{ content.text }}</code></pre>
+          <div class="tutorial__content__clipboard">
+            <div class="tutorial__content__clipboard-icon" @click="copyCode(contentIndex)">
+              <CopyIcon v-if="!copied[contentIndex]" />
+              <CheckmarkIcon v-if="copied[contentIndex]" />
+            </div>
+          </div>
+        </div>
         <ul
           v-if="content.type === CONTENT_TYPE.unorderedList"
           :key="contentIndex"
@@ -103,19 +112,33 @@ import { useRoute } from 'vue-router'
 import LeftArrowIcon from '@/components/icons/LeftArrowIcon.vue'
 import { CONTENT_TYPE, type ITutorial } from '@/models/tutorial'
 import AppSpinner from '@/components/AppSpinner.vue'
+import CopyIcon from '@/components/icons/CopyIcon.vue'
+import CheckmarkIcon from '@/components/icons/CheckmarkIcon.vue'
 
 const route = useRoute()
-const returnLink = route.path.includes('projects') ? 'projects' : 'blog'
+
+const tutorial = computed(() => {
+  return route.meta.tutorial as ITutorial
+})
 
 const isImageLoading = ref(true)
+const copied = ref(Array(tutorial.value.content.length).fill(false))
+
+const returnLink = route.path.includes('projects') ? 'projects' : 'blog'
 
 const onImageLoad = () => {
   isImageLoading.value = false
 }
 
-const tutorial = computed(() => {
-  return route.meta.tutorial as ITutorial
-})
+const copyCode = (contentIndex: number) => {
+  const text = tutorial.value.content[contentIndex].text
+  navigator.clipboard.writeText(text).then(() => {
+    copied.value[contentIndex] = true
+    setTimeout(() => {
+      copied.value[contentIndex] = false
+    }, 2000)
+  })
+}
 </script>
 
 <style lang="scss">
@@ -223,14 +246,39 @@ const tutorial = computed(() => {
       margin-top: 1.25rem;
     }
 
-    .tutorial__content-code {
-      font-size: 14px;
+    .tutorial__content-code-items {
+      display: flex;
+      justify-content: space-between;
       margin: 1.5rem 0;
-      padding: 1rem;
-      background-color: $github-dark-dimmed;
-      border-radius: 0.5rem;
 
-      overflow-x: auto;
+      border-radius: 0.5rem;
+      background-color: $github-dark-dimmed;
+
+      .tutorial__content-code {
+        padding: 1rem 0 1rem 1rem;
+        font-size: 14px;
+        overflow-x: auto;
+      }
+
+      .tutorial__content__clipboard {
+        display: flex;
+        padding: 0.25em 0.5em;
+
+        .tutorial__content__clipboard-icon {
+          padding: 0.2em 0.3em;
+          height: fit-content;
+
+          border-radius: 0.25em;
+          cursor: pointer;
+          transition: background-color ease-in-out 0.1s;
+
+          -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+
+          &:hover {
+            background-color: hsla(0, 0%, 100%, 0.1);
+          }
+        }
+      }
     }
 
     .tutorial__content-list {

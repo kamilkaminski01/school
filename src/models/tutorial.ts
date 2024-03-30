@@ -20,9 +20,9 @@ export interface ITutorial {
   }
   content: {
     type: CONTENT_TYPE
-    text?: string
-    lang?: string
-    items?: string[]
-    icons?: { icon: string; text: string; link: string }[]
+    text: string
+    lang: string
+    items: string[]
+    icons: { icon: string; text: string; link: string }[]
   }[]
 }
