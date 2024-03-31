@@ -60,7 +60,7 @@ export const BLOGS = {
     tutorial: {
       header: {
         date: 'Mar 25, 2024',
-        read: '1 min read',
+        readTime: '1 min read',
         title: "Hi 👋, I'm Kamil",
         demo: ''
       },
@@ -161,7 +161,7 @@ export const PROJECTS = {
     tutorial: {
       header: {
         date: 'Oct 7, 2023',
-        read: '3 min read',
+        readTime: '3 min read',
         title: 'Job Board',
         demo: 'https://raw.githubusercontent.com/kamilkaminski01/job-board/main/frontend/src/assets/images/demo1.png'
       },
@@ -300,7 +300,7 @@ export const PROJECTS = {
     tutorial: {
       header: {
         date: 'Mar 9, 2023',
-        read: '2 min read',
+        readTime: '2 min read',
         title: 'Development Forum',
         demo: 'https://raw.githubusercontent.com/kamilkaminski01/development-forum/main/app/static/images/demo1.png'
       },
@@ -412,7 +412,7 @@ export const PROJECTS = {
     tutorial: {
       header: {
         date: 'Nov 27, 2022',
-        read: '3 min read',
+        readTime: '3 min read',
         title: 'Monitoring System',
         demo: 'https://raw.githubusercontent.com/kamilkaminski01/monitoring-system/master/frontend/src/assets/images/demo.png'
       },
@@ -551,7 +551,7 @@ export const PROJECTS = {
     tutorial: {
       header: {
         date: 'Oct 13, 2022',
-        read: '2 min read',
+        readTime: '2 min read',
         title: 'Recommendations System',
         demo: 'https://raw.githubusercontent.com/kamilkaminski01/recommendations-system/main/frontend/src/assets/images/demo1.png'
       },

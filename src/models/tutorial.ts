@@ -14,7 +14,7 @@ export enum CONTENT_TYPE {
 export interface ITutorial {
   header: {
     date: string
-    read: string
+    readTime: string
     title: string
     demo: string
   }

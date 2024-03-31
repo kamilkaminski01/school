@@ -4,8 +4,8 @@
     aria-label="Django"
     role="img"
     viewBox="0 0 512 512"
-    width="200px"
-    height="228px"
+    width="215px"
+    height="215px"
     fill="#000000">
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>

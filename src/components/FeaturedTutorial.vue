@@ -83,37 +83,31 @@ import { BLOGS } from '@/utils/consts'
 
   .featured-tutorial__info {
     position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 1.25em;
+    display: grid;
+    padding: 1.25rem;
+    text-align: center;
     border-radius: 0.75rem;
     border: 1px solid hsla(0, 0%, 100%, 0.05);
     background-color: hsla(0, 0%, 100%, 0.05);
 
-    transition:
-      0.2s transform ease,
-      0.2s border-radius ease;
+    transition: 0.2s transform ease;
 
     .profile-img {
       @include profile-img;
       position: absolute;
       top: 3px;
       right: 3px;
+      z-index: 1;
     }
 
     .featured-tutorial__info-img {
       position: relative;
-      height: 14.75em;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
+      height: 83%;
 
       svg {
-        position: absolute;
-
         &:last-child {
-          transform: translate(67px, 152px);
+          position: absolute;
+          transform: translate(-62px, 152px);
         }
       }
     }
@@ -123,7 +117,6 @@ import { BLOGS } from '@/utils/consts'
     }
 
     &:hover {
-      border-radius: 0.9rem;
       transform: scale(1.05);
     }
   }

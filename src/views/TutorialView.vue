@@ -5,7 +5,7 @@
     </RouterLink>
     <div class="tutorial__info">
       <p class="tutorial__info-date">{{ tutorial.header.date }}</p>
-      <p class="tutorial__info-read">{{ tutorial.header.read }}</p>
+      <p class="tutorial__info-read-time">{{ tutorial.header.readTime }}</p>
     </div>
     <h1 class="tutorial__title">{{ tutorial.header.title }}</h1>
     <div class="tutorial__author">
@@ -40,9 +40,9 @@
           class="tutorial__content-paragraph"
           v-html="content.text" />
         <div
-          class="tutorial__content-code-items"
           v-if="content.type === CONTENT_TYPE.code"
-          :key="contentIndex">
+          :key="contentIndex"
+          class="tutorial__content-code-items">
           <pre
             class="tutorial__content-code"><code :class="content.lang">{{ content.text }}</code></pre>
           <div class="tutorial__content__clipboard">
@@ -186,7 +186,7 @@ const copyCode = (contentIndex: number) => {
     justify-content: space-between;
 
     .tutorial__info-date,
-    .tutorial__info-read {
+    .tutorial__info-read-time {
       font-size: 14px;
       color: $slate-gray;
     }
