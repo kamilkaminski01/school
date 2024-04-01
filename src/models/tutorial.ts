@@ -3,6 +3,7 @@ export enum CONTENT_TYPE {
   subtitle = 'subtitle',
   paragraph = 'paragraph',
   code = 'code',
+  tree = 'tree',
   unorderedList = 'unorderedList',
   orderedList = 'orderedList',
   quote = 'quote',

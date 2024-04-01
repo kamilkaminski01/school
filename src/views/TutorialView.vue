@@ -52,6 +52,12 @@
             </div>
           </div>
         </div>
+        <div
+          v-if="content.type === CONTENT_TYPE.tree"
+          :key="contentIndex"
+          class="tutorial__content-tree">
+          {{ content.text }}
+        </div>
         <ul
           v-if="content.type === CONTENT_TYPE.unorderedList"
           :key="contentIndex"
@@ -279,6 +285,15 @@ const copyCode = (contentIndex: number) => {
           }
         }
       }
+    }
+
+    .tutorial__content-tree {
+      margin-top: 1.25rem;
+      padding: 0.5rem;
+      font-family: 'Fira code', 'Fira Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+      font-size: 15px;
+      white-space: pre;
     }
 
     .tutorial__content-list {

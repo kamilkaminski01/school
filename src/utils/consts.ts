@@ -3,9 +3,16 @@ import DevelopmentForumThumbnail from '@/assets/images/development-forum.png'
 import JobBoardThumbnail from '@/assets/images/job-board.png'
 import RecommendationsSystemThumbnail from '@/assets/images/recommendations-system.png'
 import { CONTENT_TYPE } from '@/models/tutorial'
-import { developmentForum, jobBoard, monitoringSystem, recommendationsSystem } from './code'
+import {
+  developmentForum,
+  jobBoard,
+  monitoringSystem,
+  recommendationsSystem,
+  djangoReactChatCode
+} from './code'
 import GitHubIcon from '@/components/icons/GitHubIcon.vue'
 import MonitorIcon from '@/components/icons/MonitorIcon.vue'
+import { djangoReactChat } from '@/utils/trees'
 
 export const BLOGS = {
   djangoReactChat: {
@@ -40,14 +47,96 @@ export const BLOGS = {
     ],
     tutorial: {
       header: {
-        date: 'Apr 26, 2024',
+        date: 'Apr 1, 2024',
+        readTime: '10 min read',
         title: 'Chat in Django & React',
         demo: ''
       },
       content: [
         {
+          type: CONTENT_TYPE.title,
+          text: 'Hello everyone 👋🏼'
+        },
+        {
           type: CONTENT_TYPE.paragraph,
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          text: 'I am excited to share this tutorial about creating a chat with Django and React. Lets get straight to it.'
+        },
+        {
+          type: CONTENT_TYPE.title,
+          text: 'Creating the project'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            "Let's " +
+            'initialize the <a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer">Django</a> and <a href="https://react.dev/" target="_blank" rel="noopener noreferrer">React</a> ' +
+            'projects:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[0].lang,
+          text: djangoReactChatCode[0].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Instead of using the basic <code class="inline-code">create-react-app</code> we will use <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">Vite</a> with TypeScript:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[1].lang,
+          text: djangoReactChatCode[1].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Change the <code class="inline-code">vite-config.ts</code> file by setting the default server port to 3000:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[2].lang,
+          text: djangoReactChatCode[2].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'We are going to run this project in a <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">Docker</a> environment and use a python virtual ' +
+            'environment. Before we separated the backend and frontend into two directories, now place the backend dependencies in a <code class="inline-code">requirements.txt</code> file ' +
+            'and create dedicated Dockerfiles:'
+        },
+        {
+          type: CONTENT_TYPE.tree,
+          text: djangoReactChat[0].tree
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Backend <code class="inline-code">Dockerfile</code> and <code class="inline-code">requirements.txt</code>:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[3].lang,
+          text: djangoReactChatCode[3].code
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[4].lang,
+          text: djangoReactChatCode[4].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Frontend <code class="inline-code">Dockerfile</code>:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[5].lang,
+          text: djangoReactChatCode[5].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: '<code class="inline-code">docker-compose.yml</code>:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[6].lang,
+          text: djangoReactChatCode[6].code
         }
       ]
     }

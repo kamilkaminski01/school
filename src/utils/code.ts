@@ -1,6 +1,117 @@
 export enum CODE_LANG {
-  bash = 'language-bash'
+  bash = 'language-bash',
+  txt = 'language-txt',
+  yaml = 'language-yaml',
+  ts = 'language-typescript'
 }
+
+export const djangoReactChatCode = [
+  {
+    lang: CODE_LANG.bash,
+    code: `django-admin startproject backend`
+  },
+  {
+    lang: CODE_LANG.bash,
+    code: `npm create vite@latest frontend -- --template react-ts`
+  },
+  {
+    lang: CODE_LANG.ts,
+    code: `import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+
+  server: {
+    host: true,
+    port: 3000
+  },
+})`
+  },
+  {
+    lang: CODE_LANG.txt,
+    code: `FROM python:3.10.4-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+EXPOSE 8000
+
+WORKDIR /app
+
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
+
+COPY . ./`
+  },
+  {
+    lang: CODE_LANG.txt,
+    code: `asgiref==3.5.2
+black==23.3.0
+channels==4.0.0
+channels-redis==4.0.0
+daphne==4.0.0
+Django==4.0.6
+django-cors-headers==4.1.0
+django-stubs==4.2.1
+flake8==6.0.0
+isort==5.10.1
+mypy==1.4.1
+sqlparse==0.4.3`
+  },
+  {
+    lang: CODE_LANG.txt,
+    code: `FROM node:20.3.1-alpine
+
+ENV PATH /app/node_modules/.bin:$PATH
+
+EXPOSE 3000
+
+WORKDIR /app
+
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+
+COPY . ./
+
+CMD ["npm", "run", "dev"]`
+  },
+  {
+    lang: CODE_LANG.yaml,
+    code: `version: '3.8'
+
+services:
+  web:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    command: sh -c "python manage.py migrate &&
+                    python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      redis:
+        condition: service_started
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+  redis:
+    image: redis:7.0.2-alpine
+    ports:
+      - "6379:6379"`
+  }
+]
 
 export const jobBoard = [
   {
