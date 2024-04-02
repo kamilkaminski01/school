@@ -5,10 +5,10 @@ import RecommendationsSystemThumbnail from '@/assets/images/recommendations-syst
 import { CONTENT_TYPE } from '@/models/tutorial'
 import {
   developmentForum,
+  djangoReactChatCode,
   jobBoard,
   monitoringSystem,
-  recommendationsSystem,
-  djangoReactChatCode
+  recommendationsSystem
 } from './code'
 import GitHubIcon from '@/components/icons/GitHubIcon.vue'
 import MonitorIcon from '@/components/icons/MonitorIcon.vue'
@@ -59,7 +59,27 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'I am excited to share this tutorial about creating a chat with Django and React. Lets get straight to it.'
+          text: 'I am excited to share this tutorial about creating a chat app with Django and React. Lets get straight to it.'
+        },
+        {
+          type: CONTENT_TYPE.title,
+          text: 'Prerequisites'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'This project is going to be created using the <a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer">Django</a> and <a href="https://react.dev/" target="_blank" rel="noopener noreferrer">React</a> ' +
+            'frameworks. Additionally, for styling we will use <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">SASS</a> instead of CSS, so ' +
+            "it's expected that you have basic understanding of:"
+        },
+        {
+          type: CONTENT_TYPE.unorderedList,
+          items: [
+            'Python and creating a virtual environment',
+            "TypeScript, if you know how to use JavaScript you'll be fine",
+            'HTML/CSS (obviously)',
+            "Docker and running it's basic commands"
+          ]
         },
         {
           type: CONTENT_TYPE.title,
@@ -137,6 +157,17 @@ export const BLOGS = {
           type: CONTENT_TYPE.code,
           lang: djangoReactChatCode[6].lang,
           text: djangoReactChatCode[6].code
+        },
+        { type: CONTENT_TYPE.title, text: 'Links' },
+        {
+          type: CONTENT_TYPE.icons,
+          icons: [
+            {
+              icon: GitHubIcon,
+              text: 'GitHub',
+              link: 'https://github.com/kamilkaminski01/django-react-chat'
+            }
+          ]
         }
       ]
     }
@@ -266,7 +297,7 @@ export const PROJECTS = {
         {
           type: CONTENT_TYPE.paragraph,
           text:
-            'Creating this project I was inspired by the <a href="https://justjoin.it/" target="_blank" rel="noopener noreferrer">Just Join IT</a> platform and ' +
+            'Creating this project, I was inspired by the <a href="https://justjoin.it/" target="_blank" rel="noopener noreferrer">Just Join IT</a> platform and ' +
             'while searching for my first job this was my go-to website. In my opinion their UX/UI design is very user-friendly, so I challenged myself to ' +
             'create something similar. 😎'
         },
@@ -275,7 +306,7 @@ export const PROJECTS = {
           type: CONTENT_TYPE.unorderedList,
           items: [
             '<a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer">Django</a> for the server side application aside with ' +
-              '<a href="https://www.django-rest-framework.org/" target="_blank" rel="noopener noreferrer">Django REST Framework</a> for the REST API',
+              '<a href="https://www.django-rest-framework.org/" target="_blank" rel="noopener noreferrer">Django REST Framework</a> for a REST API',
             '<a href="https://react.dev/" target="_blank" rel="noopener noreferrer">React</a> written in TypeScript for the user interface',
             '<a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">SASS</a> for styling',
             '<a href="https://www.postgresql.org.pl/" target="_blank" rel="noopener noreferrer">Postgres</a> for the database',
@@ -286,20 +317,20 @@ export const PROJECTS = {
         {
           type: CONTENT_TYPE.paragraph,
           text:
-            'More technical details can be found in the ' +
-            '<a href="https://github.com/kamilkaminski01/job-board#readme" target="_blank" rel="noopener noreferrer">README</a> project.'
+            'More technical details can be found in the projects ' +
+            '<a href="https://github.com/kamilkaminski01/job-board#readme" target="_blank" rel="noopener noreferrer">README</a>.'
         },
         { type: CONTENT_TYPE.title, text: 'Key Features' },
         {
           type: CONTENT_TYPE.quote,
           text:
             '<strong>Social authentication</strong> - users can register and login through Google OAuth 2.0 or GitHub OAuth. Users can dive into the site ' +
-            'using their existing Google or GitHub account, eliminating the need to create or remember additional credentials.'
+            'using their existing Google or GitHub accounts, eliminating the need to create or remember additional credentials.'
         },
         {
           type: CONTENT_TYPE.quote,
           text:
-            '<strong>Emailing</strong> - when applying for a job offer, a candidate as well as the employer receive notifications in a form of an email. This ' +
+            '<strong>Emailing</strong> - when applying for a job offer, the candidate as well as the employer receive notifications in a form of an email. This ' +
             'feature is handled by <a href="https://aws.amazon.com/ses/" target="_blank" rel="noopener noreferrer">AWS SES</a>.'
         },
         {
@@ -313,7 +344,7 @@ export const PROJECTS = {
         {
           type: CONTENT_TYPE.quote,
           text:
-            '<strong>Global colors customization</strong> - main, secondary and details like hover colors can be modified through the Django admin panel by the ' +
+            '<strong>Global colors customization</strong> - main, secondary and hover colors can be modified through the Django admin panel by the ' +
             'maintainer of the site.'
         },
         {
@@ -341,7 +372,7 @@ export const PROJECTS = {
           type: CONTENT_TYPE.paragraph,
           text:
             'The database can be initialized with mocked data thanks to the <code class="inline-code">make initial-data</code> command. ' +
-            'More information on what data will populate the database can be found ' +
+            'More information on what data will populate the database can be found 👉🏼 ' +
             '<a href="https://github.com/kamilkaminski01/job-board?tab=readme-ov-file#application-setup" target="_blank" rel="noopener noreferrer">here</a>.'
         },
         {
@@ -399,7 +430,7 @@ export const PROJECTS = {
           type: CONTENT_TYPE.paragraph,
           text:
             'This project is a question-and-answer/forum website for developers similar to ' +
-            '<a href="https://stackoverflow.com/" target="_blank" rel="noopener noreferrer">Stack Overflow</a>. Users can public ' +
+            '<a href="https://stackoverflow.com/" target="_blank" rel="noopener noreferrer">Stack Overflow</a>. Users can publish ' +
             'a question in a self-made topic or an existing one. The site is not narrowed down to just questions because users can ' +
             'also discuss on computer programming topics and its surroundings.'
         },
@@ -430,7 +461,7 @@ export const PROJECTS = {
         {
           type: CONTENT_TYPE.paragraph,
           text:
-            'Additionally, there is a <a href="https://github.com/kamilkaminski01/development-forum/blob/main/Dockerfile" target="_blank" rel="noopener noreferrer">Dockerfile</a> ' +
+            'There is also a <a href="https://github.com/kamilkaminski01/development-forum/blob/main/Dockerfile" target="_blank" rel="noopener noreferrer">Dockerfile</a> ' +
             'because in the past I pushed this project into production on <a href="https://railway.app/" target="_blank" rel="noopener noreferrer">Railway</a>. To find some Docker commands ' +
             'that can be used for this application, head over to the <a href="https://github.com/kamilkaminski01/development-forum/blob/main/Makefile" target="_blank" rel="noopener noreferrer">Makefile</a>.'
         },
@@ -526,7 +557,7 @@ export const PROJECTS = {
           type: CONTENT_TYPE.quote,
           text:
             '<strong>Whiteboard</strong> is a simple drawing application that can handle up to 5 users per room. A special menu provides ' +
-            'information about participants in a whiteboard and are they or active or not.'
+            'information about participants in a whiteboard and are wether they or active or not.'
         },
         {
           type: CONTENT_TYPE.quote,

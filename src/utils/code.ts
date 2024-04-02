@@ -1,8 +1,9 @@
 export enum CODE_LANG {
-  bash = 'language-bash',
-  txt = 'language-txt',
-  yaml = 'language-yaml',
-  ts = 'language-typescript'
+  plaintext = 'plaintext',
+  bash = 'bash',
+  yaml = 'yaml',
+  dockerfile = 'dockerfile',
+  typescript = 'typescript'
 }
 
 export const djangoReactChatCode = [
@@ -15,7 +16,7 @@ export const djangoReactChatCode = [
     code: `npm create vite@latest frontend -- --template react-ts`
   },
   {
-    lang: CODE_LANG.ts,
+    lang: CODE_LANG.typescript,
     code: `import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -29,7 +30,7 @@ export default defineConfig({
 })`
   },
   {
-    lang: CODE_LANG.txt,
+    lang: CODE_LANG.dockerfile,
     code: `FROM python:3.10.4-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -45,7 +46,7 @@ RUN pip install -r requirements.txt
 COPY . ./`
   },
   {
-    lang: CODE_LANG.txt,
+    lang: CODE_LANG.plaintext,
     code: `asgiref==3.5.2
 black==23.3.0
 channels==4.0.0
@@ -60,7 +61,7 @@ mypy==1.4.1
 sqlparse==0.4.3`
   },
   {
-    lang: CODE_LANG.txt,
+    lang: CODE_LANG.dockerfile,
     code: `FROM node:20.3.1-alpine
 
 ENV PATH /app/node_modules/.bin:$PATH

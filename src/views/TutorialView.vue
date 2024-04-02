@@ -43,8 +43,10 @@
           v-if="content.type === CONTENT_TYPE.code"
           :key="contentIndex"
           class="tutorial__content-code-items">
-          <pre
-            class="tutorial__content-code"><code :class="content.lang">{{ content.text }}</code></pre>
+          <highlightjs
+            :language="content.lang"
+            :code="content.text"
+            class="tutorial__content-code" />
           <div class="tutorial__content__clipboard">
             <div class="tutorial__content__clipboard-icon" @click="copyCode(contentIndex)">
               <CopyIcon v-if="!copied[contentIndex]" />
@@ -113,6 +115,7 @@
 </template>
 
 <script setup lang="ts">
+import 'highlight.js/styles/github-dark.css'
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import LeftArrowIcon from '@/components/icons/LeftArrowIcon.vue'
@@ -264,6 +267,10 @@ const copyCode = (contentIndex: number) => {
         padding: 1rem 0 1rem 1rem;
         font-size: 14px;
         overflow-x: auto;
+
+        code {
+          padding: unset;
+        }
       }
 
       .tutorial__content__clipboard {
