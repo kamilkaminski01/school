@@ -158,6 +158,10 @@ export const BLOGS = {
           lang: djangoReactChatCode[6].lang,
           text: djangoReactChatCode[6].code
         },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'This tutorial is in progress, more coming soon...'
+        },
         { type: CONTENT_TYPE.title, text: 'Links' },
         {
           type: CONTENT_TYPE.icons,
