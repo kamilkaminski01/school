@@ -2,6 +2,7 @@ export enum CONTENT_TYPE {
   title = 'title',
   subtitle = 'subtitle',
   paragraph = 'paragraph',
+  img = 'img',
   code = 'code',
   tree = 'tree',
   unorderedList = 'unorderedList',
@@ -22,6 +23,7 @@ export interface ITutorial {
   content: {
     type: CONTENT_TYPE
     text: string
+    img: string
     lang: string
     items: string[]
     icons: { icon: string; text: string; link: string }[]

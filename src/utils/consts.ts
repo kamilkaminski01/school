@@ -2,6 +2,7 @@ import MonitoringSystemThumbnail from '@/assets/images/monitoring-system.png'
 import DevelopmentForumThumbnail from '@/assets/images/development-forum.png'
 import JobBoardThumbnail from '@/assets/images/job-board.png'
 import RecommendationsSystemThumbnail from '@/assets/images/recommendations-system.png'
+import FirstRunImage from '@/assets/images/djangoReactTutorial/first-run.png'
 import { CONTENT_TYPE } from '@/models/tutorial'
 import {
   developmentForum,
@@ -117,6 +118,10 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
+          text: 'I also added <code class="inline-code">checker</code> as a debugging tool and <code class="inline-code">tsconfigPaths</code> to set <code class="inline-code">src/</code> as the root path.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
           text:
             'We are going to run this project in a <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">Docker</a> environment and use a python virtual ' +
             'environment. Before we separated the backend and frontend into two directories, now place the backend dependencies in a <code class="inline-code">requirements.txt</code> file ' +
@@ -158,6 +163,11 @@ export const BLOGS = {
           lang: djangoReactChatCode[6].lang,
           text: djangoReactChatCode[6].code
         },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Now lets build and run the project: <code class="inline-code">make build && make run</code>'
+        },
+        { type: CONTENT_TYPE.img, img: FirstRunImage },
         {
           type: CONTENT_TYPE.paragraph,
           text: 'This tutorial is in progress, more coming soon...'

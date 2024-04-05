@@ -39,6 +39,11 @@
           :key="contentIndex"
           class="tutorial__content-paragraph"
           v-html="content.text" />
+        <img
+          v-if="content.type === CONTENT_TYPE.img"
+          :key="contentIndex"
+          :src="content.img"
+          class="tutorial__content-img" />
         <div
           v-if="content.type === CONTENT_TYPE.code"
           :key="contentIndex"
@@ -253,6 +258,14 @@ const copyCode = (contentIndex: number) => {
     .tutorial__content-paragraph {
       line-height: 1.75;
       margin-top: 1.25rem;
+    }
+
+    .tutorial__content-img {
+      width: 100%;
+      height: 100%;
+      max-width: 45em;
+      object-fit: contain;
+      border-radius: 0.25em;
     }
 
     .tutorial__content-code-items {
