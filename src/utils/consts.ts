@@ -22,7 +22,7 @@ export const BLOGS = {
     date: 'Apr 26, 2024',
     sections: [
       {
-        title: 'Introduction',
+        title: 'Prerequisites',
         desc: 'Get started with an overview of the chat tutorial and its objectives.'
       },
       {
@@ -30,8 +30,8 @@ export const BLOGS = {
         desc: 'Set up a development environment for building the chat application.'
       },
       {
-        title: 'Database and Redis',
-        desc: 'Configure the database and integrate Redis for real-time messages.'
+        title: 'Channels and channel layers',
+        desc: 'Redis integration and setting up layers for real-time messages.'
       },
       {
         title: 'Backend with Django',
@@ -168,6 +168,51 @@ export const BLOGS = {
           text: 'Now lets build and run the project: <code class="inline-code">make build && make run</code>'
         },
         { type: CONTENT_TYPE.img, img: FirstRunImage },
+        { type: CONTENT_TYPE.title, text: 'Channels integration and enabling channel layers' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            "Now it's time to integrate the " +
+            '<a href="https://channels.readthedocs.io/en/stable/index.html" target="_blank" rel="noopener noreferrer">Channels</a> library. ' +
+            'Let’s start by creating a routing configuration for Channels. In that it tells Channels what code to run when an HTTP request is received by the ' +
+            'Channels server, start by adjusting the <code class="inline-code">backend/asgi.py</code> file to include the following code:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[7].lang,
+          text: djangoReactChatCode[7].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'Now add the Channels and Daphne libraries to the list of installed apps, in order to enable an ASGI ' +
+            'versions of the runserver command:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[8].lang,
+          text: djangoReactChatCode[8].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "You'll also need to point Daphne at the root routing configuration:"
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[9].lang,
+          text: djangoReactChatCode[9].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'Before we can use a channel layer, we must configure it. Edit the ' +
+            '<code class="inline-code">backend/settings.py</code> file and add a CHANNEL_LAYERS setting. It should look like:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[10].lang,
+          text: djangoReactChatCode[10].code
+        },
         {
           type: CONTENT_TYPE.paragraph,
           text: 'This tutorial is in progress, more coming soon...'

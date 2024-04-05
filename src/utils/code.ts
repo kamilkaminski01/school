@@ -3,7 +3,8 @@ export enum CODE_LANG {
   bash = 'bash',
   yaml = 'yaml',
   dockerfile = 'dockerfile',
-  typescript = 'typescript'
+  typescript = 'typescript',
+  python = 'python'
 }
 
 export const djangoReactChatCode = [
@@ -113,6 +114,54 @@ services:
     image: redis:7.0.2-alpine
     ports:
       - "6379:6379"`
+  },
+  {
+    lang: CODE_LANG.python,
+    code: `import os
+
+from channels.routing import ProtocolTypeRouter
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
+
+application = ProtocolTypeRouter(
+    {
+        "http": get_asgi_application(),
+        # Just HTTP for now. (We will add other protocols later.)
+    }
+)`
+  },
+  {
+    lang: CODE_LANG.python,
+    code: `# backend/settings.py
+INSTALLED_APPS = [
+  "daphne",
+  "channels",
+  "django.contrib.admin",
+  "django.contrib.auth",
+  "django.contrib.contenttypes",
+  "django.contrib.sessions",
+  "django.contrib.messages",
+  "django.contrib.staticfiles",
+]`
+  },
+  {
+    lang: CODE_LANG.python,
+    code: `# backend/settings.py
+ASGI_APPLICATION = "backend.asgi.application"`
+  },
+  {
+    lang: CODE_LANG.python,
+    code: `CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [
+                ("redis", 6379),
+            ]
+        },
+    },
+}`
   }
 ]
 
