@@ -26,11 +26,11 @@ export const BLOGS = {
         desc: 'Get started with an overview of the chat tutorial and its objectives.'
       },
       {
-        title: 'Environment',
+        title: 'Creating the Environment',
         desc: 'Set up a development environment for building the chat application.'
       },
       {
-        title: 'Channels and channel layers',
+        title: 'Channels and Channel Layers',
         desc: 'Redis integration and setting up layers for real-time messages.'
       },
       {
@@ -38,8 +38,8 @@ export const BLOGS = {
         desc: 'Code up the backend side of the chat application using Django.'
       },
       {
-        title: 'Consumers',
-        desc: 'Concept of consumers in Django Channels and WebSockets.'
+        title: 'Consumers and Routing',
+        desc: 'Concept of consumers in Django Channels and Routing.'
       },
       {
         title: 'Frontend with React',
@@ -84,7 +84,7 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.title,
-          text: 'Creating the project'
+          text: 'Creating the Environment'
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -168,7 +168,7 @@ export const BLOGS = {
           text: 'Now lets build and run the project: <code class="inline-code">make build && make run</code>'
         },
         { type: CONTENT_TYPE.img, img: FirstRunImage },
-        { type: CONTENT_TYPE.title, text: 'Channels integration and enabling channel layers' },
+        { type: CONTENT_TYPE.subtitle, text: 'Channels integration and enabling channel layers' },
         {
           type: CONTENT_TYPE.paragraph,
           text:
@@ -206,12 +206,80 @@ export const BLOGS = {
           type: CONTENT_TYPE.paragraph,
           text:
             'Before we can use a channel layer, we must configure it. Edit the ' +
-            '<code class="inline-code">backend/settings.py</code> file and add a CHANNEL_LAYERS setting. It should look like:'
+            '<code class="inline-code">backend/settings.py</code> file and add a <strong>CHANNEL_LAYERS</strong> setting. It should look like:'
         },
         {
           type: CONTENT_TYPE.code,
           lang: djangoReactChatCode[10].lang,
           text: djangoReactChatCode[10].code
+        },
+        { type: CONTENT_TYPE.title, text: 'Backend with Django' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            "We will put the code for the chat server in its own app. Make sure you're in the same directory as " +
+            '<code class="inline-code">manage.py</code> and type this command:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[11].lang,
+          text: djangoReactChatCode[11].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'We also need to tell our project that the chat app is installed. Again, edit the <code class="inline-code">backend/settings.py</code> file and add the ' +
+            'chat app to the <strong>INSTALLED_APPS</strong> setting:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[12].lang,
+          text: djangoReactChatCode[12].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'Instead of using the standard Django <code class="inline-code">views.py</code> and <code class="inline-code">urls.py</code> files, we will be using ' +
+            '<code class="inline-code">consumers.py</code> and <code class="inline-code">routing.py</code> files. This is a convention in writing asynchronous code, so your backend file structure should look ' +
+            'like this:'
+        },
+        {
+          type: CONTENT_TYPE.tree,
+          text: djangoReactChat[1].tree
+        },
+        { type: CONTENT_TYPE.title, text: 'Consumers and Routing' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'When Channels accepts a WebSocket connection, it consults the root routing configuration to lookup a consumer, and then calls various functions on the consumer ' +
+            'to handle events from the connection. We will write a consumer that accepts WebSocket connections on the path <code class="inline-code">/ws/chat/</code> that takes any message it receives on the ' +
+            "WebSocket and sends it back to the consumers. Let's start from creating our consumer in the " +
+            '<code class="inline-code">backend/consumers.py</code> file:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[13].lang,
+          text: djangoReactChatCode[13].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "Now let's edit the " + '<code class="inline-code">backend/routing.py</code> file:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[14].lang,
+          text: djangoReactChatCode[14].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'Going back to the <code class="inline-code">backend/asgi.py</code> file, we need to point the main ASGI configuration at the <strong>chat.routing</strong> module. ' +
+            "Here's how the file should look like:"
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[15].lang,
+          text: djangoReactChatCode[15].code
         },
         {
           type: CONTENT_TYPE.paragraph,
