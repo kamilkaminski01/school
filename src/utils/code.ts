@@ -199,11 +199,13 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
     async def receive_json(self, content: dict, **kwargs) -> None:
         command = content["command"]
         user = content["user"]
-        data = {"type": "websocket_message"}
+        data = {"type": "websocket_message", "user": user}
         if command == Commands.JOIN:
             data["message"] = f"{user} has just joined"
         elif command == Commands.LEAVE:
             data["message"] = f"{user} has left"
+        else:
+            data["message"] = content["message"]
         await self.channel_layer.group_send(self.group_name, data)
 
     async def websocket_message(self, event: dict) -> None:

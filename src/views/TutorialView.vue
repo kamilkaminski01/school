@@ -280,6 +280,7 @@ const copyCode = (contentIndex: number) => {
         padding: 1rem 0 1rem 1rem;
         font-size: 14px;
         overflow-x: auto;
+        line-height: 1.25rem;
 
         code {
           padding: unset;
