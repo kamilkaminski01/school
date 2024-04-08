@@ -281,6 +281,62 @@ export const BLOGS = {
           lang: djangoReactChatCode[15].lang,
           text: djangoReactChatCode[15].code
         },
+        { type: CONTENT_TYPE.title, text: 'Frontend with React' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            "As we coded up the backend side, let's begin with the user interface. Remove the boilerplate code after creating a React project and convert " +
+            '<code class="inline-code">.css</code> files to <code class="inline-code">.scss</code>. Your file structure should look like this: '
+        },
+        {
+          type: CONTENT_TYPE.tree,
+          text: djangoReactChat[2].tree
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Starting from the scss files, they should look like this:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[16].lang,
+          text: djangoReactChatCode[16].code
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[17].lang,
+          text: djangoReactChatCode[17].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            "Let's install " +
+            '<code class="inline-code">react-router-dom</code> so we could use the ' +
+            '<a href="https://github.com/remix-run/react-router" target="_blank" rel="noopener noreferrer">React Router</a> in our web application. Go to the ' +
+            '<code class="inline-code">frontend/</code> directory and type:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[18].lang,
+          text: djangoReactChatCode[18].code
+        },
+        {
+          type: CONTENT_TYPE.warning,
+          text: "⚠️ This step isn't necessary if you won't develop this project further into a multi-page app"
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Going forward, the <code class="inline-code">App.tsx</code> and <code class="inline-code">main.tsx</code> files should look like this:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[19].lang,
+          text: djangoReactChatCode[19].code
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[20].lang,
+          text: djangoReactChatCode[20].code
+        },
         {
           type: CONTENT_TYPE.paragraph,
           text: 'This tutorial is in progress, more coming soon...'

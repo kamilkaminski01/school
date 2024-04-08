@@ -4,7 +4,8 @@ export enum CODE_LANG {
   yaml = 'yaml',
   dockerfile = 'dockerfile',
   typescript = 'typescript',
-  python = 'python'
+  python = 'python',
+  scss = 'scss'
 }
 
 export const djangoReactChatCode = [
@@ -243,6 +244,70 @@ application = ProtocolTypeRouter(
         "http": get_asgi_application(),
         "websocket": URLRouter(chat.routing.websocket_urlpatterns),
     }
+)`
+  },
+  {
+    lang: CODE_LANG.scss,
+    code: `// App.scss
+.app {
+  margin: 0;
+  width: 100%;
+}`
+  },
+  {
+    lang: CODE_LANG.scss,
+    code: `// index.scss
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: black;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}`
+  },
+  { lang: CODE_LANG.bash, code: `npm i react-router-dom` },
+  {
+    lang: CODE_LANG.typescript,
+    code: `import './App.scss'
+
+function App() {
+  return <div>Django & React Chat</div>
+}
+
+export default App`
+  },
+  {
+    lang: CODE_LANG.typescript,
+    code: `import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.tsx'
+import './index.scss'
+import { BrowserRouter } from 'react-router-dom'
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 )`
   }
 ]

@@ -34,5 +34,23 @@ export const djangoReactChat = [
     ├── venv
     ├── docker-compose.yml
     └── Makefile`
+  },
+  {
+    tree: `.
+└── django-react-chat/
+    ├── backend/
+    │   └── ...
+    └── frontend/
+        ├── public/
+        ├── src/
+        │   ├── App.scss
+        │   ├── App.tsx
+        │   ├── index.scss
+        │   ├── main.tsx
+        │   └── vite-env.d.ts
+        ├── package.json
+        ├── package-lock.json
+        ├── vite-config.ts
+        └── ...`
   }
 ]

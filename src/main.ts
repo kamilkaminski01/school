@@ -11,6 +11,7 @@ import yaml from 'highlight.js/lib/languages/yaml'
 import dockerfile from 'highlight.js/lib/languages/dockerfile'
 import typescript from 'highlight.js/lib/languages/typescript'
 import python from 'highlight.js/lib/languages/python'
+import scss from 'highlight.js/lib/languages/scss'
 
 import App from './App.vue'
 import router from './router'
@@ -21,6 +22,7 @@ hljs.registerLanguage('yaml', yaml)
 hljs.registerLanguage('dockerfile', dockerfile)
 hljs.registerLanguage('typescript', typescript)
 hljs.registerLanguage('python', python)
+hljs.registerLanguage('scss', scss)
 
 const app = createApp(App)
 
