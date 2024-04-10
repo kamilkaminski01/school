@@ -52,5 +52,29 @@ export const djangoReactChat = [
         ├── package-lock.json
         ├── vite-config.ts
         └── ...`
+  },
+  {
+    tree: `.
+└── django-react-chat/
+    ├── backend/
+    │   └── ...
+    └── frontend/
+        ├── public/
+        ├── src/
+        │   ├── components/
+        │   │   └── Chat/
+        │   │       ├── index.tsx
+        │   │       └── style.scss
+        │   ├── models/
+        │   │   └── message.ts
+        │   ├── App.scss
+        │   ├── App.tsx
+        │   ├── index.scss
+        │   ├── main.tsx
+        │   └── vite-env.d.ts
+        ├── package.json
+        ├── package-lock.json
+        ├── vite-config.ts
+        └── ...`
   }
 ]

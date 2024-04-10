@@ -3,6 +3,7 @@ import DevelopmentForumThumbnail from '@/assets/images/development-forum.png'
 import JobBoardThumbnail from '@/assets/images/job-board.png'
 import RecommendationsSystemThumbnail from '@/assets/images/recommendations-system.png'
 import FirstRunImage from '@/assets/images/djangoReactTutorial/first-run.png'
+import FirstGlanceImage from '@/assets/images/djangoReactTutorial/first-glance.png'
 import { CONTENT_TYPE } from '@/models/tutorial'
 import {
   developmentForum,
@@ -60,7 +61,7 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'I am excited to share this tutorial about creating a chat app with Django and React. Lets get straight to it.'
+          text: "I am excited to share this tutorial about creating a chat app with Django and React. Let's get straight to it."
         },
         {
           type: CONTENT_TYPE.title,
@@ -118,13 +119,16 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'I also added <code class="inline-code">checker</code> as a debugging tool and <code class="inline-code">tsconfigPaths</code> to set <code class="inline-code">src/</code> as the root path.'
+          text:
+            'I also added <code class="inline-code">checker</code> as a debugging tool and <code class="inline-code">tsconfigPaths</code> to set <code class="inline-code">src/</code> as the root path. ' +
+            'Install them by going into the <code class="inline-code">frontend/</code> directory and type: <code class="inline-code">npm install vite-plugin-checker --save-dev</code> next ' +
+            '<code class="inline-code">npm install vite-tsconfig-paths --save-dev</code>'
         },
         {
           type: CONTENT_TYPE.paragraph,
           text:
             'We are going to run this project in a <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">Docker</a> environment and use a python virtual ' +
-            'environment. Before we separated the backend and frontend into two directories, now place the backend dependencies in a <code class="inline-code">requirements.txt</code> file ' +
+            'environment. Before, we separated the backend and frontend into two directories, now place the backend dependencies in a <code class="inline-code">requirements.txt</code> file ' +
             'and create dedicated Dockerfiles:'
         },
         {
@@ -133,7 +137,7 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'Backend <code class="inline-code">Dockerfile</code> and <code class="inline-code">requirements.txt</code>:'
+          text: 'Backend <code class="inline-code">Dockerfile</code> and <code class="inline-code">requirements.txt</code>'
         },
         {
           type: CONTENT_TYPE.code,
@@ -147,7 +151,7 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'Frontend <code class="inline-code">Dockerfile</code>:'
+          text: 'Frontend <code class="inline-code">Dockerfile</code>'
         },
         {
           type: CONTENT_TYPE.code,
@@ -156,7 +160,7 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: '<code class="inline-code">docker-compose.yml</code>:'
+          text: '<code class="inline-code">docker-compose.yml</code>'
         },
         {
           type: CONTENT_TYPE.code,
@@ -165,14 +169,16 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'Now lets build and run the project: <code class="inline-code">make build && make run</code>'
+          text:
+            "Now let's build and run the project: " +
+            '<code class="inline-code">make build && make run</code>'
         },
         { type: CONTENT_TYPE.img, img: FirstRunImage },
         { type: CONTENT_TYPE.subtitle, text: 'Channels integration and enabling channel layers' },
         {
           type: CONTENT_TYPE.paragraph,
           text:
-            "Now it's time to integrate the " +
+            "It's time to integrate the " +
             '<a href="https://channels.readthedocs.io/en/stable/index.html" target="_blank" rel="noopener noreferrer">Channels</a> library. ' +
             'Let’s start by creating a routing configuration for Channels. In that it tells Channels what code to run when an HTTP request is received by the ' +
             'Channels server, start by adjusting the <code class="inline-code">backend/asgi.py</code> file to include the following code:'
@@ -253,7 +259,7 @@ export const BLOGS = {
           text:
             'When Channels accepts a WebSocket connection, it consults the root routing configuration to lookup a consumer, and then calls various functions on the consumer ' +
             'to handle events from the connection. We will write a consumer that accepts WebSocket connections on the path <code class="inline-code">/ws/chat/</code> that takes any message it receives on the ' +
-            "WebSocket and sends it back to the consumers. Let's start from creating our consumer in the " +
+            "WebSocket and sends it back to consumers. Let's start from creating our consumer in the " +
             '<code class="inline-code">backend/consumers.py</code> file:'
         },
         {
@@ -294,7 +300,9 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'Starting from the scss files, they should look like this:'
+          text:
+            'According to the <a href="https://vitejs.dev/guide/features#css-pre-processors" target="_blank" rel="noopener noreferrer">Vite documentation</a>, we also need to add <code class="inline-code">sass</code> ' +
+            'as a dev dependency so <code class="inline-code">cd</code> into the <code class="inline-code">frontend</code> directory and type:'
         },
         {
           type: CONTENT_TYPE.code,
@@ -302,9 +310,18 @@ export const BLOGS = {
           text: djangoReactChatCode[16].code
         },
         {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Starting from the scss files, they should look like this:'
+        },
+        {
           type: CONTENT_TYPE.code,
           lang: djangoReactChatCode[17].lang,
           text: djangoReactChatCode[17].code
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[18].lang,
+          text: djangoReactChatCode[18].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -316,12 +333,12 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[18].lang,
-          text: djangoReactChatCode[18].code
+          lang: djangoReactChatCode[19].lang,
+          text: djangoReactChatCode[19].code
         },
         {
           type: CONTENT_TYPE.warning,
-          text: "⚠️ This step isn't necessary if you won't develop this project further into a multi-page app"
+          text: "👆🏼 This step is not necessary if you won't develop this project further into a multi-page app"
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -329,14 +346,107 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[19].lang,
-          text: djangoReactChatCode[19].code
-        },
-        {
-          type: CONTENT_TYPE.code,
           lang: djangoReactChatCode[20].lang,
           text: djangoReactChatCode[20].code
         },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[21].lang,
+          text: djangoReactChatCode[21].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            "Note that you shouldn't wrap the App component with BrowserRouter if you didn't install" +
+            '<code class="inline-code">react-router-dom</code>. ' +
+            "Nevertheless, let's assume that this project will be developed in the future."
+        },
+        { type: CONTENT_TYPE.title, text: 'Creating the chat component' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'Put the chat component in a <code class="inline-code">components/</code> directory that includes an <code class="inline-code">index.tsx</code> ' +
+            'and <code class="inline-code">style.scss</code> file. Also create a <code class="inline-code">models/</code> directory that will store our <code class="inline-code">message.ts</code> file with the message model that comes from the backend and ' +
+            'an enum containing the message types like we did in our <code class="inline-code">consumers.py</code> file. The file structure should look like this:'
+        },
+        {
+          type: CONTENT_TYPE.tree,
+          text: djangoReactChat[3].tree
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            "Let's install a couple of more dependencies, we'll start with the " +
+            '<a href="https://www.npmjs.com/package/classnames" target="_blank" rel="noopener noreferrer">classnames</a> library. ' +
+            "It's necessary, so we could easily apply classes based on the message type that a consumer receives:"
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[22].lang,
+          text: djangoReactChatCode[22].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Next <a href="https://www.npmjs.com/package/react-use-websocket" target="_blank" rel="noopener noreferrer">React useWebSocket</a> - this is a library that provides usefull utilities when leveraging the WebSocket protocol in React:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[23].lang,
+          text: djangoReactChatCode[23].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "Now we are ready to code up our chat user interface. Before we connect the React frontend with the Django backend, let's create a base structure of the chat component and add its styling."
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: '<code class="inline-code">models/message.ts</code>'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[24].lang,
+          text: djangoReactChatCode[24].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: '<code class="inline-code">components/Chat/index.tsx</code>'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[25].lang,
+          text: djangoReactChatCode[25].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: '<code class="inline-code">components/Chat/style.scss</code>'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[26].lang,
+          text: djangoReactChatCode[26].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'Get back to the <code class="inline-code">App.tsx</code> file and edit it by importing our chat component and setting ' +
+            'its route to ' +
+            '<code class="inline-code">/</code>:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[27].lang,
+          text: djangoReactChatCode[27].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'There you go! Open the chat, provide a username and type some messages. 🥳'
+        },
+        { type: CONTENT_TYPE.img, img: FirstGlanceImage },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "Now we have our fully responsive chat application. At this moment we can only chat with ourselves but let's get on to connecting our chat component with the backend through a WebSocket protocol."
+        },
+        { type: CONTENT_TYPE.title, text: 'Connecting our frontend with the backend' },
         {
           type: CONTENT_TYPE.paragraph,
           text: 'This tutorial is in progress, more coming soon...'

@@ -57,7 +57,6 @@ channels==4.0.0
 channels-redis==4.0.0
 daphne==4.0.0
 Django==4.0.6
-django-cors-headers==4.1.0
 django-stubs==4.2.1
 flake8==6.0.0
 isort==5.10.1
@@ -185,6 +184,7 @@ ASGI_APPLICATION = "backend.asgi.application"`
 class Commands:
     JOIN = "join"
     LEAVE = "leave"
+    MESSAGE = "message"
 
 
 class ChatConsumer(AsyncJsonWebsocketConsumer):
@@ -202,15 +202,19 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
         user = content["user"]
         data = {"type": "websocket_message", "user": user}
         if command == Commands.JOIN:
-            data["message"] = f"{user} has just joined"
+            data.update({"command": Commands.JOIN, "message": f"{user} has joined"})
         elif command == Commands.LEAVE:
-            data["message"] = f"{user} has left"
+            data.update({"command": Commands.LEAVE, "message": f"{user} has left"})
         else:
-            data["message"] = content["message"]
+            data.update({"command": Commands.MESSAGE, "message": content["message"]})
         await self.channel_layer.group_send(self.group_name, data)
 
     async def websocket_message(self, event: dict) -> None:
-        payload = {"user": event["user"], "message": event["message"]}
+        payload = {
+            "command": event["command"],
+            "user": event["user"],
+            "message": event["message"],
+        }
         await self.send_json(payload)`
   },
   {
@@ -246,6 +250,7 @@ application = ProtocolTypeRouter(
     }
 )`
   },
+  { lang: CODE_LANG.bash, code: `npm add -D sass` },
   {
     lang: CODE_LANG.scss,
     code: `// App.scss
@@ -264,7 +269,8 @@ application = ProtocolTypeRouter(
 }
 
 body {
-  color: black;
+  color: #e7e7e7;
+  background: #121213;
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -289,7 +295,7 @@ button {
     code: `import './App.scss'
 
 function App() {
-  return <div>Django & React Chat</div>
+  return <div className="app">Django & React Chat</div>
 }
 
 export default App`
@@ -309,6 +315,304 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </React.StrictMode>
 )`
+  },
+  {
+    lang: CODE_LANG.bash,
+    code: `npm i classnames`
+  },
+  {
+    lang: CODE_LANG.bash,
+    code: `npm i react-use-websocket`
+  },
+  {
+    lang: CODE_LANG.typescript,
+    code: `export enum ECommands {
+  Join = 'join',
+  Leave = 'leave',
+  Message = 'message'
+}
+
+export interface IMessage {
+  command: string
+  user: string
+  message: string
+}`
+  },
+  {
+    lange: CODE_LANG.typescript,
+    code: `import './style.scss'
+import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react'
+import classNames from 'classnames'
+import SendIcon from 'assets/icons/send-icon.svg'
+import { IMessage, ECommands } from 'models/message'
+
+const Chat = () => {
+  const [usernameProvided, setUsernameProvided] = useState(false)
+  const [username, setUsername] = useState('')
+  const [messages, setMessages] = useState<IMessage[]>([])
+  const [newMessage, setNewMessage] = useState('')
+  const chatRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (usernameProvided) {
+      const messageData = { message: \`\${username} has joined\`, user: username, command: 'join' }
+      setMessages((prevState) => [...prevState, messageData])
+    }
+  }, [usernameProvided])
+
+  useEffect(() => {
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight
+    }
+  }, [messages])
+
+  const handleUsernameSubmission = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      setUsernameProvided(true)
+    }
+  }
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault()
+    const message = newMessage.trim()
+    if (message) {
+      const messageData = { message: message, user: username, command: 'message' }
+      setMessages((prevState) => [...prevState, messageData])
+      setNewMessage('')
+    }
+  }
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault()
+      handleSubmit(event as FormEvent)
+    }
+  }
+
+  return (
+    <main className="chat">
+      <div className="chat-items">
+        <div className="chat__header">Django & React Chat</div>
+        <div ref={chatRef} className="chat__messages">
+          {messages.map((message, index) => (
+            <div
+              className={classNames('chat__message', {
+                centered: message.command !== ECommands.Message,
+                blue: message.user === username && message.command === ECommands.Message,
+                gray: message.user !== username
+              })}
+              key={index}>
+              {message.command === ECommands.Message ? (
+                <>
+                  <p className="message__user">{message.user}</p>
+                  <p className="message__content">{message.message}</p>
+                </>
+              ) : (
+                <p className="message__notification">{message.message}</p>
+              )}
+            </div>
+          ))}
+        </div>
+        <form className="chat__form" onSubmit={handleSubmit}>
+          <>
+            {usernameProvided ? (
+              <>
+                <textarea
+                  placeholder="Send a message"
+                  className="chat__input"
+                  autoFocus={true}
+                  autoComplete="off"
+                  value={newMessage}
+                  onKeyDown={handleKeyDown}
+                  onChange={(event) => setNewMessage(event.target.value)}
+                />
+                <img src={SendIcon} className="chat__send" alt="send" onClick={handleSubmit} />
+              </>
+            ) : (
+              <input
+                type="text"
+                placeholder="Provide your username and press enter"
+                className="chat__input chat__input--username"
+                maxLength={10}
+                autoFocus={true}
+                onKeyDown={handleUsernameSubmission}
+                onChange={(event) => setUsername(event.target.value)}
+              />
+            )}
+          </>
+        </form>
+      </div>
+    </main>
+  )
+}
+
+export default Chat`
+  },
+  {
+    lang: CODE_LANG.scss,
+    code: `$chat-padding: 2em;
+$chat-form-height: 4em;
+
+.chat {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $chat-padding;
+
+  .chat-items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: calc(100vh - $chat-padding * 2);
+    max-width: 50rem;
+    border-radius: 1.75em;
+
+    .chat__header {
+      padding: 1rem;
+      text-align: center;
+      font-size: clamp(12px, 3vw, 24px);
+      background: #161b22;
+      border-top-left-radius: 1em;
+      border-top-right-radius: 1em;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .chat__messages {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 4%;
+      max-height: calc(100vh - $chat-form-height * 3);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: #161b22 transparent;
+
+      .chat__message {
+        display: flex;
+        flex-direction: column;
+        font-size: clamp(12px, 3vw, 24px);
+
+        &.blue {
+          align-items: flex-end;
+
+          .message__content {
+            background-color: #0099FF;
+          }
+        }
+
+        &.gray {
+          align-items: flex-start;
+
+          .message__content {
+            background-color: #303030;
+          }
+        }
+
+        &.blue,
+        &.gray {
+          .message__content {
+            text-align: left;
+            max-width: 15em;
+            padding: 0.75em;
+            border-radius: 1em;
+            overflow-wrap: break-word;
+          }
+        }
+
+        &.centered {
+          justify-content: center;
+          align-items: center;
+
+          .message__notification {
+            border-radius: 1em;
+            padding: 0.75em 3em;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+          }
+        }
+
+        .message__user {
+          margin: 0 0.5rem;
+          font-size: clamp(8px, 3vw, 20px);
+          color: #94a3b8;
+        }
+      }
+    }
+
+    .chat__form {
+      display: flex;
+      width: 100%;
+      height: clamp(3em, 8vw, 4em);
+      max-height: $chat-form-height;
+
+      background: #161b22;
+      border-bottom-left-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+
+      .chat__input {
+        width: 100%;
+        padding: 1rem;
+        font: inherit;
+        color: #94a3b8;
+        background: inherit;
+        border-radius: inherit;
+        border: none;
+        outline: none;
+        resize: none;
+        font-size: clamp(12px, 3vw, 24px);
+
+        &::placeholder {
+          color: inherit;
+        }
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      .chat__input--username {
+        text-align: center;
+      }
+
+      .chat__send {
+        margin: 0.75rem;
+        width: clamp(22px, 4vw, 36px);
+        cursor: pointer;
+
+        transition: transform ease-in-out 0.05s;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}`
+  },
+  {
+    lang: CODE_LANG.typescript,
+    code: `import './App.scss'
+import { Route, Routes } from 'react-router-dom'
+import Chat from 'components/Chat'
+
+function App() {
+  return (
+    <div className="app">
+      <Routes>
+        <Route path="/" element={<Chat />} />
+      </Routes>
+    </div>
+  )
+}
+
+export default App`
   }
 ]
 
