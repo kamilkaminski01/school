@@ -400,7 +400,7 @@ const Chat = () => {
               className={classNames('chat__message', {
                 centered: message.command !== ECommands.Message,
                 blue: message.user === username && message.command === ECommands.Message,
-                gray: message.user !== username
+                gray: message.user !== username && message.command === ECommands.Message
               })}
               key={index}>
               {message.command === ECommands.Message ? (
@@ -613,6 +613,99 @@ function App() {
 }
 
 export default App`
+  },
+  {
+    lang: CODE_LANG.typescript,
+    code: `const url = window.location
+const socketProtocol = url.protocol === 'https:' ? 'wss:' : 'ws:'
+
+export const SOCKET_URL =
+  url.port !== ''
+    ? \`\${socketProtocol}//\${url.hostname}:8000/ws\`
+    : \`\${socketProtocol}//$\{url.hostname}/ws\`
+
+export const WEBSOCKETS = {
+  chat: \`\${SOCKET_URL}/chat/\`
+}`
+  },
+  {
+    lang: CODE_LANG.typescript,
+    code: `import { SendJsonMessage } from 'react-use-websocket/dist/lib/types'
+import { IMessage } from 'models/message'
+import { useEffect } from 'react'
+
+const useLeaveSocket = (sendJsonMessage: SendJsonMessage, message: IMessage, dep: boolean) => {
+  const onUnload = () => {
+    if (message.user) {
+      sendJsonMessage(message)
+    }
+  }
+
+  useEffect(() => {
+    if (dep) {
+      window.addEventListener('beforeunload', onUnload)
+
+      return () => {
+        window.removeEventListener('beforeunload', onUnload)
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dep])
+}
+
+export default useLeaveSocket`
+  },
+  {
+    lang: CODE_LANG.typescript,
+    code: `...
+
+import useWebSocket from 'react-use-websocket'
+import { WEBSOCKETS } from 'utils/consts'
+import useLeaveSocket from 'hooks/useLeaveSocket'
+
+const Chat = () => {
+
+...
+
+  const { sendJsonMessage } = useWebSocket(WEBSOCKETS.chat, {
+    onMessage: (event) => {
+      const data = JSON.parse(event.data)
+      setMessages((prevMessages) => [...prevMessages, data])
+    }
+  })
+
+  useLeaveSocket(
+    sendJsonMessage,
+    {
+      command: ECommands.Leave,
+      user: username,
+      message: \`\${username} has left\`
+    },
+    usernameProvided
+  )
+
+  useEffect(() => {
+    if (usernameProvided) {
+      sendJsonMessage({
+        command: ECommands.Join,
+        user: username,
+        message: \`\${username} has joined\`
+      })
+    }
+  }, [usernameProvided])
+
+...
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault()
+    const message = newMessage.trim()
+    if (message) {
+      sendJsonMessage({ command: ECommands.Message, user: username, message: message })
+      setNewMessage('')
+    }
+  }
+
+...`
   }
 ]
 

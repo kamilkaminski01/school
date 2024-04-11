@@ -4,6 +4,7 @@ import JobBoardThumbnail from '@/assets/images/job-board.png'
 import RecommendationsSystemThumbnail from '@/assets/images/recommendations-system.png'
 import FirstRunImage from '@/assets/images/djangoReactTutorial/first-run.png'
 import FirstGlanceImage from '@/assets/images/djangoReactTutorial/first-glance.png'
+import DjangoReactChatDemo from '@/assets/images/djangoReactTutorial/demo.png'
 import { CONTENT_TYPE } from '@/models/tutorial'
 import {
   developmentForum,
@@ -444,12 +445,68 @@ export const BLOGS = {
         { type: CONTENT_TYPE.img, img: FirstGlanceImage },
         {
           type: CONTENT_TYPE.paragraph,
-          text: "Now we have our fully responsive chat application. At this moment we can only chat with ourselves but let's get on to connecting our chat component with the backend through a WebSocket protocol."
+          text: "Now we have our fully responsive chat application. At this moment we can only chat with ourselves but let's get on to connecting our chat component with the backend thanks to WebSockets."
         },
         { type: CONTENT_TYPE.title, text: 'Connecting our frontend with the backend' },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'This tutorial is in progress, more coming soon...'
+          text:
+            'In order to connect our two projects we will define the chats websocket url in a <code class="inline-code">consts.ts</code> file, use the React useWebSocket hook to connect to through the websocket protocol ' +
+            'and send messages. Lastely create a custom <code class="inline-code">useLeaveSocket</code> hook to send information for others users when a user disconnects.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'So, create a <code class="inline-code">src/utils/consts.ts</code> file and define our backends websocket route:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[28].lang,
+          text: djangoReactChatCode[28].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'Create a <code class="inline-code">src/hooks/useLeaveSocket.ts</code> file to store our custom hook. The idea behind this hook is to send a notification to other users informing that one of them disconnected. ' +
+            'We will trigger the <code class="inline-code">sendJsonMessage</code> function on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event" target="_blank" rel="noopener noreferrer">beforeunload</a> ' +
+            "event. You would ask - why can't we do it on a websocket close event? Well this won't work, because we need to send this message from the client side, specifically the client that disconnects providing also his username. That's why " +
+            'we need to do it <strong>before</strong> he actually disconnects so the message can be sent:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[29].lang,
+          text: djangoReactChatCode[29].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Head over to <code class="inline-code">Chat/index.tsx</code> and implement the useWebSocket hook and our above changes:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: djangoReactChatCode[30].lang,
+          text: djangoReactChatCode[30].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Finally! You can now chat with other users in real-time. 💬'
+        },
+        { type: CONTENT_TYPE.img, img: DjangoReactChatDemo },
+        { type: CONTENT_TYPE.title, text: 'Edge Case' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            "When users join the chat with the same username, their messages will appear as if they sent it (blue color) even though one of them didn't. To prevent this, we would need to apply validation on setting a username and check if a " +
+            "provided username isn't already  connected to the chat. Another method would be to indentify every user with a unique ID and pass this ID while sending a message."
+        },
+        { type: CONTENT_TYPE.title, text: 'Conclusion' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text:
+            'We created a responsive web app that leverages the WebSocket protocol to ensure real-time communication between users. You can check out the project on my ' +
+            '<a href="https://github.com/kamilkaminski01" target="_blank" rel="noopener noreferrer">GitHub</a> or in the <strong>Links</strong> section down below. 👇🏼'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Thanks for reading. 🙏🏼'
         },
         { type: CONTENT_TYPE.title, text: 'Links' },
         {
