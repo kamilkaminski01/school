@@ -13,11 +13,14 @@
     </div>
     <RouterLink :to="{ name: 'django-react-chat' }" class="featured-tutorial__info">
       <img src="@/assets/images/kamil-kaminski.jpg" alt="Kamil Kamiński" class="profile-img" />
-      <div class="featured-tutorial__info-img">
-        <DjangoIcon />
-        <ReactIcon />
-      </div>
+      <DjangoIcon class="featured-tutorial__info-icon first" />
+      <ReactIcon class="featured-tutorial__info-icon second" />
+      <img
+        :src="DjangoReactChatDesktopDemo"
+        class="featured-tutorial__info-img"
+        alt="desktop demo" />
       <h3 class="featured-tutorial__info-title">{{ BLOGS.djangoReactChat.title }}</h3>
+      <p class="featured-tutorial__info-subtitle">{{ BLOGS.djangoReactChat.subtitle }}</p>
     </RouterLink>
   </div>
 </template>
@@ -26,6 +29,7 @@
 import DjangoIcon from '@/components/icons/DjangoIcon.vue'
 import ReactIcon from '@/components/icons/ReactIcon.vue'
 import { BLOGS } from '@/utils/consts'
+import DjangoReactChatDesktopDemo from '@/assets/images/blogs/djangoReactChat/desktop-demo.png'
 </script>
 
 <style lang="scss">
@@ -42,7 +46,7 @@ import { BLOGS } from '@/utils/consts'
   }
 
   .featured-tutorial__sections {
-    max-height: 300px;
+    max-height: 250px;
     overflow-y: scroll;
 
     .featured-tutorial__title {
@@ -84,7 +88,7 @@ import { BLOGS } from '@/utils/consts'
   .featured-tutorial__info {
     position: relative;
     display: grid;
-    padding: 1.25rem;
+    padding: 0.75rem;
     text-align: center;
     border-radius: 0.75rem;
     border: 1px solid hsla(0, 0%, 100%, 0.05);
@@ -100,20 +104,30 @@ import { BLOGS } from '@/utils/consts'
       z-index: 1;
     }
 
-    .featured-tutorial__info-img {
-      position: relative;
-      height: 83%;
+    .featured-tutorial__info-icon {
+      position: absolute;
+      right: 3px;
+      z-index: 1;
 
-      svg {
-        &:last-child {
-          position: absolute;
-          transform: translate(-62px, 152px);
-        }
+      &.first {
+        top: 50px;
       }
+
+      &.second {
+        top: 95px;
+      }
+    }
+
+    .featured-tutorial__info-img {
+      width: 100%;
     }
 
     .featured-tutorial__info-title {
       color: $platinum;
+    }
+
+    .featured-tutorial__info-subtitle {
+      color: $slate-gray;
     }
 
     &:hover {

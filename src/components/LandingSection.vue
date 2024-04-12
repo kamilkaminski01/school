@@ -5,7 +5,7 @@
         <span v-if="!isTablet" class="vertical-grid-line left" />
         <div class="item-notification__wrapper">
           <span class="item-notification__status" />
-          <p class="item-notification__msg">Check out the Django & React chat tutorial</p>
+          <p class="item-notification__msg">Check out the Django & React Chat tutorial</p>
         </div>
         <span v-if="!isTablet" class="vertical-grid-line right" />
       </div>

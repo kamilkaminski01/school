@@ -3,8 +3,8 @@
     <div class="projects-section__header">
       <h1 class="projects-section__title">Explore my collection of latest projects</h1>
       <p class="projects-section__desc">
-        Dive into my latest projects including fully functional solutions and comprehensive web apps
-        available live on the web
+        Dive into my latest projects including fully functional solutions and open source web apps
+        available live
       </p>
     </div>
     <div class="projects-section__cards">

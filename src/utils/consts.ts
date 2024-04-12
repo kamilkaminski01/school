@@ -20,7 +20,8 @@ import { blogTreesDjangoReactChat } from '@/utils/trees'
 export const BLOGS = {
   djangoReactChat: {
     link: 'django-react-chat',
-    title: 'Chat in Django & React',
+    title: 'Django & React Chat',
+    subtitle: 'Full Stack Web App | 10 min read',
     date: 'Apr 26, 2024',
     sections: [
       {
