@@ -15,10 +15,7 @@
       <img src="@/assets/images/kamil-kaminski.jpg" alt="Kamil Kamiński" class="profile-img" />
       <DjangoIcon class="featured-tutorial__info-icon first" />
       <ReactIcon class="featured-tutorial__info-icon second" />
-      <img
-        :src="DjangoReactChatDesktopDemo"
-        class="featured-tutorial__info-img"
-        alt="desktop demo" />
+      <img :src="DjangoReactChatThumbnail" class="featured-tutorial__info-img" alt="thumbnail" />
       <h3 class="featured-tutorial__info-title">{{ BLOGS.djangoReactChat.title }}</h3>
       <p class="featured-tutorial__info-subtitle">{{ BLOGS.djangoReactChat.subtitle }}</p>
     </RouterLink>
@@ -29,7 +26,7 @@
 import DjangoIcon from '@/components/icons/DjangoIcon.vue'
 import ReactIcon from '@/components/icons/ReactIcon.vue'
 import { BLOGS } from '@/utils/consts'
-import DjangoReactChatDesktopDemo from '@/assets/images/blogs/djangoReactChat/desktop-demo.png'
+import DjangoReactChatThumbnail from '@/assets/images/blogs/djangoReactChat/thumbnail.png'
 </script>
 
 <style lang="scss">
@@ -120,6 +117,7 @@ import DjangoReactChatDesktopDemo from '@/assets/images/blogs/djangoReactChat/de
 
     .featured-tutorial__info-img {
       width: 100%;
+      padding: 1rem;
     }
 
     .featured-tutorial__info-title {

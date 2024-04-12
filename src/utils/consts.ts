@@ -2,6 +2,7 @@ import ProjectThumbnailRecommendSystem from '@/assets/images/projects/recommenda
 import ProjectThumbnailMonitoringSystem from '@/assets/images/projects/monitoring-system.png'
 import ProjectThumbnailDevelopmentForum from '@/assets/images/projects/development-forum.png'
 import ProjectThumbnailJobBoard from '@/assets/images/projects/job-board.png'
+import BlogDjangoReactChatThumbnail from '@/assets/images/blogs/djangoReactChat/thumbnail.png'
 import BlogDjangoReactChat1 from '@/assets/images/blogs/djangoReactChat/first-run.png'
 import BlogDjangoReactChat2 from '@/assets/images/blogs/djangoReactChat/first-glance.png'
 import BlogDjangoReactChat3 from '@/assets/images/blogs/djangoReactChat/demo.png'
@@ -54,13 +55,13 @@ export const BLOGS = {
         date: 'Apr 1, 2024',
         readTime: '10 min read',
         title: 'Chat in Django & React',
-        demo: ''
+        demo: BlogDjangoReactChatThumbnail
       },
       content: [
         { type: CONTENT_TYPE.title, text: 'Hello everyone 👋🏼' },
         {
           type: CONTENT_TYPE.paragraph,
-          text: "I am excited to share this tutorial about creating a chat app with Django and React. Let's get straight to it."
+          text: 'I am excited to share this tutorial about creating a chat app with Django and React. The idea behind this project is to code up a basic application that allows users to communicate in real-time.'
         },
         { type: CONTENT_TYPE.title, text: 'Prerequisites' },
         {
