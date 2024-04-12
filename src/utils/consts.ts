@@ -1,21 +1,21 @@
-import MonitoringSystemThumbnail from '@/assets/images/monitoring-system.png'
-import DevelopmentForumThumbnail from '@/assets/images/development-forum.png'
-import JobBoardThumbnail from '@/assets/images/job-board.png'
-import RecommendationsSystemThumbnail from '@/assets/images/recommendations-system.png'
-import FirstRunImage from '@/assets/images/djangoReactTutorial/first-run.png'
-import FirstGlanceImage from '@/assets/images/djangoReactTutorial/first-glance.png'
-import DjangoReactChatDemo from '@/assets/images/djangoReactTutorial/demo.png'
-import { CONTENT_TYPE } from '@/models/tutorial'
-import {
-  developmentForum,
-  djangoReactChatCode,
-  jobBoard,
-  monitoringSystem,
-  recommendationsSystem
-} from './code'
+import ProjectThumbnailRecommendSystem from '@/assets/images/projects/recommendations-system.png'
+import ProjectThumbnailMonitoringSystem from '@/assets/images/projects/monitoring-system.png'
+import ProjectThumbnailDevelopmentForum from '@/assets/images/projects/development-forum.png'
+import ProjectThumbnailJobBoard from '@/assets/images/projects/job-board.png'
+import BlogDjangoReactChat1 from '@/assets/images/blogs/djangoReactChat/first-run.png'
+import BlogDjangoReactChat2 from '@/assets/images/blogs/djangoReactChat/first-glance.png'
+import BlogDjangoReactChat3 from '@/assets/images/blogs/djangoReactChat/demo.png'
 import GitHubIcon from '@/components/icons/GitHubIcon.vue'
 import MonitorIcon from '@/components/icons/MonitorIcon.vue'
-import { djangoReactChat } from '@/utils/trees'
+import { CONTENT_TYPE } from '@/models/tutorial'
+import {
+  blogCodeDjangoReactChat,
+  projectCodeJobBoard,
+  projectCodeDevelopmentForum,
+  projectCodeMonitoringSystem,
+  projectCodeRecommendSystem
+} from './code'
+import { blogTreesDjangoReactChat } from '@/utils/trees'
 
 export const BLOGS = {
   djangoReactChat: {
@@ -56,18 +56,12 @@ export const BLOGS = {
         demo: ''
       },
       content: [
-        {
-          type: CONTENT_TYPE.title,
-          text: 'Hello everyone 👋🏼'
-        },
+        { type: CONTENT_TYPE.title, text: 'Hello everyone 👋🏼' },
         {
           type: CONTENT_TYPE.paragraph,
           text: "I am excited to share this tutorial about creating a chat app with Django and React. Let's get straight to it."
         },
-        {
-          type: CONTENT_TYPE.title,
-          text: 'Prerequisites'
-        },
+        { type: CONTENT_TYPE.title, text: 'Prerequisites' },
         {
           type: CONTENT_TYPE.paragraph,
           text:
@@ -84,10 +78,7 @@ export const BLOGS = {
             "Docker and running it's basic commands"
           ]
         },
-        {
-          type: CONTENT_TYPE.title,
-          text: 'Creating the Environment'
-        },
+        { type: CONTENT_TYPE.title, text: 'Creating the Environment' },
         {
           type: CONTENT_TYPE.paragraph,
           text:
@@ -97,8 +88,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[0].lang,
-          text: djangoReactChatCode[0].code
+          lang: blogCodeDjangoReactChat[0].lang,
+          text: blogCodeDjangoReactChat[0].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -106,8 +97,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[1].lang,
-          text: djangoReactChatCode[1].code
+          lang: blogCodeDjangoReactChat[1].lang,
+          text: blogCodeDjangoReactChat[1].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -115,8 +106,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[2].lang,
-          text: djangoReactChatCode[2].code
+          lang: blogCodeDjangoReactChat[2].lang,
+          text: blogCodeDjangoReactChat[2].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -132,23 +123,20 @@ export const BLOGS = {
             'environment. Before, we separated the backend and frontend into two directories, now place the backend dependencies in a <code class="inline-code">requirements.txt</code> file ' +
             'and create dedicated Dockerfiles:'
         },
-        {
-          type: CONTENT_TYPE.tree,
-          text: djangoReactChat[0].tree
-        },
+        { type: CONTENT_TYPE.tree, text: blogTreesDjangoReactChat[0].tree },
         {
           type: CONTENT_TYPE.paragraph,
           text: 'Backend <code class="inline-code">Dockerfile</code> and <code class="inline-code">requirements.txt</code>'
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[3].lang,
-          text: djangoReactChatCode[3].code
+          lang: blogCodeDjangoReactChat[3].lang,
+          text: blogCodeDjangoReactChat[3].code
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[4].lang,
-          text: djangoReactChatCode[4].code
+          lang: blogCodeDjangoReactChat[4].lang,
+          text: blogCodeDjangoReactChat[4].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -156,8 +144,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[5].lang,
-          text: djangoReactChatCode[5].code
+          lang: blogCodeDjangoReactChat[5].lang,
+          text: blogCodeDjangoReactChat[5].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -165,8 +153,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[6].lang,
-          text: djangoReactChatCode[6].code
+          lang: blogCodeDjangoReactChat[6].lang,
+          text: blogCodeDjangoReactChat[6].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -174,7 +162,7 @@ export const BLOGS = {
             "Now let's build and run the project: " +
             '<code class="inline-code">make build && make run</code>'
         },
-        { type: CONTENT_TYPE.img, img: FirstRunImage },
+        { type: CONTENT_TYPE.img, img: BlogDjangoReactChat1 },
         { type: CONTENT_TYPE.subtitle, text: 'Channels integration and enabling channel layers' },
         {
           type: CONTENT_TYPE.paragraph,
@@ -186,19 +174,17 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[7].lang,
-          text: djangoReactChatCode[7].code
+          lang: blogCodeDjangoReactChat[7].lang,
+          text: blogCodeDjangoReactChat[7].code
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text:
-            'Now add the Channels and Daphne libraries to the list of installed apps, in order to enable an ASGI ' +
-            'versions of the runserver command:'
+          text: 'Now add the Channels and Daphne libraries to the list of installed apps, in order to enable an ASGI versions of the runserver command:'
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[8].lang,
-          text: djangoReactChatCode[8].code
+          lang: blogCodeDjangoReactChat[8].lang,
+          text: blogCodeDjangoReactChat[8].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -206,8 +192,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[9].lang,
-          text: djangoReactChatCode[9].code
+          lang: blogCodeDjangoReactChat[9].lang,
+          text: blogCodeDjangoReactChat[9].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -217,8 +203,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[10].lang,
-          text: djangoReactChatCode[10].code
+          lang: blogCodeDjangoReactChat[10].lang,
+          text: blogCodeDjangoReactChat[10].code
         },
         { type: CONTENT_TYPE.title, text: 'Backend with Django' },
         {
@@ -229,8 +215,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[11].lang,
-          text: djangoReactChatCode[11].code
+          lang: blogCodeDjangoReactChat[11].lang,
+          text: blogCodeDjangoReactChat[11].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -240,8 +226,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[12].lang,
-          text: djangoReactChatCode[12].code
+          lang: blogCodeDjangoReactChat[12].lang,
+          text: blogCodeDjangoReactChat[12].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -250,10 +236,7 @@ export const BLOGS = {
             '<code class="inline-code">consumers.py</code> and <code class="inline-code">routing.py</code> files. This is a convention in writing asynchronous code, so your backend file structure should look ' +
             'like this:'
         },
-        {
-          type: CONTENT_TYPE.tree,
-          text: djangoReactChat[1].tree
-        },
+        { type: CONTENT_TYPE.tree, text: blogTreesDjangoReactChat[1].tree },
         { type: CONTENT_TYPE.title, text: 'Consumers and Routing' },
         {
           type: CONTENT_TYPE.paragraph,
@@ -265,8 +248,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[13].lang,
-          text: djangoReactChatCode[13].code
+          lang: blogCodeDjangoReactChat[13].lang,
+          text: blogCodeDjangoReactChat[13].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -274,8 +257,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[14].lang,
-          text: djangoReactChatCode[14].code
+          lang: blogCodeDjangoReactChat[14].lang,
+          text: blogCodeDjangoReactChat[14].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -285,8 +268,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[15].lang,
-          text: djangoReactChatCode[15].code
+          lang: blogCodeDjangoReactChat[15].lang,
+          text: blogCodeDjangoReactChat[15].code
         },
         { type: CONTENT_TYPE.title, text: 'Frontend with React' },
         {
@@ -295,10 +278,7 @@ export const BLOGS = {
             "As we coded up the backend side, let's begin with the user interface. Remove the boilerplate code after creating a React project and convert " +
             '<code class="inline-code">.css</code> files to <code class="inline-code">.scss</code>. Your file structure should look like this: '
         },
-        {
-          type: CONTENT_TYPE.tree,
-          text: djangoReactChat[2].tree
-        },
+        { type: CONTENT_TYPE.tree, text: blogTreesDjangoReactChat[2].tree },
         {
           type: CONTENT_TYPE.paragraph,
           text:
@@ -307,8 +287,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[16].lang,
-          text: djangoReactChatCode[16].code
+          lang: blogCodeDjangoReactChat[16].lang,
+          text: blogCodeDjangoReactChat[16].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -316,13 +296,13 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[17].lang,
-          text: djangoReactChatCode[17].code
+          lang: blogCodeDjangoReactChat[17].lang,
+          text: blogCodeDjangoReactChat[17].code
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[18].lang,
-          text: djangoReactChatCode[18].code
+          lang: blogCodeDjangoReactChat[18].lang,
+          text: blogCodeDjangoReactChat[18].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -334,8 +314,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[19].lang,
-          text: djangoReactChatCode[19].code
+          lang: blogCodeDjangoReactChat[19].lang,
+          text: blogCodeDjangoReactChat[19].code
         },
         {
           type: CONTENT_TYPE.warning,
@@ -347,13 +327,13 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[20].lang,
-          text: djangoReactChatCode[20].code
+          lang: blogCodeDjangoReactChat[20].lang,
+          text: blogCodeDjangoReactChat[20].code
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[21].lang,
-          text: djangoReactChatCode[21].code
+          lang: blogCodeDjangoReactChat[21].lang,
+          text: blogCodeDjangoReactChat[21].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -370,10 +350,7 @@ export const BLOGS = {
             'and <code class="inline-code">style.scss</code> file. Also create a <code class="inline-code">models/</code> directory that will store our <code class="inline-code">message.ts</code> file with the message model that comes from the backend and ' +
             'an enum containing the message types like we did in our <code class="inline-code">consumers.py</code> file. The file structure should look like this:'
         },
-        {
-          type: CONTENT_TYPE.tree,
-          text: djangoReactChat[3].tree
-        },
+        { type: CONTENT_TYPE.tree, text: blogTreesDjangoReactChat[3].tree },
         {
           type: CONTENT_TYPE.paragraph,
           text:
@@ -383,8 +360,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[22].lang,
-          text: djangoReactChatCode[22].code
+          lang: blogCodeDjangoReactChat[22].lang,
+          text: blogCodeDjangoReactChat[22].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -392,8 +369,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[23].lang,
-          text: djangoReactChatCode[23].code
+          lang: blogCodeDjangoReactChat[23].lang,
+          text: blogCodeDjangoReactChat[23].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -405,8 +382,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[24].lang,
-          text: djangoReactChatCode[24].code
+          lang: blogCodeDjangoReactChat[24].lang,
+          text: blogCodeDjangoReactChat[24].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -414,8 +391,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[25].lang,
-          text: djangoReactChatCode[25].code
+          lang: blogCodeDjangoReactChat[25].lang,
+          text: blogCodeDjangoReactChat[25].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -423,8 +400,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[26].lang,
-          text: djangoReactChatCode[26].code
+          lang: blogCodeDjangoReactChat[26].lang,
+          text: blogCodeDjangoReactChat[26].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -435,14 +412,14 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[27].lang,
-          text: djangoReactChatCode[27].code
+          lang: blogCodeDjangoReactChat[27].lang,
+          text: blogCodeDjangoReactChat[27].code
         },
         {
           type: CONTENT_TYPE.paragraph,
           text: 'There you go! Open the chat, provide a username and type some messages. 🥳'
         },
-        { type: CONTENT_TYPE.img, img: FirstGlanceImage },
+        { type: CONTENT_TYPE.img, img: BlogDjangoReactChat2 },
         {
           type: CONTENT_TYPE.paragraph,
           text: "Now we have our fully responsive chat application. At this moment we can only chat with ourselves but let's get on to connecting our chat component with the backend thanks to WebSockets."
@@ -460,8 +437,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[28].lang,
-          text: djangoReactChatCode[28].code
+          lang: blogCodeDjangoReactChat[28].lang,
+          text: blogCodeDjangoReactChat[28].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -473,8 +450,8 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[29].lang,
-          text: djangoReactChatCode[29].code
+          lang: blogCodeDjangoReactChat[29].lang,
+          text: blogCodeDjangoReactChat[29].code
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -482,14 +459,14 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: djangoReactChatCode[30].lang,
-          text: djangoReactChatCode[30].code
+          lang: blogCodeDjangoReactChat[30].lang,
+          text: blogCodeDjangoReactChat[30].code
         },
         {
           type: CONTENT_TYPE.paragraph,
           text: 'Finally! You can now chat with other users in real-time. 💬'
         },
-        { type: CONTENT_TYPE.img, img: DjangoReactChatDemo },
+        { type: CONTENT_TYPE.img, img: BlogDjangoReactChat3 },
         { type: CONTENT_TYPE.title, text: 'Edge Case' },
         {
           type: CONTENT_TYPE.paragraph,
@@ -504,10 +481,7 @@ export const BLOGS = {
             'We created a responsive web app that leverages the WebSocket protocol to ensure real-time communication between users. You can check out the project on my ' +
             '<a href="https://github.com/kamilkaminski01" target="_blank" rel="noopener noreferrer">GitHub</a> or in the <strong>Links</strong> section down below. 👇🏼'
         },
-        {
-          type: CONTENT_TYPE.paragraph,
-          text: 'Thanks for reading. 🙏🏼'
-        },
+        { type: CONTENT_TYPE.paragraph, text: 'Thanks for reading. 🙏🏼' },
         { type: CONTENT_TYPE.title, text: 'Links' },
         {
           type: CONTENT_TYPE.icons,
@@ -526,13 +500,11 @@ export const BLOGS = {
     link: 'about',
     title: 'About me - Kamil Kamiński',
     date: 'Mar 25, 2024',
-    sections: [],
     tutorial: {
       header: {
         date: 'Mar 25, 2024',
         readTime: '1 min read',
-        title: "Hi 👋, I'm Kamil",
-        demo: ''
+        title: "Hi 👋, I'm Kamil"
       },
       content: [
         {
@@ -556,10 +528,7 @@ export const BLOGS = {
             'which I am completing to this day. During this time I did apprenticeships and was offered an internship. ' +
             'After some time I received my first job.'
         },
-        {
-          type: CONTENT_TYPE.title,
-          text: 'Development Experience'
-        },
+        { type: CONTENT_TYPE.title, text: 'Development Experience' },
         {
           type: CONTENT_TYPE.paragraph,
           text:
@@ -573,44 +542,29 @@ export const BLOGS = {
             'Software Engineer and provide coding examples on various topics. It also allows me to showcase chunks of my projects and ' +
             'improve my writing skills. 😁'
         },
-        {
-          type: CONTENT_TYPE.title,
-          text: 'Development Tools'
-        },
-        {
-          type: CONTENT_TYPE.subtitle,
-          text: 'Backend'
-        },
+        { type: CONTENT_TYPE.title, text: 'Development Tools' },
+        { type: CONTENT_TYPE.subtitle, text: 'Backend' },
         {
           type: CONTENT_TYPE.paragraph,
           text:
             'Like I said before, my main language is Python, framework Django, libraries Django REST Framework and Django Channels. ' +
             'I also have experience with Flask, SQLAlchemy, Event Sourcing and DDD (domain-driven design).'
         },
-        {
-          type: CONTENT_TYPE.subtitle,
-          text: 'Frontend'
-        },
+        { type: CONTENT_TYPE.subtitle, text: 'Frontend' },
         {
           type: CONTENT_TYPE.paragraph,
           text:
             'My favourite framework is React written in TypeScript. Aside React I also utilize my projects using Vue and for styling ' +
             'CSS and SASS. For smaller projects I usually use JavaScript.'
         },
-        {
-          type: CONTENT_TYPE.subtitle,
-          text: 'Databases and DevOps'
-        },
+        { type: CONTENT_TYPE.subtitle, text: 'Databases and DevOps' },
         {
           type: CONTENT_TYPE.paragraph,
           text:
             'For relational databases I use PostgreSQL or MySQL and containerize my projects with Docker. For deployment I use AWS ' +
             "and Vercel. K8's is also a tool that I use quite often."
         },
-        {
-          type: CONTENT_TYPE.paragraph,
-          text: 'Thanks for reading. 🙏'
-        },
+        { type: CONTENT_TYPE.paragraph, text: 'Thanks for reading. 🙏' },
         {
           type: CONTENT_TYPE.paragraph,
           text: '<strong>"In real open source, you have the right to control your own destiny"</strong> | Linus Torvalds'
@@ -625,7 +579,7 @@ export const PROJECTS = {
     feature: true,
     date: 'Oct 7, 2023',
     link: 'job-board',
-    thumbnail: JobBoardThumbnail,
+    thumbnail: ProjectThumbnailJobBoard,
     title: 'IT Recruitment Platform',
     desc: 'Search for candidates and apply for jobs',
     tutorial: {
@@ -714,8 +668,8 @@ export const PROJECTS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: jobBoard[0].lang,
-          text: jobBoard[0].code
+          lang: projectCodeJobBoard[0].lang,
+          text: projectCodeJobBoard[0].code
         },
         { type: CONTENT_TYPE.title, text: 'Application setup' },
         {
@@ -764,7 +718,7 @@ export const PROJECTS = {
     feature: true,
     date: 'Mar 9, 2023',
     link: 'development-forum',
-    thumbnail: DevelopmentForumThumbnail,
+    thumbnail: ProjectThumbnailDevelopmentForum,
     title: 'Forum for software topics',
     desc: 'Create topics, rooms and help others',
     tutorial: {
@@ -826,17 +780,29 @@ export const PROJECTS = {
           type: CONTENT_TYPE.paragraph,
           text: 'Clone the repo and create a virtual environment:'
         },
-        { type: CONTENT_TYPE.code, lang: developmentForum[0].lang, text: developmentForum[0].code },
+        {
+          type: CONTENT_TYPE.code,
+          lang: projectCodeDevelopmentForum[0].lang,
+          text: projectCodeDevelopmentForum[0].code
+        },
         {
           type: CONTENT_TYPE.paragraph,
           text: 'Install the dependencies and initialize the database with migrations:'
         },
-        { type: CONTENT_TYPE.code, lang: developmentForum[1].lang, text: developmentForum[1].code },
+        {
+          type: CONTENT_TYPE.code,
+          lang: projectCodeDevelopmentForum[1].lang,
+          text: projectCodeDevelopmentForum[1].code
+        },
         {
           type: CONTENT_TYPE.paragraph,
           text: 'Finally, run the app ⚡️:'
         },
-        { type: CONTENT_TYPE.code, lang: developmentForum[2].lang, text: developmentForum[2].code },
+        {
+          type: CONTENT_TYPE.code,
+          lang: projectCodeDevelopmentForum[2].lang,
+          text: projectCodeDevelopmentForum[2].code
+        },
         { type: CONTENT_TYPE.title, text: 'Application setup' },
         {
           type: CONTENT_TYPE.paragraph,
@@ -845,12 +811,20 @@ export const PROJECTS = {
             '<a href="https://github.com/kamilkaminski01/development-forum?tab=readme-ov-file#application-setup" target="_blank" rel="noopener noreferrer">here</a>. ' +
             'Thanks to this custom command you can dive straight into work without wasting any time. Here are the required steps:'
         },
-        { type: CONTENT_TYPE.code, lang: developmentForum[3].lang, text: developmentForum[3].code },
+        {
+          type: CONTENT_TYPE.code,
+          lang: projectCodeDevelopmentForum[3].lang,
+          text: projectCodeDevelopmentForum[3].code
+        },
         {
           type: CONTENT_TYPE.paragraph,
           text: "If your machine doesn't support <code class='inline-code'>make</code>, cd in to the <code class='inline-code'>app/</code> directory and run this:"
         },
-        { type: CONTENT_TYPE.code, lang: developmentForum[4].lang, text: developmentForum[4].code },
+        {
+          type: CONTENT_TYPE.code,
+          lang: projectCodeDevelopmentForum[4].lang,
+          text: projectCodeDevelopmentForum[4].code
+        },
         { type: CONTENT_TYPE.title, text: 'Credits' },
         {
           type: CONTENT_TYPE.paragraph,
@@ -876,7 +850,7 @@ export const PROJECTS = {
     feature: true,
     date: 'Nov 27, 2022',
     link: 'monitoring-system',
-    thumbnail: MonitoringSystemThumbnail,
+    thumbnail: ProjectThumbnailMonitoringSystem,
     title: 'Web apps with real-time monitoring',
     desc: 'Whiteboard, Tic Tac Toe, Bingo and more',
     tutorial: {
@@ -958,7 +932,11 @@ export const PROJECTS = {
           ]
         },
         { type: CONTENT_TYPE.title, text: 'Docker Compose setup' },
-        { type: CONTENT_TYPE.code, lang: monitoringSystem[0].lang, text: monitoringSystem[0].code },
+        {
+          type: CONTENT_TYPE.code,
+          lang: projectCodeMonitoringSystem[0].lang,
+          text: projectCodeMonitoringSystem[0].code
+        },
         {
           type: CONTENT_TYPE.note,
           text:
@@ -1015,7 +993,7 @@ export const PROJECTS = {
     feature: false,
     date: 'Oct 13, 2022',
     link: 'recommendations-system',
-    thumbnail: RecommendationsSystemThumbnail,
+    thumbnail: ProjectThumbnailRecommendSystem,
     title: 'Campaign platform for recruitment',
     desc: 'Recommend potential candidates for prizes',
     tutorial: {
@@ -1060,14 +1038,11 @@ export const PROJECTS = {
           ]
         },
         { type: CONTENT_TYPE.title, text: 'Running the app' },
-        {
-          type: CONTENT_TYPE.paragraph,
-          text: 'Docker Compose setup:'
-        },
+        { type: CONTENT_TYPE.paragraph, text: 'Docker Compose setup:' },
         {
           type: CONTENT_TYPE.code,
-          lang: recommendationsSystem[0].lang,
-          text: recommendationsSystem[0].code
+          lang: projectCodeRecommendSystem[0].lang,
+          text: projectCodeRecommendSystem[0].code
         },
         {
           type: CONTENT_TYPE.warning,
@@ -1081,13 +1056,10 @@ export const PROJECTS = {
         },
         {
           type: CONTENT_TYPE.code,
-          lang: recommendationsSystem[1].lang,
-          text: recommendationsSystem[1].code
+          lang: projectCodeRecommendSystem[1].lang,
+          text: projectCodeRecommendSystem[1].code
         },
-        {
-          type: CONTENT_TYPE.title,
-          text: 'Application setup'
-        },
+        { type: CONTENT_TYPE.title, text: 'Application setup' },
         {
           type: CONTENT_TYPE.paragraph,
           text:

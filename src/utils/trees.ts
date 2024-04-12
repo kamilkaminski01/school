@@ -1,4 +1,4 @@
-export const djangoReactChat = [
+export const blogTreesDjangoReactChat = [
   {
     tree: `.
 └── django-react-chat/
