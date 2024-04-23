@@ -29,21 +29,25 @@
           :key="contentIndex"
           class="tutorial__content-title"
           v-html="content.text" />
+        <template v-else />
         <h4
           v-if="content.type === CONTENT_TYPE.subtitle"
           :key="contentIndex"
           class="tutorial__content-subtitle"
           v-html="content.text" />
+        <template v-else />
         <p
           v-if="content.type === CONTENT_TYPE.paragraph"
           :key="contentIndex"
           class="tutorial__content-paragraph"
           v-html="content.text" />
+        <template v-else />
         <img
           v-if="content.type === CONTENT_TYPE.img"
           :key="contentIndex"
           :src="content.img"
           class="tutorial__content-img" />
+        <template v-else />
         <div
           v-if="content.type === CONTENT_TYPE.code"
           :key="contentIndex"
@@ -59,29 +63,34 @@
             </div>
           </div>
         </div>
+        <template v-else />
         <div
           v-if="content.type === CONTENT_TYPE.tree"
           :key="contentIndex"
           class="tutorial__content-tree">
           {{ content.text }}
         </div>
+        <template v-else />
         <ul
           v-if="content.type === CONTENT_TYPE.unorderedList"
           :key="contentIndex"
           class="tutorial__content-list">
           <li v-for="(item, listIndex) in content.items" :key="listIndex" v-html="item" />
         </ul>
+        <template v-else />
         <ol
           v-if="content.type === CONTENT_TYPE.orderedList"
           :key="contentIndex"
           class="tutorial__content-list">
           <li v-for="(item, listIndex) in content.items" :key="listIndex" v-html="item" />
         </ol>
+        <template v-else />
         <blockquote
           v-if="content.type === CONTENT_TYPE.quote"
           :key="contentIndex"
           class="tutorial__content-quote"
           v-html="content.text" />
+        <template v-else />
         <div
           v-if="content.type === CONTENT_TYPE.note || content.type === CONTENT_TYPE.warning"
           :key="contentIndex"
@@ -91,6 +100,7 @@
             warning: content.type === CONTENT_TYPE.warning
           }"
           v-html="content.text" />
+        <template v-else />
         <div
           v-if="content.type === CONTENT_TYPE.icons"
           :key="contentIndex"
@@ -106,6 +116,7 @@
             <component :is="icon.icon" /> {{ icon.text }}
           </a>
         </div>
+        <template v-else />
       </template>
       <p class="tutorial__content-return">
         <template v-if="returnLink === 'projects'">
@@ -118,6 +129,10 @@
     </div>
   </main>
 </template>
+<!--
+ Hackish workaround to prevent rendering empty comment strings
+ in the DOM - use <template v-else /> after every v-if
+ -->
 
 <script setup lang="ts">
 import 'highlight.js/styles/github-dark.css'
