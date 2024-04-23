@@ -8,6 +8,16 @@ export enum CODE_LANG {
   scss = 'scss'
 }
 
+export const projectCodeEventsManager = [
+  {
+    lang: CODE_LANG.bash,
+    code: `git clone https://github.com/kamilkaminski01/events-manager.git
+cd events-manager/
+docker compose build
+docker compose up`
+  }
+]
+
 export const projectCodeJobBoard = [
   {
     lang: CODE_LANG.bash,

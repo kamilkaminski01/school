@@ -12,6 +12,7 @@ import MonitorIcon from '@/components/icons/MonitorIcon.vue'
 import { CONTENT_TYPE } from '@/models/tutorial'
 import {
   blogCodeDjangoReactChat,
+  projectCodeEventsManager,
   projectCodeJobBoard,
   projectCodeDevelopmentForum,
   projectCodeMonitoringSystem,
@@ -509,7 +510,68 @@ export const PROJECTS = {
         title: 'Events Manager',
         demo: 'https://raw.githubusercontent.com/kamilkaminski01/events-manager/master/frontend/src/assets/images/demo/demo1.png'
       },
-      content: []
+      content: [
+        { type: CONTENT_TYPE.title, text: 'Welcome ✍🏼' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "<strong>Events Manager</strong> is a robust web app that allows to create, update delete and manage events along with its participants effortlessly. Thanks to it's sleek UI, navigating through functionalities is a breeze."
+        },
+        {
+          type: CONTENT_TYPE.quote,
+          text: "Participants are created by providing their first name, last name, meal preference and meal types. Meal preference's are chosen between carnivorous and vegetarian. Meal types can be breakfasts, dinners and suppers."
+        },
+        {
+          type: CONTENT_TYPE.quote,
+          text: "Events are created by providing their name, it's host (that should be an already created participant and isn't a host) and participants."
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Every participant and event have their dedicated pages providing details on what event participants are attending to. On the other hand, event pages provide information about their participants and host.'
+        },
+        { type: CONTENT_TYPE.title, text: 'Technologies' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "Here's a breakdown of the used technologies in the project:"
+        },
+        {
+          type: CONTENT_TYPE.unorderedList,
+          items: [
+            'The primary backend language for server-side logic is <code class="inline-code">Python</code>',
+            'A RESTful API is written in the <a href="https://flask.palletsprojects.com/en/3.0.x/" target="_blank" rel="noopener noreferrer">Flask</a> framework assisted by <a href="https://www.sqlalchemy.org/" target="_blank" rel="noopener noreferrer">SQLAlchemy</a>\'s ORM',
+            'User interface is built with <a href="https://react.dev/" target="_blank" rel="noopener noreferrer">React</a> written in <code class="inline-code">TypeScript</code>',
+            'Instead of the regular create-react-app building tool, this project leverages <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">Vite</a>',
+            'Styling is handled by a CSS extension - <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">SASS</a>',
+            'The database is managed by <a href="https://www.postgresql.org.pl/" target="_blank" rel="noopener noreferrer">PostgreSQL</a>',
+            'Everything is containerized in a <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">Docker</a> environment'
+          ]
+        },
+        { type: CONTENT_TYPE.title, text: 'Running the app with Docker Compose' },
+        {
+          type: CONTENT_TYPE.code,
+          lang: projectCodeEventsManager[0].lang,
+          text: projectCodeEventsManager[0].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'You can initialize the database with example data by using a custom command: <code class="inline-code">make initial-data</code>'
+        },
+        { type: CONTENT_TYPE.title, text: 'Future features' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "This project leaves room for numerous amount of features thanks to it's scalable technologies and code base. For example, an event could have more than one host or &quot;special&quot; participants. Also, participants could choose their meals for individual events or define how much time they would participate in an event. These are just drops in the ocean of potential capabilities."
+        },
+        { type: CONTENT_TYPE.title, text: 'Links' },
+        {
+          type: CONTENT_TYPE.icons,
+          icons: [
+            {
+              icon: GitHubIcon,
+              text: 'GitHub',
+              link: 'https://github.com/kamilkaminski01/events-manager'
+            }
+          ]
+        }
+      ]
     }
   },
   jobBoard: {
