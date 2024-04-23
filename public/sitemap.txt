@@ -7,3 +7,4 @@ https://school.kamilkaminski.pl/projects/recommendations-system
 https://school.kamilkaminski.pl/projects/monitoring-system
 https://school.kamilkaminski.pl/projects/development-forum
 https://school.kamilkaminski.pl/projects/job-board
+https://school.kamilkaminski.pl/projects/events-manager

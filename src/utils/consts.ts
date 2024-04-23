@@ -2,6 +2,7 @@ import ProjectThumbnailRecommendSystem from '@/assets/images/projects/recommenda
 import ProjectThumbnailMonitoringSystem from '@/assets/images/projects/monitoring-system.png'
 import ProjectThumbnailDevelopmentForum from '@/assets/images/projects/development-forum.png'
 import ProjectThumbnailJobBoard from '@/assets/images/projects/job-board.png'
+import ProjectThumbnailEventsManager from '@/assets/images/projects/events-manager.png'
 import BlogDjangoReactChatThumbnail from '@/assets/images/blogs/djangoReactChat/thumbnail.png'
 import BlogDjangoReactChat1 from '@/assets/images/blogs/djangoReactChat/first-run.png'
 import BlogDjangoReactChat2 from '@/assets/images/blogs/djangoReactChat/first-glance.png'
@@ -494,6 +495,23 @@ export const BLOGS = {
 }
 
 export const PROJECTS = {
+  eventsManager: {
+    feature: true,
+    date: 'Apr 23, 2023',
+    link: 'events-manager',
+    thumbnail: ProjectThumbnailEventsManager,
+    title: 'Events and Participants Manager',
+    desc: "Manage events, it's participants and hosts",
+    tutorial: {
+      header: {
+        date: 'Apr 23, 2023',
+        readTime: '2 min read',
+        title: 'Events Manager',
+        demo: 'https://raw.githubusercontent.com/kamilkaminski01/events-manager/master/frontend/src/assets/images/demo/demo1.png'
+      },
+      content: []
+    }
+  },
   jobBoard: {
     feature: true,
     date: 'Oct 7, 2023',
@@ -614,7 +632,7 @@ export const PROJECTS = {
     }
   },
   developmentForum: {
-    feature: true,
+    feature: false,
     date: 'Mar 9, 2023',
     link: 'development-forum',
     thumbnail: ProjectThumbnailDevelopmentForum,

@@ -20,6 +20,12 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/ProjectsView.vue')
       },
       {
+        path: 'events-manager',
+        name: 'events-manager',
+        meta: { title: 'Events Manager', tutorial: PROJECTS.eventsManager.tutorial },
+        component: () => import('../views/TutorialView.vue')
+      },
+      {
         path: 'job-board',
         name: 'job-board',
         meta: { title: 'Job Board', tutorial: PROJECTS.jobBoard.tutorial },
