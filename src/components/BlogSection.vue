@@ -43,6 +43,7 @@ import FeaturedTutorial from '@/components/FeaturedTutorial.vue'
 
   .blog-section__featured {
     overflow: scroll;
+    scrollbar-width: none;
     width: 100%;
   }
 

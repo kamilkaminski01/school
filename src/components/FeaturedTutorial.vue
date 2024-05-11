@@ -37,6 +37,7 @@ import DjangoReactChatThumbnail from '@/assets/images/blogs/djangoReactChat/thum
   width: 600px;
   border-radius: 2em;
   background-color: hsla(0, 0%, 100%, 0.05);
+  scrollbar-width: none;
 
   & > * {
     flex-basis: 50%;
@@ -45,6 +46,7 @@ import DjangoReactChatThumbnail from '@/assets/images/blogs/djangoReactChat/thum
   .featured-tutorial__sections {
     max-height: 250px;
     overflow-y: scroll;
+    scrollbar-width: none;
 
     .featured-tutorial__title {
       font-size: 0.75rem;

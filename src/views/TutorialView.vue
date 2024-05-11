@@ -299,6 +299,7 @@ const copyCode = (contentIndex: number) => {
 
         code {
           padding: unset;
+          scrollbar-width: none;
         }
       }
 
