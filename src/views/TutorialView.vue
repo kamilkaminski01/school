@@ -296,10 +296,11 @@ const copyCode = (contentIndex: number) => {
         font-size: 14px;
         overflow-x: auto;
         line-height: 1.25rem;
+        @include hide-scrollbar;
 
         code {
           padding: unset;
-          scrollbar-width: none;
+          @include hide-scrollbar;
         }
       }
 

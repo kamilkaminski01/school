@@ -32,6 +32,7 @@ header {
   background-color: rgba(15, 23, 42, 0.5);
   border-bottom: 1px solid $yankees-blue;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   .header__items {
     display: flex;

@@ -18,6 +18,7 @@ import FeaturedTutorial from '@/components/FeaturedTutorial.vue'
 .blog-section {
   margin: 0 auto;
   padding-top: 5em;
+  @include hide-scrollbar;
 
   .blog-section__title {
     @include title;
@@ -43,8 +44,8 @@ import FeaturedTutorial from '@/components/FeaturedTutorial.vue'
 
   .blog-section__featured {
     overflow: scroll;
-    scrollbar-width: none;
     width: 100%;
+    @include hide-scrollbar;
   }
 
   @include for-tablet {

@@ -43,6 +43,17 @@ button {
 }
 
 html {
-  scrollbar-width: thin;
-  scrollbar-color: $yankees-blue transparent;
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-left: 1px solid $yankees-blue;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $yankees-blue;
+    border-radius: 10px;
+    border: 1px solid $rich-black;
+  }
 }
