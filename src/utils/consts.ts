@@ -473,7 +473,7 @@ export const BLOGS = {
         { type: CONTENT_TYPE.subtitle, text: 'Backend' },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'Like I said before, my main language is Python, framework Django, libraries Django REST Framework and Django Channels. I also have experience with Flask, SQLAlchemy, Event Sourcing and DDD (domain-driven design).'
+          text: 'My main language is Python aside with web frameworks such as Django, FastAPI and Flask. In terms of libraries - Django REST Framework, Django Channels, Marshmallow and Pydantic. I also have experience with SQLAlchemy, Event Sourcing and DDD (domain-driven design).'
         },
         { type: CONTENT_TYPE.subtitle, text: 'Frontend' },
         {
