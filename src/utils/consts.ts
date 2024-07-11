@@ -568,6 +568,11 @@ export const PROJECTS = {
               icon: GitHubIcon,
               text: 'GitHub',
               link: 'https://github.com/kamilkaminski01/events-manager'
+            },
+            {
+              icon: MonitorIcon,
+              text: 'Live',
+              link: 'https://events-manager.kamilkaminski.pl/'
             }
           ]
         }
