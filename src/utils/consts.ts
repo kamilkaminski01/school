@@ -514,7 +514,7 @@ export const PROJECTS = {
         { type: CONTENT_TYPE.title, text: 'Welcome ✍🏼' },
         {
           type: CONTENT_TYPE.paragraph,
-          text: "<strong>Events Manager</strong> is a robust web app that allows to create, update delete and manage events along with its participants effortlessly. Thanks to it's sleek UI, navigating through functionalities is a breeze."
+          text: '<strong>Events Manager</strong> is a robust web app that allows to create, update, delete and manage events along with its participants. Thanks to its sleek UI, navigating through functionalities is a breeze.'
         },
         {
           type: CONTENT_TYPE.quote,
@@ -527,6 +527,10 @@ export const PROJECTS = {
         {
           type: CONTENT_TYPE.paragraph,
           text: 'Every participant and event have their dedicated pages providing details on what event participants are attending to. On the other hand, event pages provide information about their participants and host.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'In order to create events, register participants and modify or delete existing data you need to be logged in. Authentication is handled by JWT tokens.'
         },
         { type: CONTENT_TYPE.title, text: 'Technologies' },
         {
@@ -553,7 +557,7 @@ export const PROJECTS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'You can initialize the database with example data by using a custom command: <code class="inline-code">make initial-data</code>'
+          text: 'You can initialize the database with example data by using a custom command <code class="inline-code">make initial-data</code>, and to log in create an admin user by running <code class="inline-code">make admin</code>. The credentials will be <code class="inline-code">admin:admin</code>.'
         },
         { type: CONTENT_TYPE.title, text: 'Future features' },
         {
