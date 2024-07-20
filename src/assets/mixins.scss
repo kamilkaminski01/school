@@ -77,3 +77,22 @@
     display: none;
   }
 }
+
+@mixin grid-section {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @include for-tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include for-phone {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

@@ -66,18 +66,10 @@ const featuredProjects = computed(() => {
   }
 
   .projects-section__cards {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
     height: fit-content;
 
-    @include for-tablet {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    @include for-phone {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
+    @include grid-section;
   }
 
   @include for-tablet {

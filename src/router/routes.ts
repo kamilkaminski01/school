@@ -75,6 +75,12 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'django-react-chat',
         meta: { title: 'Chat in Django & React', tutorial: BLOGS.djangoReactChat.tutorial },
         component: () => import('../views/TutorialView.vue')
+      },
+      {
+        path: 'gitlab-ci-cd-pipeline',
+        name: 'gitlab-ci-cd-pipeline',
+        meta: { title: 'GitLab CI/CD Pipeline', tutorial: BLOGS.gitlabCiCdPipeline.tutorial },
+        component: () => import('../views/TutorialView.vue')
       }
     ]
   }

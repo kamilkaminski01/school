@@ -78,3 +78,17 @@ export const blogTreesDjangoReactChat = [
         └── ...`
   }
 ]
+
+export const blogTreesGitLabCiCdPipeline = [
+  {
+    tree: `.
+└── gitlab-ci-cd-pipeline/
+    ├── backend/
+    │   └── ...
+    ├── frontend/
+    │   └── ...
+    ├── .gitlab-ci.yml
+    ├── docker-compose.yml
+    └── Makefile`
+  }
+]

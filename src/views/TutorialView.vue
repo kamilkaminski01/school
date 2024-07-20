@@ -281,6 +281,7 @@ const copyCode = (contentIndex: number) => {
       max-width: 45em;
       object-fit: contain;
       border-radius: 0.25em;
+      margin: 0.75rem 0 0 0;
     }
 
     .tutorial__content-code-items {
@@ -331,6 +332,7 @@ const copyCode = (contentIndex: number) => {
       font-family: 'Fira code', 'Fira Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
       font-size: 15px;
+      line-height: 1.4;
       white-space: pre;
     }
 

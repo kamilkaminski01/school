@@ -11,22 +11,22 @@
         <p class="section__desc">{{ section.desc }}</p>
       </RouterLink>
     </div>
-    <RouterLink :to="{ name: 'django-react-chat' }" class="featured-tutorial__info">
-      <img src="@/assets/images/kamil-kaminski.jpg" alt="Kamil Kamiński" class="profile-img" />
-      <DjangoIcon class="featured-tutorial__info-icon first" />
-      <ReactIcon class="featured-tutorial__info-icon second" />
-      <img :src="DjangoReactChatThumbnail" class="featured-tutorial__info-img" alt="thumbnail" />
-      <h3 class="featured-tutorial__info-title">{{ BLOGS.djangoReactChat.title }}</h3>
-      <p class="featured-tutorial__info-subtitle">{{ BLOGS.djangoReactChat.subtitle }}</p>
-    </RouterLink>
+    <TutorialCard
+      :link="BLOGS.djangoReactChat.link"
+      :icons="[DjangoIcon, ReactIcon]"
+      :thumbnail="DjangoReactChatThumbnail"
+      :title="BLOGS.djangoReactChat.title"
+      :subtitle="BLOGS.djangoReactChat.subtitle"
+      :featured="true" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { BLOGS } from '@/utils/consts'
+import TutorialCard from '@/components/TutorialCard.vue'
+import DjangoReactChatThumbnail from '@/assets/images/blogs/djangoReactChat/thumbnail.png'
 import DjangoIcon from '@/components/icons/DjangoIcon.vue'
 import ReactIcon from '@/components/icons/ReactIcon.vue'
-import { BLOGS } from '@/utils/consts'
-import DjangoReactChatThumbnail from '@/assets/images/blogs/djangoReactChat/thumbnail.png'
 </script>
 
 <style lang="scss">
@@ -81,57 +81,6 @@ import DjangoReactChatThumbnail from '@/assets/images/blogs/djangoReactChat/thum
       &:hover {
         background-color: hsla(0, 0%, 100%, 0.05);
       }
-    }
-  }
-
-  .featured-tutorial__info {
-    position: relative;
-    display: grid;
-    padding: 0.75rem;
-    text-align: center;
-    border-radius: 0.75rem;
-    border: 1px solid hsla(0, 0%, 100%, 0.05);
-    background-color: hsla(0, 0%, 100%, 0.05);
-
-    transition: 0.2s transform ease;
-
-    .profile-img {
-      @include profile-img;
-      position: absolute;
-      top: 3px;
-      right: 3px;
-      z-index: 1;
-    }
-
-    .featured-tutorial__info-icon {
-      position: absolute;
-      right: 3px;
-      z-index: 1;
-
-      &.first {
-        top: 50px;
-      }
-
-      &.second {
-        top: 95px;
-      }
-    }
-
-    .featured-tutorial__info-img {
-      width: 100%;
-      padding: 1rem;
-    }
-
-    .featured-tutorial__info-title {
-      color: $platinum;
-    }
-
-    .featured-tutorial__info-subtitle {
-      color: $slate-gray;
-    }
-
-    &:hover {
-      transform: scale(1.05);
     }
   }
 

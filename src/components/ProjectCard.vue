@@ -60,17 +60,13 @@ defineProps<ProjectCardProps>()
     .card__info-title {
       font-size: inherit;
       font-weight: 600;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
       color: $platinum;
+      @include text-ellipsis;
     }
 
     .card__info-desc {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
       color: $slate-gray;
+      @include text-ellipsis;
     }
   }
 

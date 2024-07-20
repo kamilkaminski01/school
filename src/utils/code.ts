@@ -84,6 +84,113 @@ docker compose up`
   }
 ]
 
+export const blogCodeGitLabCiCdPipeline = [
+  {
+    lang: CODE_LANG.yaml,
+    code: `stages:
+  - test
+  - build
+  - deploy`
+  },
+  {
+    lang: CODE_LANG.yaml,
+    code: `test-with-linters:
+  stage: test
+  image: docker:27.0
+  services:
+    - docker:27-dind
+  before_script:
+    - apk update && apk add make
+    - make build
+  script:
+    - make check
+    - make test`
+  },
+  {
+    lang: CODE_LANG.yaml,
+    code: `variables:
+  IMAGES_REPO: $REGISTRY_USER/$PROJECT
+
+build:
+  stage: build
+  image: docker:27.0
+  services:
+    - docker:27-dind
+  before_script:
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD
+  script:
+    - docker build -t $IMAGES_REPO:backend backend
+    - docker build -t $IMAGES_REPO:frontend frontend
+    - docker push $IMAGES_REPO:backend
+    - docker push $IMAGES_REPO:frontend
+  after_script:
+    - docker logout`
+  },
+  {
+    lang: CODE_LANG.yaml,
+    code: `deploy:
+  stage: deploy
+  before_script:
+    - chmod 400 $SSH_KEY
+  script:
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY $SSH_USER@$SSH_HOST -p $SSH_PORT "
+      cd $PROJECT/ &&
+      docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD &&
+      make down env=prod &&
+      docker images -q $IMAGES_REPO | xargs -r docker rmi &&
+      make run env=prod"`
+  },
+  {
+    lang: CODE_LANG.yaml,
+    code: `stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  IMAGES_REPO: $REGISTRY_USER/$PROJECT
+
+test-with-linters:
+  stage: test
+  image: docker:27.0
+  services:
+    - docker:27-dind
+  before_script:
+    - apk update && apk add make
+    - make build
+  script:
+    - make check
+    - make test
+
+build:
+  stage: build
+  image: docker:27.0
+  services:
+    - docker:27-dind
+  before_script:
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD
+  script:
+    - docker build -t $IMAGES_REPO:backend backend
+    - docker build -t $IMAGES_REPO:frontend frontend
+    - docker push $IMAGES_REPO:backend
+    - docker push $IMAGES_REPO:frontend
+  after_script:
+    - docker logout
+
+deploy:
+  stage: deploy
+  before_script:
+    - chmod 400 $SSH_KEY
+  script:
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY $SSH_USER@$SSH_HOST -p $SSH_PORT "
+      cd $PROJECT/ &&
+      docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD &&
+      make down env=prod &&
+      docker images -q $IMAGES_REPO | xargs -r docker rmi &&
+      make run env=prod"`
+  }
+]
+
 export const blogCodeDjangoReactChat = [
   {
     lang: CODE_LANG.bash,

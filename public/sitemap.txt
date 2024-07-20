@@ -2,6 +2,7 @@ https://school.kamilkaminski.pl
 https://school.kamilkaminski.pl/blog
 https://school.kamilkaminski.pl/blog/about
 https://school.kamilkaminski.pl/blog/django-react-chat
+https://school.kamilkaminski.pl/blog/gitlab-ci-cd-pipeline
 https://school.kamilkaminski.pl/projects
 https://school.kamilkaminski.pl/projects/recommendations-system
 https://school.kamilkaminski.pl/projects/monitoring-system

@@ -7,20 +7,176 @@ import BlogDjangoReactChatThumbnail from '@/assets/images/blogs/djangoReactChat/
 import BlogDjangoReactChat1 from '@/assets/images/blogs/djangoReactChat/first-run.png'
 import BlogDjangoReactChat2 from '@/assets/images/blogs/djangoReactChat/first-glance.png'
 import BlogDjangoReactChat3 from '@/assets/images/blogs/djangoReactChat/demo.png'
+import GitLabCiCdPipelineThumbnail from '@/assets/images/blogs/gitlabCiCdPipeline/thumbnail.svg'
+import GitLabCiCdPipeline1 from '@/assets/images/blogs/gitlabCiCdPipeline/variables.png'
+import GitLabCiCdPipeline2 from '@/assets/images/blogs/gitlabCiCdPipeline/pipeline.png'
+import GitLabCiCdPipeline3 from '@/assets/images/blogs/gitlabCiCdPipeline/jobs.png'
+import GitLabCiCdPipeline4 from '@/assets/images/blogs/gitlabCiCdPipeline/stage.png'
 import GitHubIcon from '@/components/icons/GitHubIcon.vue'
 import MonitorIcon from '@/components/icons/MonitorIcon.vue'
 import { CONTENT_TYPE } from '@/models/tutorial'
 import {
   blogCodeDjangoReactChat,
+  blogCodeGitLabCiCdPipeline,
+  projectCodeDevelopmentForum,
   projectCodeEventsManager,
   projectCodeJobBoard,
-  projectCodeDevelopmentForum,
   projectCodeMonitoringSystem,
   projectCodeRecommendSystem
 } from './code'
-import { blogTreesDjangoReactChat } from '@/utils/trees'
+import { blogTreesDjangoReactChat, blogTreesGitLabCiCdPipeline } from '@/utils/trees'
 
 export const BLOGS = {
+  gitlabCiCdPipeline: {
+    link: 'gitlab-ci-cd-pipeline',
+    title: 'GitLab CI/CD Pipeline',
+    subtitle: 'Test, Build, Deploy | 7 min read',
+    date: 'Jul 21, 2024',
+    tutorial: {
+      header: {
+        date: 'Jul 21, 2024',
+        readTime: '7 min read',
+        title: 'GitLab CI/CD Pipeline',
+        demo: GitLabCiCdPipelineThumbnail
+      },
+      content: [
+        { type: CONTENT_TYPE.title, text: 'Welcome back ♾️' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'This tutorial will cover topics including GitLab, GitLabs CI/CD pipelines and enhancing CI/CD processes. Thanks to this guide you will be able to automate your workflows by testing, building and deploying code after a single git push.'
+        },
+        { type: CONTENT_TYPE.subtitle, text: 'Introduction' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Let\'s imagine that you have a project divided into a backend and frontend side, both containerized in a <a href=\'https://www.docker.com/\' target="_blank" rel="noopener noreferrer">Docker</a> environment. The backend is responsible for handling API requests and database interactions, while the frontend provides a user interface built with modern JavaScript frameworks like React or Vue. Both parts need to be tested, built and deployed consistently after making changes to the code.'
+        },
+        { type: CONTENT_TYPE.subtitle, text: 'Why use CI/CD pipelines?' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "Continuous Integration (CI) and Continuous Deployment (CD) are practices that help software engineers in faster code integrations and delivery. Instead of manually building new versions of an app, verifying it's reliability with tests and deploying it to a server, pipelines do it for you. 🧙🏼‍"
+        },
+        { type: CONTENT_TYPE.title, text: 'Prerequisites' },
+        { type: CONTENT_TYPE.paragraph, text: 'Before you start, you will need:' },
+        {
+          type: CONTENT_TYPE.unorderedList,
+          items: [
+            'A <a href="https://gitlab.com/" target="_blank" rel="noopener noreferrer">GitLab</a> account.',
+            'A project in GitLab to implement CI/CD.',
+            'Maintainer or Owner role for the project.'
+          ]
+        },
+        { type: CONTENT_TYPE.title, text: 'Defining a pipeline' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'GitLab CI/CD pipelines are defined in a file called <code class="inline-code">.gitlab-ci.yml</code>, which resides in the root of a repository. This file contains the pipeline configuration that GitLab CI/CD uses to automate tests, builds, deployments and much more:'
+        },
+        { type: CONTENT_TYPE.tree, text: blogTreesGitLabCiCdPipeline[0].tree },
+        { type: CONTENT_TYPE.subtitle, text: 'Stages' },
+        { type: CONTENT_TYPE.paragraph, text: 'Our pipeline will consist of 3 ordered stages:' },
+        {
+          type: CONTENT_TYPE.orderedList,
+          items: [
+            '<strong>Test</strong> - in this stage we will run unit tests and perform linting/static code checks to ensure quality and functionality',
+            '<strong>Build</strong> - in this stage we will build our newly developed code into Docker images, separating them into backend and frontend images, and then push these images into a Docker registry',
+            '<strong>Deploy</strong> - in this stage we will pull the latest images from the Docker registry and deploy them to a production environment'
+          ]
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeGitLabCiCdPipeline[0].lang,
+          text: blogCodeGitLabCiCdPipeline[0].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Stages run jobs which include scripts. In this case we will run <code class="inline-code">Makefile</code> rules to run our docker compose commands. GitLabs runners default image is Ruby, but we want to execute docker compose commands in a Docker environment. We can do this thanks to <code class="inline-code">dind</code> which stands for <strong>Docker in Docker</strong>.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Starting from the <strong>test</strong> stage, our job will look like this:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeGitLabCiCdPipeline[1].lang,
+          text: blogCodeGitLabCiCdPipeline[1].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Firstly, in the <code class="inline-code">before_script</code> we need to install <code class="inline-code">make</code> and build our docker environment. Next in the <code class="inline-code">script</code> part we perform our static code checks and run unit tests. If everything passes, we can pursue our next job.'
+        },
+        { type: CONTENT_TYPE.subtitle, text: 'Variables' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Pipelines often require environment variables which we should not define in our code. To avoid this, we can use GitLab CI/CD variables defining them in the projects settings:'
+        },
+        { type: CONTENT_TYPE.img, img: GitLabCiCdPipeline1 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "Referring variables in our pipeline code we can use the '$' symbol as a prefix to our variable key. It's worth mentioning that GitLab provides <a href='https://docs.gitlab.com/ee/ci/variables/predefined_variables.html' target=\"_blank\" rel=\"noopener noreferrer\">predefined CI/CD variables</a> that make our life even easier. 😎"
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeGitLabCiCdPipeline[2].lang,
+          text: blogCodeGitLabCiCdPipeline[2].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Secondly, we define the <strong>build</strong> job where we also create a docker in docker environment for the GitLab runner. Going forward - we log in to the Docker client, build images with our commited code and push them to a Docker registry. At the end of our job in the <code class="inline-code">after_script</code> we log out from the Docker client.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'After pushing the newly created images, we can now use them in a production environment.'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeGitLabCiCdPipeline[3].lang,
+          text: blogCodeGitLabCiCdPipeline[3].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Finally, we are in our third and last stage - <strong>deploy</strong>. Here we ssh into a server, log in to the Docker client, stop and remove running containers, remove old images and run a production environment with fresh images that were pushed to the registry.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'The finished <code class="inline-code">.gitlab-ci.yml</code> file should look like this:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeGitLabCiCdPipeline[4].lang,
+          text: blogCodeGitLabCiCdPipeline[4].code
+        },
+        { type: CONTENT_TYPE.title, text: 'Status of the pipeline and jobs' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Now, lets commit some changes and watch how our pipeline works 🚀'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'In the pipelines tab we can see our pipeline with three stages:'
+        },
+        { type: CONTENT_TYPE.img, img: GitLabCiCdPipeline2 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Besides that we can see a visual representation of the pipeline by selecting the pipeline ID:'
+        },
+        { type: CONTENT_TYPE.img, img: GitLabCiCdPipeline3 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'More details can be seen by selecting a job name. For example here are some logs of the <code class="inline-code">deploy</code> job:'
+        },
+        { type: CONTENT_TYPE.img, img: GitLabCiCdPipeline4 },
+        { type: CONTENT_TYPE.title, text: 'Conclusion' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'We have successfully created a CI/CD pipeline in GitLab! From now on, after pushing code to a GitLab repository, the pipeline automates testing, building and deploying changes to a project. Check out one of my web apps which leverages the same exact CI/CD in real life on 👉🏼 <a href="https://github.com/kamilkaminski01/events-manager" target="_blank" rel="noopener noreferrer">GitHub</a>.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'GitLab CI/CD offers more advanced features such as caching, artifacts and environment-specific configurations, but even in this basic use case we can see the power of DevOps automation. ♾️'
+        },
+        { type: CONTENT_TYPE.paragraph, text: 'Thanks for reading. 🙏🏼' }
+      ]
+    }
+  },
   djangoReactChat: {
     link: 'django-react-chat',
     title: 'Django & React Chat',
@@ -54,7 +210,7 @@ export const BLOGS = {
     ],
     tutorial: {
       header: {
-        date: 'Apr 1, 2024',
+        date: 'Apr 26, 2024',
         readTime: '10 min read',
         title: 'Chat in Django & React',
         demo: BlogDjangoReactChatThumbnail
