@@ -1,14 +1,14 @@
 <template>
   <main class="home-page">
     <LandingSection />
-    <BlogSection />
+    <TutorialsSection />
     <ProjectsSection />
   </main>
 </template>
 
 <script setup lang="ts">
 import LandingSection from '@/components/LandingSection.vue'
-import BlogSection from '@/components/BlogSection.vue'
+import TutorialsSection from '@/components/TutorialsSection.vue'
 import ProjectsSection from '@/components/ProjectsSection.vue'
 </script>
 

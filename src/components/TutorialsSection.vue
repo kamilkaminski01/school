@@ -1,10 +1,10 @@
 <template>
-  <section class="blog-section" id="blog">
-    <h1 class="blog-section__title">Modern, well-explained, and high-quality tutorials</h1>
-    <p class="blog-section__desc">
+  <section class="tutorials-section" id="tutorials">
+    <h1 class="tutorials-section__title">Modern, well-explained, and high-quality tutorials</h1>
+    <p class="tutorials-section__desc">
       Discover a wide range of topics and enhance your skills with extensive resources
     </p>
-    <div class="blog-section__featured">
+    <div class="tutorials-section__featured">
       <FeaturedTutorial />
     </div>
   </section>
@@ -15,12 +15,12 @@ import FeaturedTutorial from '@/components/FeaturedTutorial.vue'
 </script>
 
 <style lang="scss">
-.blog-section {
+.tutorials-section {
   margin: 0 auto;
   padding-top: 5em;
   @include hide-scrollbar;
 
-  .blog-section__title {
+  .tutorials-section__title {
     @include title;
     padding: 0.25rem;
     max-width: 479px;
@@ -32,7 +32,7 @@ import FeaturedTutorial from '@/components/FeaturedTutorial.vue'
     }
   }
 
-  .blog-section__desc {
+  .tutorials-section__desc {
     margin: 1.5rem 0;
     color: $slate-gray;
 
@@ -42,7 +42,7 @@ import FeaturedTutorial from '@/components/FeaturedTutorial.vue'
     }
   }
 
-  .blog-section__featured {
+  .tutorials-section__featured {
     overflow: scroll;
     width: 100%;
     @include hide-scrollbar;

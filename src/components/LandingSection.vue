@@ -14,12 +14,12 @@
     <span class="vertical-grid-line right" />
     <div class="landing-section__item">
       <span class="horizontal-grid-line top" />
-      <h1 class="landing-section__item-title">Education resources for web developers</h1>
+      <h1 class="landing-section__item-title">Educational resources for software engineers</h1>
     </div>
     <div class="landing-section__item">
       <span class="horizontal-grid-line top" />
       <p class="landing-section__desc">
-        Explore online <strong>courses</strong>, <strong>templates</strong>,
+        Explore online <strong>projects</strong>, <strong>templates</strong>,
         <strong>coding examples</strong>, <strong>tutorials</strong>, and much more - all in one
         place
       </p>
@@ -31,7 +31,7 @@
         <button class="landing-section__item-btn btn--highlight" @click="openBlogPage">
           Get started
         </button>
-        <button class="landing-section__item-btn btn--outline" @click="scrollToBlogSection">
+        <button class="landing-section__item-btn btn--outline" @click="scrollToTutorialsSection">
           Learn more
         </button>
         <span v-if="!isTablet" class="vertical-grid-line right" />
@@ -51,9 +51,9 @@ const openBlogPage = () => {
   router.push({ name: 'blog' })
 }
 
-const scrollToBlogSection = () => {
-  const blogSection = document.getElementById('blog')
-  if (blogSection) blogSection.scrollIntoView({ behavior: 'smooth' })
+const scrollToTutorialsSection = () => {
+  const tutorialsSection = document.getElementById('tutorials')
+  if (tutorialsSection) tutorialsSection.scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 
@@ -72,16 +72,17 @@ const scrollToBlogSection = () => {
     .landing-section__item-title {
       @include title;
       text-align: center;
-      max-width: 55%;
+      max-width: clamp(450px, 55vw, 650px);
 
-      @include for-large-tablet {
-        max-width: 400px;
+      @include for-small-phone {
+        max-width: unset;
       }
     }
 
     .landing-section__desc {
       font-size: 1.125em;
       color: $slate-gray;
+      line-height: 1.3;
 
       @include for-desktop {
         text-align: center;
@@ -90,6 +91,10 @@ const scrollToBlogSection = () => {
 
       @include for-tablet {
         max-width: 405px;
+      }
+
+      @include for-phone {
+        max-width: 280px;
       }
     }
 
@@ -178,12 +183,15 @@ const scrollToBlogSection = () => {
       }
     }
 
-    &:first-child {
+    &:first-child,
+    &:last-child {
       padding: 0;
     }
 
-    &:last-child {
-      padding: 0;
+    &:nth-child(4) {
+      @include for-phone {
+        padding: 1.25em;
+      }
     }
   }
 
