@@ -231,7 +231,7 @@ export const BLOGS = {
           items: [
             'Python and creating a virtual environment',
             "TypeScript, if you know how to use JavaScript you'll be fine",
-            'HTML/CSS (obviously)',
+            'HTML/CSS',
             "Docker and running it's basic commands"
           ]
         },
@@ -274,7 +274,7 @@ export const BLOGS = {
         { type: CONTENT_TYPE.tree, text: blogTreesDjangoReactChat[0].tree },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'Backend <code class="inline-code">Dockerfile</code> and <code class="inline-code">requirements.txt</code>'
+          text: 'Backend <code class="inline-code">local.Dockerfile</code> and <code class="inline-code">requirements.txt</code>'
         },
         {
           type: CONTENT_TYPE.code,
@@ -288,7 +288,7 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'Frontend <code class="inline-code">Dockerfile</code>'
+          text: 'Frontend <code class="inline-code">local.Dockerfile</code>'
         },
         {
           type: CONTENT_TYPE.code,
@@ -303,6 +303,10 @@ export const BLOGS = {
           type: CONTENT_TYPE.code,
           lang: blogCodeDjangoReactChat[6].lang,
           text: blogCodeDjangoReactChat[6].code
+        },
+        {
+          type: CONTENT_TYPE.note,
+          text: '📝 Note that we are using <code class="inline-code">local.Dockerfile</code> naming because normal <code class="inline-code">Dockerfile</code>\'s files are reserved for the production environment of the app'
         },
         {
           type: CONTENT_TYPE.paragraph,

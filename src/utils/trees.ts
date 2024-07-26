@@ -4,9 +4,9 @@ export const blogTreesDjangoReactChat = [
 └── django-react-chat/
     ├── backend/
     │   ├── requirements.txt
-    │   └── Dockerfile
+    │   └── local.Dockerfile
     ├── frontend/
-    │   └── Dockerfile
+    │   └── local.Dockerfile
     ├── venv
     ├── docker-compose.yml
     └── Makefile`
@@ -28,7 +28,7 @@ export const blogTreesDjangoReactChat = [
     │   │   ├── consumers.py
     │   │   └── routing.py
     │   ├── requirements.txt
-    │   └── Dockerfile
+    │   └── local.Dockerfile
     ├── frontend/
     │   └── ...
     ├── venv

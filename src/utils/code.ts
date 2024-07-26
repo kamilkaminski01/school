@@ -266,13 +266,11 @@ CMD ["npm", "run", "dev"]`
   },
   {
     lang: CODE_LANG.yaml,
-    code: `version: '3.8'
-
-services:
+    code: `services:
   web:
     build:
       context: backend
-      dockerfile: Dockerfile
+      dockerfile: local.Dockerfile
     command: sh -c "python manage.py migrate &&
                     python manage.py runserver 0.0.0.0:8000"
     volumes:
@@ -286,7 +284,7 @@ services:
   frontend:
     build:
       context: frontend
-      dockerfile: Dockerfile
+      dockerfile: local.Dockerfile
     ports:
       - "3000:3000"
     volumes:
