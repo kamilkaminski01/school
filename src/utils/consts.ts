@@ -580,7 +580,7 @@ export const BLOGS = {
         { type: CONTENT_TYPE.title, text: 'Conclusion' },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'We created a responsive web app that leverages the WebSocket protocol to ensure real-time communication between users. You can check out the project on my <a href="https://github.com/kamilkaminski01" target="_blank" rel="noopener noreferrer">GitHub</a> or in the <strong>Links</strong> section down below. 👇🏼'
+          text: 'We created a responsive web app that leverages the WebSocket protocol to ensure real-time communication between users. You can check out the projects repository on my <a href="https://github.com/kamilkaminski01" target="_blank" rel="noopener noreferrer">GitHub</a> or try it live <a href="https://chat.kamilkaminski.pl/" target="_blank" rel="noopener noreferrer">here</a>.'
         },
         { type: CONTENT_TYPE.paragraph, text: 'Thanks for reading. 🙏🏼' },
         { type: CONTENT_TYPE.title, text: 'Links' },
@@ -591,6 +591,11 @@ export const BLOGS = {
               icon: GitHubIcon,
               text: 'GitHub',
               link: 'https://github.com/kamilkaminski01/django-react-chat'
+            },
+            {
+              icon: MonitorIcon,
+              text: 'Live',
+              link: 'https://chat.kamilkaminski.pl/'
             }
           ]
         }

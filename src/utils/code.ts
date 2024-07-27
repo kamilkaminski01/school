@@ -117,7 +117,7 @@ build:
   services:
     - docker:27-dind
   before_script:
-    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD
+    - echo -n $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
   script:
     - docker build -t $IMAGES_REPO:backend backend
     - docker build -t $IMAGES_REPO:frontend frontend
@@ -168,7 +168,7 @@ build:
   services:
     - docker:27-dind
   before_script:
-    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD
+    - echo -n $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
   script:
     - docker build -t $IMAGES_REPO:backend backend
     - docker build -t $IMAGES_REPO:frontend frontend
