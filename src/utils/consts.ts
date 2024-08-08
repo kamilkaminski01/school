@@ -12,12 +12,25 @@ import GitLabCiCdPipeline1 from '@/assets/images/blogs/gitlabCiCdPipeline/variab
 import GitLabCiCdPipeline2 from '@/assets/images/blogs/gitlabCiCdPipeline/pipeline.png'
 import GitLabCiCdPipeline3 from '@/assets/images/blogs/gitlabCiCdPipeline/jobs.png'
 import GitLabCiCdPipeline4 from '@/assets/images/blogs/gitlabCiCdPipeline/stage.png'
+import JenkinsCiCdPipelineThumbnail from '@/assets/images/blogs/jenkinsCiCdPipeline/jenkins-docker.png'
+import JenkinsCiCdPipeline1 from '@/assets/images/blogs/jenkinsCiCdPipeline/gitlab-access-token.png'
+import JenkinsCiCdPipeline2 from '@/assets/images/blogs/jenkinsCiCdPipeline/jenkins-new-credentials.png'
+import JenkinsCiCdPipeline3 from '@/assets/images/blogs/jenkinsCiCdPipeline/jenkins-gitlab-config.png'
+import JenkinsCiCdPipeline4 from '@/assets/images/blogs/jenkinsCiCdPipeline/multibranch-pipeline.png'
+import JenkinsCiCdPipeline5 from '@/assets/images/blogs/jenkinsCiCdPipeline/pipeline-settings.png'
+import JenkinsCiCdPipeline6 from '@/assets/images/blogs/jenkinsCiCdPipeline/gitlab-jenkins-integration.png'
+import JenkinsCiCdPipeline7 from '@/assets/images/blogs/jenkinsCiCdPipeline/lockable-resource.png'
+import JenkinsCiCdPipeline8 from '@/assets/images/blogs/jenkinsCiCdPipeline/jenkins-credentials.png'
+import JenkinsCiCdPipeline9 from '@/assets/images/blogs/jenkinsCiCdPipeline/gitlab-pipeline-status.png'
+import JenkinsCiCdPipeline10 from '@/assets/images/blogs/jenkinsCiCdPipeline/gitlab-pipeline-jobs.png'
+import JenkinsCiCdPipeline11 from '@/assets/images/blogs/jenkinsCiCdPipeline/blue-ocean-pipeline.png'
 import GitHubIcon from '@/components/icons/GitHubIcon.vue'
 import MonitorIcon from '@/components/icons/MonitorIcon.vue'
 import { CONTENT_TYPE } from '@/models/tutorial'
 import {
   blogCodeDjangoReactChat,
   blogCodeGitLabCiCdPipeline,
+  blogCodeJenkinsCiCdPipeline,
   projectCodeDevelopmentForum,
   projectCodeEventsManager,
   projectCodeJobBoard,
@@ -27,10 +40,332 @@ import {
 import { blogTreesDjangoReactChat, blogTreesGitLabCiCdPipeline } from '@/utils/trees'
 
 export const BLOGS = {
+  jenkinsCiCdPipeline: {
+    link: 'jenkins-ci-cd-pipeline',
+    title: 'Jenkins CI/CD Pipeline',
+    subtitle: 'Test, Build, Deploy with Jenkins | 10 min read',
+    date: 'Aug 1, 2024',
+    tutorial: {
+      header: {
+        date: 'Aug 1, 2024',
+        readTime: '10 min read',
+        title: 'Jenkins CI/CD Pipeline',
+        demo: JenkinsCiCdPipelineThumbnail
+      },
+      content: [
+        { type: CONTENT_TYPE.title, text: 'Hi there 🤵🏻' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'I am happy to share this guide on creating a Jenkins pipeline that will run tests, builds and deployments for an application ensuring CI/CD. We will start with a brief configuration of a Jenkins controller and get on to defining a <strong>Jenkinsfile</strong> with scripted pipeline syntax written in Groovy.'
+        },
+        { type: CONTENT_TYPE.title, text: 'Prerequisites' },
+        {
+          type: CONTENT_TYPE.quote,
+          text: 'The Jenkins controller and jobs will run in a Docker environment, so make sure that you have <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">Docker</a> installed on your machine.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Jenkins documentation provides a great step-by-step tutorial on how to set up Jenkins on any machine. In my case I followed the <a href="https://www.jenkins.io/doc/book/installing/docker/#on-macos-and-linux" target="_blank" rel="noopener noreferrer">macOS and Linux</a> guide on my remote server and ran <strong>dind</strong> and <strong>Blue Ocean</strong>.'
+        },
+        {
+          type: CONTENT_TYPE.quote,
+          text: 'An application will be needed that could be tested, built and deployed to a server. In this case I will be implementing CI/CD for a project that is described 👉🏼 <a href="/projects/monitoring-system">here</a>.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Language, framework or used technologies don\'t matter in your chosen project. For the needs of this guide, it is important that the project can be tested, built into Docker images and the images can be pushed to a repository. We will create backend and frontend images and push them to <a href=\'https://hub.docker.com/\'  target="_blank" rel="noopener noreferrer">Docker Hub</a>.'
+        },
+        {
+          type: CONTENT_TYPE.quote,
+          text: 'The project should be stored in a <a href="https://gitlab.com/" target="_blank" rel="noopener noreferrer">GitLab</a> repository since we are going to integrate our pipeline with the GitLab UI. Although this is not mandatory, it enhances the development experience which Jenkins and GitLab integration provides.'
+        },
+        { type: CONTENT_TYPE.title, text: 'Plugins' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "After running Jenkins and logging in with your initial admin password, let's get on to installing plugins that will help with our jobs and enable GitLab integration. In order to do that navigate to Manage Jenkins -> Plugins -> Available plugins and search for:"
+        },
+        {
+          type: CONTENT_TYPE.orderedList,
+          items: [
+            'GitLab API Plugin',
+            'GitLab Authentication plugin',
+            'GitLab Plugin',
+            'Lockable Resources plugin',
+            'Docker plugin'
+          ]
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Install the listed plugins and make sure they are displayed in the "Available plugins" tab.'
+        },
+        { type: CONTENT_TYPE.title, text: 'GitLab access token' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Now let\'s create a GitLab access token for the Jenkins controller. Log in to your GitLab account, select "Access tokens" in user settings and create a personal access token with the "api" scope selected'
+        },
+        { type: CONTENT_TYPE.img, img: JenkinsCiCdPipeline1 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Navigate back to Jenkins and select Manage Jenkins -> Credentials -> System -> Global credentials -> Add Credentials. Here we will add credentials to authenticate Jenkins with our GitLab account. Select the "GitLab API Token" option and provide your created personal access token in GitLab:'
+        },
+        { type: CONTENT_TYPE.img, img: JenkinsCiCdPipeline2 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'To use the created credentials go to Manage Jenkins -> System and scroll down to the "GitLab" section. Here, set the options as provided in the image below:'
+        },
+        { type: CONTENT_TYPE.img, img: JenkinsCiCdPipeline3 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Verify if the connection works with the "Test Connection" button. If a <strong>Success</strong> message appears, it means that you configured Jenkins -> GitLab correctly. We will also need to integrate our GitLab account with Jenkins but now let\'s proceed to our pipeline creation.'
+        },
+        {
+          type: CONTENT_TYPE.title,
+          text: 'Creating a pipeline'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'To create a pipeline, go to the dashboard and choose "New Item". Jenkins provides multiple options when creating pipelines or jobs, but in this case we will pick <strong>Multibranch Pipeline</strong> and name it by the name of the project (in my case it will be monitoring-system, but you can name it whatever your project is named).'
+        },
+        { type: CONTENT_TYPE.img, img: JenkinsCiCdPipeline4 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Next, we need to configure the pipeline "Branch Sources" settings. My choice is to clone the repository through SSH, so I provided the repository SSH url, forwarded by creating SSH credentials named "jenkins".'
+        },
+        { type: CONTENT_TYPE.img, img: JenkinsCiCdPipeline5 },
+        { type: CONTENT_TYPE.subtitle, text: 'SSH Credentials' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'We will need to create SSH keys in our Jenkins container, because jobs such as cloning repositories will be ran by Jenkins (also in Docker containers). In order to do this, we need to assign the created SSH key to our GitLab account.'
+        },
+        {
+          type: CONTENT_TYPE.note,
+          text: "📝 Worth noting that that's why we need <strong>dind</strong> which stands for Docker in Docker"
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'To create SSH public and private keys in a Jenkins container, you can go through these steps:'
+        },
+        {
+          type: CONTENT_TYPE.orderedList,
+          items: [
+            'Exec into the jenkins blue ocean container: <code class="inline-code">docker exec -it jenkins-blueocean bash</code>',
+            'Create the ssh public and private keys: <code class="inline-code">ssh-keygen -t rsa -b 4096</code>',
+            'Print the created public key with: <code class="inline-code">cat ~/.ssh/id_rsa.pub</code>',
+            'Copy the key and assign it to your GitLab account at User settings -> SSH Keys -> Add new key'
+          ]
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Going back to pipeline settings. To assign <strong>jenkins</strong> as credentials, first navigate to Manage Jenkins -> Credentials -> System -> Global Credentials -> Add Credentials, pick the "SSH Username with private key" option and paste the previously created private key in our Jenkins container under the "Private Key" field. You can copy it by going through the same steps as said above but instead of <code class="inline-code">id_rsa.pub</code> you should cat <code class="inline-code">id_rsa</code>.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Once the pipeline options get completed, make sure to save the changes.'
+        },
+        { type: CONTENT_TYPE.title, text: 'GitLab integration' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Previously we integrated Jenkins -> GitLab, now we need to integrate GitLab -> Jenkins. Select your project in GitLab, open the integrations tab in the projects settings and select "Configure" besides the Jenkins option.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Here you will need to provide the Jenkins server URL. You can get this value under Manage Jenkins -> System -> Jenkins Location section and by copying the Jenkins URL. My configuration looks like this:'
+        },
+        { type: CONTENT_TYPE.img, img: JenkinsCiCdPipeline6 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Remember that your configuration will be different depending on your Jenkins server URL, project name and user credentials for the Jenkins server. If your configuration will be correct, a <strong>Connection successful</strong> message will appear when clicking the <code class="inline-code">Test settings</code> button.'
+        },
+        { type: CONTENT_TYPE.title, text: 'Defining a Jenkinsfile' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'At this point we set up a Jenkins controller and integrated our GitLab account and project with Jenkins. It\'s finally time to define jobs that will test, build and deploy our project. According to Jenkins <a href="https://www.jenkins.io/doc/book/pipeline/pipeline-as-code/" target="_blank" rel="noopener noreferrer">Pipeline as Code</a> documentation, we should create a file named <code class=\'inline-code\'>Jenkinsfile</code> in the repository root.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'As I mentioned before, we will define our <code class="inline-code">Jenkinsfile</code> in a scripted pipeline syntax. This allows us to bypass some limitations of the declarative syntax.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Start from the "node" block and <code class="inline-code">onBuild()</code>, <code class="inline-code">onFinal()</code> functions in a try/except block:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeJenkinsCiCdPipeline[0].lang,
+          text: blogCodeJenkinsCiCdPipeline[0].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'As you can see, the main function is called <code class="inline-code">onBuild</code>, but of course we need to be resilient to errors, so we wrapped the function in a try/except block. <code class="inline-code">onFinal</code> will serve as a cleanup function and <code class="inline-code">onError</code> will be called when a stage fails in our main function:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeJenkinsCiCdPipeline[1].lang,
+          text: blogCodeJenkinsCiCdPipeline[1].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'The function runs a <code class="inline-code">make clear</code> command which is defined in my projects <code class="inline-code">Makefile</code> - check out the defined rules <a href="https://github.com/kamilkaminski01/monitoring-system/blob/master/Makefile" target="_blank" rel="noopener noreferrer">here</a>. <code class="inline-code">cleanWs()</code> is a function that the <a href="https://www.jenkins.io/doc/pipeline/steps/ws-cleanup/" target="_blank" rel="noopener noreferrer">Workspace Cleanup Plugin</a> provides. It should be installed by default on your Jenkins instance, if not please install it.'
+        },
+        {
+          type: CONTENT_TYPE.note,
+          text: '💡 <code class="inline-code">updateGitlabCommitStatus</code> is a function provided by the <a href="https://www.jenkins.io/doc/pipeline/steps/gitlab-plugin/" target="_blank" rel="noopener noreferrer">GitLab Plugin</a>. It\'s also going to be used in other stages to update the status of our running pipeline'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "Moving on, let's define some helper functions that in the past could be easily refactored depending on the project in which this <code class='inline-code'>Jenkinsfile</code> will be found without actually modifying the logic of the script:"
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeJenkinsCiCdPipeline[2].lang,
+          text: blogCodeJenkinsCiCdPipeline[2].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'A quick explanation about whats going on in these functions:'
+        },
+        {
+          type: CONTENT_TYPE.unorderedList,
+          items: [
+            '<code class="inline-code">import org.jenkinsci.plugins.pipeline.modeldefinition.Utils</code> this imported function will be used in later stages, but because these function are on the top-level of the script I also included it',
+            '<code class="inline-code">getGitlabConnection()</code> here we are returning the GitLab connection name defined in Manage Jenkins -> System -> GitLab section',
+            '<code class="inline-code">getDeployBranches</code> this is a helper function for <code class="inline-code">isDeployBranch</code> where we return a list of branches on which our build and deploy stages should execute',
+            '<code class="inline-code">getProject</code> returns our projects name. Also, a helper function used in the deploy stage and for returning the images repository url',
+            '<code class="inline-code">isDeployBranch</code> as described in the comment - returns True if the build should be pushed to a registry and deployed',
+            '<code class="inline-code">getImagesRepository</code> returns a string that includes the registry user and project for example: "tester/example-project"'
+          ]
+        },
+        { type: CONTENT_TYPE.subtitle, text: 'Environment variables' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Jenkins provides a lot of built-in environment variables listed in the <code class="inline-code">/env-vars.html/</code> path of your Jenkins instance. Environment variables can be used in pipelines with <code class="inline-code">&#36;{env.&lt;VARIABLE&gt;}</code> or simply <code class="inline-code">&#36;{&lt;VARIABLE&gt;}</code>. As you can see, there isn\'t any built-in environment variable as <code class=\'inline-code\'>REGISTRY_USER</code>, which means it needs to be defined manually. To define custom variables go to Manage Jenkins -> System, select "Environment variables" and provide a name and value of the variable - in this case the image registry user.'
+        },
+        { type: CONTENT_TYPE.subtitle, text: 'Main onBuild function' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "Now let's define our main function where we will implement most of the logic. As you know, a pipeline consists of several steps that can be grouped in stages. Among these stages we will:"
+        },
+        {
+          type: CONTENT_TYPE.orderedList,
+          items: [
+            'Pull code from the repository',
+            'Run unit tests',
+            'Perform static code checks',
+            'Build the newly pushed code into docker images',
+            'Push the built images to a registry',
+            'Deploy the images to a server'
+          ]
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Starting from establishing the GitLab connection, pulling code from the repository and building an environment for unit tests and static code checks:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeJenkinsCiCdPipeline[3].lang,
+          text: blogCodeJenkinsCiCdPipeline[3].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Going on, we installed <code class="inline-code">Lockable Resources plugin</code> because we must avoid conflicts in case that other builds are not using same the ports. That is why tests and clean code check stages have to be locked. This can be possible by adding a lockable resource at Manage Jenkins -> System and scrolling down to "Lockable Resources Manager". Here add a resource called <strong>docker_compose_run</strong>:'
+        },
+        { type: CONTENT_TYPE.img, img: JenkinsCiCdPipeline7 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Additional information about lockable resources can be found in the <a href="https://plugins.jenkins.io/lockable-resources/" target="_blank" rel="noopener noreferrer">Lockable Resources documentation</a>. Now let\'s wrap our stages in a <code class="inline-code">lock</code> function provided by the plugin:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeJenkinsCiCdPipeline[4].lang,
+          text: blogCodeJenkinsCiCdPipeline[4].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'As you can see, we are running our tests and clean code checks thanks to rules defined in the <code class="inline-code">Makefile</code>. Before and after every executed rule we are keeping the pipeline status in GitLab up-to-date while going through each stage.'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "Testing and clean code check stages are ran on every branch ensuring that the pushed code meets with high quality and doesn't brake anything. That means that if we are pushing our code into a fix/feature branch or just any other branch than <strong>master</strong> - the docker build, docker push and deploy stages won't execute."
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Starting from the <strong>Docker build</strong> stage where we will build docker images of the backend and frontend side of our application:'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeJenkinsCiCdPipeline[5].lang,
+          text: blogCodeJenkinsCiCdPipeline[5].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "After building, it's time to push the created images. An important aspect of pipelines is handling sensitive data such as credentials. When running a pipeline, the machine logs information about the progress of running jobs. For security reasons we don't want to log passwords, keys or any other secret information, that's why Jenkins provides a built-in plugin called <a href='https://www.jenkins.io/doc/pipeline/steps/credentials-binding/' target=\"_blank\" rel=\"noopener noreferrer\">Credentials Binding Plugin</a>."
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'This plugin allows us to use a withCredentials wrapper thanks to which we can access credentials from our Jenkins credentials settings and define them as variables within the scope of the step. This is needed for our <strong>Docker push</strong> stage because we need to be authenticated before pushing images into a repository: '
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeJenkinsCiCdPipeline[6].lang,
+          text: blogCodeJenkinsCiCdPipeline[6].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'With credentials settings being said, here is how the credentials settings in this case look like. They can be found at Manage Jenkins -> Credentials:'
+        },
+        { type: CONTENT_TYPE.img, img: JenkinsCiCdPipeline8 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Moving on to the last stage of the <code class="inline-code">onBuild</code> function - deploy. Like in the previous stage we wrap the code inside a try block with <code class="inline-code">withCredentials</code> and <code class="inline-code">withEnv</code> wrappers. The rest now is SSH\'ing into our machine, logging into docker, stopping running containers of the project, deleting old images and running the project once again by pulling our newly built images from the repository.'
+        },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeJenkinsCiCdPipeline[7].lang,
+          text: blogCodeJenkinsCiCdPipeline[7].code
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'And with that we completed the Jenkinsfile script. 🎉'
+        },
+        { type: CONTENT_TYPE.paragraph, text: 'This is how the finished code should look like:' },
+        {
+          type: CONTENT_TYPE.code,
+          lang: blogCodeJenkinsCiCdPipeline[8].lang,
+          text: blogCodeJenkinsCiCdPipeline[8].code
+        },
+        { type: CONTENT_TYPE.title, text: 'Pipeline status with Blue Ocean' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "Let's take a look of Jenkins in action with Blue Ocean. Thanks to the integration with GitLab, after pushing a commit to the projects repository, Jenkins will automatically trigger the pipeline and GitLab will display the current status and stage which is running."
+        },
+        { type: CONTENT_TYPE.img, img: JenkinsCiCdPipeline9 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'After selecting a pipeline ID, we can see all of stages that where ran:'
+        },
+        { type: CONTENT_TYPE.img, img: JenkinsCiCdPipeline10 },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: "If we wan't to see the pipeline in more detail just click any stage and a new tab opens. Blue Ocean provides a great visual representation of every stage, its jobs and individual steps which makes debugging easier and an overall development experience better. 😎"
+        },
+        { type: CONTENT_TYPE.img, img: JenkinsCiCdPipeline11 },
+        { type: CONTENT_TYPE.title, text: 'Summary' },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'We have successfully integrated Jenkins with a project and from now on our test, build and deployment processes are automated. This tool can be integrated with many other technologies, making it a versatile solution for automating different stages of the software development lifecycle. ♾️'
+        },
+        {
+          type: CONTENT_TYPE.paragraph,
+          text: 'Once again, check out my project for which I created this CI/CD pipeline with Jenkins 👉🏼 <a href="https://github.com/kamilkaminski01/monitoring-system" target="_blank" rel="noopener noreferrer">here</a>.'
+        },
+        { type: CONTENT_TYPE.paragraph, text: 'Thanks for reading. 🙏🏼' }
+      ]
+    }
+  },
   gitlabCiCdPipeline: {
     link: 'gitlab-ci-cd-pipeline',
     title: 'GitLab CI/CD Pipeline',
-    subtitle: 'Test, Build, Deploy | 7 min read',
+    subtitle: 'Test, Build, Deploy with GitLab | 7 min read',
     date: 'Jul 21, 2024',
     tutorial: {
       header: {
@@ -147,7 +482,7 @@ export const BLOGS = {
         { type: CONTENT_TYPE.title, text: 'Status of the pipeline and jobs' },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'Now, lets commit some changes and watch how our pipeline works 🚀'
+          text: "Now, let's commit some changes and watch how our pipeline works 🚀"
         },
         {
           type: CONTENT_TYPE.paragraph,

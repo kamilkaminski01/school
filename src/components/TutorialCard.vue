@@ -1,12 +1,19 @@
 <template>
   <RouterLink :to="{ name: link }" :class="['tutorial-card', { featured: featured }]">
-    <img src="@/assets/images/kamil-kaminski.jpg" alt="Kamil Kamiński" class="profile-img" />
+    <img
+      v-if="featured"
+      src="@/assets/images/kamil-kaminski.jpg"
+      alt="Kamil Kamiński"
+      class="profile-img" />
     <component
       v-for="(Icon, index) in icons"
       :key="index"
       :is="Icon"
-      :class="`tutorial-card-icon icon-${index + 1}`" />
-    <img :src="thumbnail" class="tutorial-card-img" alt="tutorial image" />
+      :class="`tutorial-card-icon icon-${featured ? index + 1 : 0}`" />
+    <img
+      :src="thumbnail"
+      :class="['tutorial-card-img', { 'custom-img': customImg }]"
+      alt="tutorial image" />
     <h3 class="tutorial-card-title">{{ title }}</h3>
     <p class="tutorial-card-subtitle">{{ subtitle }}</p>
   </RouterLink>
@@ -15,11 +22,12 @@
 <script setup lang="ts">
 interface TutorialCardProps {
   link: string
-  icons: any[]
   thumbnail: string
   title: string
   subtitle: string
-  featured: boolean
+  featured?: boolean
+  customImg?: boolean
+  icons?: any[]
 }
 
 defineProps<TutorialCardProps>()
@@ -62,6 +70,19 @@ defineProps<TutorialCardProps>()
   .tutorial-card-img {
     width: 100%;
     padding: 1rem;
+  }
+
+  .custom-img {
+    object-fit: contain;
+    max-height: clamp(135px, 18vw, 220px);
+
+    @include for-tablet {
+      max-height: clamp(140px, 27vw, 210px);
+    }
+
+    @include for-phone {
+      max-height: clamp(140px, 48vw, 300px);
+    }
   }
 
   .tutorial-card-title,

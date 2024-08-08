@@ -13,6 +13,7 @@ import typescript from 'highlight.js/lib/languages/typescript'
 import python from 'highlight.js/lib/languages/python'
 import scss from 'highlight.js/lib/languages/scss'
 import xml from 'highlight.js/lib/languages/xml'
+import groovy from 'highlight.js/lib/languages/groovy'
 
 import App from './App.vue'
 import router from './router'
@@ -25,6 +26,7 @@ hljs.registerLanguage('typescript', typescript)
 hljs.registerLanguage('python', python)
 hljs.registerLanguage('scss', scss)
 hljs.registerLanguage('xml', xml)
+hljs.registerLanguage('groovy', groovy)
 
 const app = createApp(App)
 

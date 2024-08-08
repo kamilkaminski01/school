@@ -81,6 +81,12 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'gitlab-ci-cd-pipeline',
         meta: { title: 'GitLab CI/CD Pipeline', tutorial: BLOGS.gitlabCiCdPipeline.tutorial },
         component: () => import('../views/TutorialView.vue')
+      },
+      {
+        path: 'jenkins-ci-cd-pipeline',
+        name: 'jenkins-ci-cd-pipeline',
+        meta: { title: 'Jenkins CI/CD Pipeline', tutorial: BLOGS.jenkinsCiCdPipeline.tutorial },
+        component: () => import('../views/TutorialView.vue')
       }
     ]
   }

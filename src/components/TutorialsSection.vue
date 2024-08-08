@@ -9,22 +9,30 @@
     </div>
     <div class="tutorials-section__tutorial-cards">
       <TutorialCard
+        :link="BLOGS.jenkinsCiCdPipeline.link"
+        :icons="[DockerIcon]"
+        :thumbnail="JenkinsCiCdPipelineThumbnail"
+        :title="BLOGS.jenkinsCiCdPipeline.title"
+        :subtitle="BLOGS.jenkinsCiCdPipeline.subtitle"
+        :custom-img="true" />
+      <TutorialCard
         :link="BLOGS.gitlabCiCdPipeline.link"
         :icons="[GitLabIcon]"
         :thumbnail="GitLabCiCdPipelineThumbnail"
         :title="BLOGS.gitlabCiCdPipeline.title"
-        :subtitle="BLOGS.gitlabCiCdPipeline.subtitle"
-        :featured="false" />
+        :subtitle="BLOGS.gitlabCiCdPipeline.subtitle" />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import FeaturedTutorial from '@/components/FeaturedTutorial.vue'
 import { BLOGS } from '@/utils/consts'
-import GitLabCiCdPipelineThumbnail from '@/assets/images/blogs/gitlabCiCdPipeline/thumbnail.svg'
+import FeaturedTutorial from '@/components/FeaturedTutorial.vue'
 import TutorialCard from '@/components/TutorialCard.vue'
+import GitLabCiCdPipelineThumbnail from '@/assets/images/blogs/gitlabCiCdPipeline/thumbnail.svg'
 import GitLabIcon from '@/components/icons/GitLabIcon.vue'
+import JenkinsCiCdPipelineThumbnail from '@/assets/images/blogs/jenkinsCiCdPipeline/thumbnail.svg'
+import DockerIcon from '@/components/icons/DockerIcon.vue'
 </script>
 
 <style lang="scss">

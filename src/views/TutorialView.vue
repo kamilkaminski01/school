@@ -408,6 +408,7 @@ const copyCode = (contentIndex: number) => {
 
     .inline-code {
       display: inline-block;
+      word-break: break-all;
       padding: 0.1rem 0.3rem;
       font-size: 14px;
       color: #94a3b8;
