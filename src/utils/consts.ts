@@ -502,7 +502,7 @@ export const BLOGS = {
         { type: CONTENT_TYPE.title, text: 'Conclusion' },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'We have successfully created a CI/CD pipeline in GitLab! From now on, after pushing code to a GitLab repository, the pipeline automates testing, building and deploying changes to a project. Check out one of my web apps which leverages the same exact CI/CD in real life on 👉🏼 <a href="https://github.com/kamilkaminski01/events-manager" target="_blank" rel="noopener noreferrer">GitHub</a>.'
+          text: 'We have successfully created a CI/CD pipeline in GitLab! From now on, after pushing code to a GitLab repository, the pipeline automates testing, building and deploying changes to a project. Check out one of my web apps which leverages a similar CI/CD pipeline in real life on 👉🏼 <a href="https://github.com/kamilkaminski01/events-manager/blob/master/.gitlab-ci.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.'
         },
         {
           type: CONTENT_TYPE.paragraph,
@@ -915,7 +915,7 @@ export const BLOGS = {
         { type: CONTENT_TYPE.title, text: 'Conclusion' },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'We created a responsive web app that leverages the WebSocket protocol to ensure real-time communication between users. You can check out the projects repository on my <a href="https://github.com/kamilkaminski01" target="_blank" rel="noopener noreferrer">GitHub</a> or try it live <a href="https://chat.kamilkaminski.pl/" target="_blank" rel="noopener noreferrer">here</a>.'
+          text: 'We created a responsive web app that leverages the WebSocket protocol to ensure real-time communication between users. You can check out the projects repository on my <a href="https://github.com/kamilkaminski01/django-react-chat" target="_blank" rel="noopener noreferrer">GitHub</a> or try out the second iteration of this project live <a href="https://chat.kamilkaminski.pl/" target="_blank" rel="noopener noreferrer">here</a>.'
         },
         { type: CONTENT_TYPE.paragraph, text: 'Thanks for reading. 🙏🏼' },
         { type: CONTENT_TYPE.title, text: 'Links' },

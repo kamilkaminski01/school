@@ -110,7 +110,7 @@ export const blogCodeGitLabCiCdPipeline = [
   {
     lang: CODE_LANG.yaml,
     code: `variables:
-  IMAGES_REPO: $REGISTRY_USER/$PROJECT
+  IMAGES_REPO: $REGISTRY_USER/$CI_PROJECT_NAME
 
 build:
   stage: build
@@ -135,7 +135,7 @@ build:
     - chmod 400 $SSH_KEY
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY $SSH_USER@$SSH_HOST -p $SSH_PORT "
-      cd $PROJECT/ &&
+      cd $CI_PROJECT_NAME/ &&
       echo -n $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin &&
       make down env=prod &&
       docker images -q $IMAGES_REPO | xargs -r docker rmi &&
@@ -149,7 +149,7 @@ build:
   - deploy
 
 variables:
-  IMAGES_REPO: $REGISTRY_USER/$PROJECT
+  IMAGES_REPO: $REGISTRY_USER/$CI_PROJECT_NAME
 
 test-with-linters:
   stage: test
@@ -184,7 +184,7 @@ deploy:
     - chmod 400 $SSH_KEY
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY $SSH_USER@$SSH_HOST -p $SSH_PORT "
-      cd $PROJECT/ &&
+      cd $CI_PROJECT_NAME/ &&
       echo -n $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin &&
       make down env=prod &&
       docker images -q $IMAGES_REPO | xargs -r docker rmi &&
