@@ -96,3 +96,12 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+@mixin brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  color: $white;
+  font-weight: 700;
+}
