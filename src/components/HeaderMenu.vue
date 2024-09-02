@@ -1,36 +1,32 @@
 <template>
   <div class="menu__bg" @click="toggleMenu" />
   <div class="menu">
-    <div class="menu__header">
-      <div class="header__tab"><div class="tab" /></div>
-      <RouterLink :to="{ name: 'home' }" @click="toggleMenu" class="menu__brand">
+    <div class="menu__tab"><div class="tab" /></div>
+    <div class="menu__brand-wrapper">
+      <RouterLink :to="{ name: 'home' }" class="menu__brand">
         <LogoIcon width="24" height="24" />School Kamil Kamiński
       </RouterLink>
     </div>
     <div class="menu__sites">
-      <RouterLink :to="{ name: 'blog' }" @click="toggleMenu" class="site">
-        Blog & Tutorials
-      </RouterLink>
-      <RouterLink :to="{ name: 'django-react-chat' }" @click="toggleMenu" class="sub-site">
+      <RouterLink :to="{ name: 'blog' }" class="site"> Blog & Tutorials </RouterLink>
+      <RouterLink :to="{ name: 'django-react-chat' }" class="sub-site">
         <PhoneIcon />Django & React Chat
       </RouterLink>
-      <RouterLink :to="{ name: 'gitlab-ci-cd-pipeline' }" @click="toggleMenu" class="sub-site">
+      <RouterLink :to="{ name: 'gitlab-ci-cd-pipeline' }" class="sub-site">
         <GitlabFoxIcon />Gitlab CI/CD Pipeline
       </RouterLink>
-      <RouterLink :to="{ name: 'jenkins-ci-cd-pipeline' }" @click="toggleMenu" class="sub-site">
+      <RouterLink :to="{ name: 'jenkins-ci-cd-pipeline' }" class="sub-site">
         <CiCdIcon />Jenkins CI/CD Pipeline
       </RouterLink>
-      <RouterLink :to="{ name: 'projects' }" @click="toggleMenu" class="site">Projects</RouterLink>
-      <RouterLink :to="{ name: 'events-manager' }" @click="toggleMenu" class="sub-site">
+      <RouterLink :to="{ name: 'projects' }" class="site">Projects</RouterLink>
+      <RouterLink :to="{ name: 'events-manager' }" class="sub-site">
         <EventIcon />Events Manager
       </RouterLink>
-      <RouterLink :to="{ name: 'monitoring-system' }" @click="toggleMenu" class="sub-site">
+      <RouterLink :to="{ name: 'monitoring-system' }" class="sub-site">
         <DesktopIcon />Monitoring System
       </RouterLink>
       <div class="site">More</div>
-      <RouterLink :to="{ name: 'about' }" @click="toggleMenu" class="sub-site">
-        <InfoIcon />About
-      </RouterLink>
+      <RouterLink :to="{ name: 'about' }" class="sub-site"> <InfoIcon />About </RouterLink>
     </div>
   </div>
 </template>
@@ -73,30 +69,34 @@ defineProps<HeaderMenuProps>()
   width: 100%;
   z-index: 2;
   background-color: $rich-black;
-  border-top: 1px solid $independence;
-  transition: height 0.5s ease-in-out;
 
-  .menu__header {
-    padding: 1rem;
-    border-bottom: 1px solid $yankees-blue;
+  .menu__tab {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.75rem;
+    background-color: $rich-black;
+    border-top: 1px solid $independence;
 
-    .header__tab {
-      display: flex;
-      justify-content: center;
-
-      .tab {
-        height: 0.25rem;
-        width: 3rem;
-        margin-bottom: 1.75rem;
-        background-color: $white;
-        border-radius: 0.5rem;
-      }
+    .tab {
+      height: 0.25rem;
+      width: 3rem;
+      background-color: $platinum;
+      border-radius: 0.5rem;
     }
   }
 
-  .menu__brand {
-    @include brand;
-    width: fit-content;
+  .menu__brand-wrapper {
+    padding: 0.75rem;
+    border-bottom: 1px solid $yankees-blue;
+
+    .menu__brand {
+      @include brand;
+      width: fit-content;
+    }
   }
 
   .menu__sites {

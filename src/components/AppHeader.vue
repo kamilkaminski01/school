@@ -22,8 +22,10 @@ import LogoIcon from './icons/LogoIcon.vue'
 import HamburgerIcon from '@/components/icons/HamburgerIcon.vue'
 import { useIsPhone } from '@/composables/phone'
 import HeaderMenu from '@/components/HeaderMenu.vue'
+import { useRouter } from 'vue-router'
 
 const { isPhone } = useIsPhone()
+const router = useRouter()
 const isMenuVisible = ref(false)
 
 const toggleMenu = () => {
@@ -42,6 +44,10 @@ watch(isMenuVisible, (newVal) => {
   } else {
     document.body.style.overflow = 'auto'
   }
+})
+
+router.afterEach(() => {
+  isMenuVisible.value = false
 })
 </script>
 
@@ -99,7 +105,6 @@ header {
     display: flex;
     align-items: center;
     padding: 0.5rem;
-    margin: 0.5rem;
     border-radius: 0.2rem;
 
     transition: transform ease-in-out 0.05s;
@@ -116,7 +121,6 @@ header {
   }
 
   @include for-phone {
-    padding: unset;
     justify-content: unset;
   }
 }

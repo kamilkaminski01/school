@@ -13,7 +13,7 @@ import AppFooter from '@/components/AppFooter.vue'
 
 <style lang="scss">
 .shared-layout {
-  min-height: 100vh;
+  min-height: 100svh;
   max-width: 1536px;
 
   display: flex;
