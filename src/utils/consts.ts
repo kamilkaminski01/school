@@ -1368,7 +1368,7 @@ export const PROJECTS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'I mentioned used technologies in the about page on the live site, check it out here 👉🏼 <a href="https://monitoring-system.app/about" target="_blank" rel="noopener noreferrer">here</a>. <br />In terms of libraries and building tools:'
+          text: 'I mentioned used technologies in the about page on the live site, check it out here 👉🏼 <a href="https://monitoring-system.kamilkaminski.pl/about" target="_blank" rel="noopener noreferrer">here</a>. <br />In terms of libraries and building tools:'
         },
         {
           type: CONTENT_TYPE.unorderedList,
@@ -1424,7 +1424,7 @@ export const PROJECTS = {
             {
               icon: MonitorIcon,
               text: 'Live',
-              link: 'https://monitoring-system.app/'
+              link: 'https://monitoring-system.kamilkaminski.pl/'
             }
           ]
         }
