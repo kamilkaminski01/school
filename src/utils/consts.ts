@@ -958,7 +958,7 @@ export const BLOGS = {
         },
         {
           type: CONTENT_TYPE.paragraph,
-          text: "I graduated from college in 2020 with a Bachelor's degree and in the same year I undertook a Master's degree which I am completing to this day. During this time I did apprenticeships and was offered an internship. After some time I received my first job."
+          text: "I graduated from college in 2020 with a Bachelor's degree and in the same year I undertook a Master's degree which I also completed. During this time I did apprenticeships and was offered an internship. After some time I received my first job."
         },
         { type: CONTENT_TYPE.title, text: 'Development Experience' },
         {

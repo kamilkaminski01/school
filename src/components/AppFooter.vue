@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span>Kamil Kamiński 2024</span>
+      <span>Kamil Kamiński 2026</span>
     </div>
   </footer>
 </template>
