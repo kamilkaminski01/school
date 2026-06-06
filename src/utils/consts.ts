@@ -25,7 +25,6 @@ import JenkinsCiCdPipeline9 from '@/assets/images/blogs/jenkinsCiCdPipeline/gitl
 import JenkinsCiCdPipeline10 from '@/assets/images/blogs/jenkinsCiCdPipeline/gitlab-pipeline-jobs.png'
 import JenkinsCiCdPipeline11 from '@/assets/images/blogs/jenkinsCiCdPipeline/blue-ocean-pipeline.png'
 import GitHubIcon from '@/components/icons/GitHubIcon.vue'
-import MonitorIcon from '@/components/icons/MonitorIcon.vue'
 import { CONTENT_TYPE } from '@/models/tutorial'
 import {
   blogCodeDjangoReactChat,
@@ -915,7 +914,7 @@ export const BLOGS = {
         { type: CONTENT_TYPE.title, text: 'Conclusion' },
         {
           type: CONTENT_TYPE.paragraph,
-          text: 'We created a responsive web app that leverages the WebSocket protocol to ensure real-time communication between users. You can check out the projects repository on my <a href="https://github.com/kamilkaminski01/django-react-chat" target="_blank" rel="noopener noreferrer">GitHub</a> or try out the second iteration of this project live <a href="https://chat.kamilkaminski.pl/" target="_blank" rel="noopener noreferrer">here</a>.'
+          text: 'We created a responsive web app that leverages the WebSocket protocol to ensure real-time communication between users. You can check out the projects repository on my <a href="https://github.com/kamilkaminski01/django-react-chat" target="_blank" rel="noopener noreferrer">GitHub</a>.'
         },
         { type: CONTENT_TYPE.paragraph, text: 'Thanks for reading. 🙏🏼' },
         { type: CONTENT_TYPE.title, text: 'Links' },
@@ -926,11 +925,6 @@ export const BLOGS = {
               icon: GitHubIcon,
               text: 'GitHub',
               link: 'https://github.com/kamilkaminski01/django-react-chat'
-            },
-            {
-              icon: MonitorIcon,
-              text: 'Live',
-              link: 'https://chat.kamilkaminski.pl/'
             }
           ]
         }
@@ -1072,11 +1066,6 @@ export const PROJECTS = {
               icon: GitHubIcon,
               text: 'GitHub',
               link: 'https://github.com/kamilkaminski01/events-manager'
-            },
-            {
-              icon: MonitorIcon,
-              text: 'Live',
-              link: 'https://events-manager.kamilkaminski.pl/'
             }
           ]
         }
@@ -1420,11 +1409,6 @@ export const PROJECTS = {
               icon: GitHubIcon,
               text: 'GitHub',
               link: 'https://github.com/kamilkaminski01/monitoring-system'
-            },
-            {
-              icon: MonitorIcon,
-              text: 'Live',
-              link: 'https://monitoring-system.kamilkaminski.pl/'
             }
           ]
         }
